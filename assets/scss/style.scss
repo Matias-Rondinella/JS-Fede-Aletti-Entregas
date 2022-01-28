@@ -1,0 +1,22 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+//Ocultar en Mobile
+.disNoMob {
+  @media only screen and (max-width: 767px) {
+    display: none;
+  }
+}
+
+//Ocultar en Desktop
+@media only screen and (min-width: 1024px) {
+  .disNoDesk {
+    display: none;
+  }
+}
