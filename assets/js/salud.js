@@ -95,14 +95,14 @@ console.log("Turno seleccionado: ", confirmTurn); //ESTO LO AGREGUE DEL EJERCICI
 //EL SENTIDO ES GENERAR UN ACUMULADOR QUE VAYA GUARDANDO LAS ENTRADAS?  
 
 
-//Turnos por dias
+//Turnos por dias // Funcion =>
 const turnosL = AcumArray.filter ((turnos) => turnos.dia == "Lunes");
 const turnosM = AcumArray.filter ((turnos) => turnos.dia == "Martes");
 const turnosMier = AcumArray.filter ((turnos) => turnos.dia == "Miercoles");
 
 console.log("Los martes atiende: ", turnosM);
 
-//Turnos por Area
+//Turnos por Area // Funcion =>
 
 const traumat = AcumArray.filter ((areas) => areas.area == "Traumatologia");
 const odont = AcumArray.filter ((areas) => areas.area == "Odontologia");
