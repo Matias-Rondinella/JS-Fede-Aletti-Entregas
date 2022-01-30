@@ -1,11 +1,11 @@
 class User {
 	constructor(nombre, usuario, pass, email, edad, idUser) {        
-		this.nombre = nombre
-		this.usuario = usuario
-		this.pass = pass
-		this.email = email
-		this.edad = edad
-        this.idUser = idUser// QUIERO GENERAR ALGO QUE HAGA QUE EL ID DE USUARIO SE GENERE SOLO CON CADA ENTRADA, ES POSIBLE?
+		this.nombre = nombre.toUpperCase();
+		this.usuario = usuario.toUpperCase();
+		this.pass = pass;
+		this.email = email;
+		this.edad = edad;
+        this.idUser = idUser;// QUIERO GENERAR ALGO QUE HAGA QUE EL ID DE USUARIO SE GENERE SOLO CON CADA ENTRADA, ES POSIBLE?
         //let idUser = function idUser() {
             //¿ACA DEBERIA ARMAR UNA FUNCION PARA ESO CON UNA OPERACION? 
             /*const idUser = function sumaUsers() {}*///??
@@ -124,8 +124,11 @@ console.log("¿Agregue un turno?");
 AcumArray.push(turnoM5) //carga turnoM5 a AcumArray
 
 console.log(AcumArray.includes(turnoM5));// se fija si turnoM5 fue agregado o no
-console.log("Elemento agregado a AcumArray en la posicion: " + AcumArray.indexOf(turnoM5) + "." + " Elementos totales actualizados: " + AcumArray.length + " elementos.");//Muestra la cantidad de elementos dentro de mi Array
+console.log("Elemento agregado a AcumArray en la posicion: " + AcumArray.indexOf(turnoM5) + "." + 
 //muestra la posicion de mi nuevo Objeto dentro del Array
+" Elementos totales actualizados: " + AcumArray.length + " elementos.");
+//Muestra la cantidad de elementos dentro de mi Array
+
 
 
 //For Of para mostrar las areas deL AcumArray
