@@ -54,16 +54,16 @@ class Turnos {
 }
 
 // Turnos
-const turnoL1 = new Turnos(1, 'Traumatologia', "Lunes", "9.30 hs");
-const turnoL2 = new Turnos(2, 'Odontologia', "Lunes", "10.00 hs");
-const turnoL3 = new Turnos(3, 'Traumatologia', "Lunes", "10.30 hs");
-const turnoL4 = new Turnos(4, "Traumatologia", "Lunes", "10.00 hs");
-const turnoL5 = new Turnos(5, "Odontologia", "Lunes", "10.30 hs");
-const turnoL6 = new Turnos(6, "Odontologia", "Lunes", "11.00 hs");
-const turnoM1 = new Turnos(7, "Pediatria", "Martes", "9.00 hs");
-const turnoM2 = new Turnos(8, "Pediatria", "Martes", "9.30hs");
-const turnoM3 = new Turnos(9, "Pediatria", "Martes", "10.00 hs");
-const turnoM4 = new Turnos(10, "Pediatria", "Martes", "10.30 hs")
+const turnoL1 = new Turnos(0, 'Traumatologia', "Lunes", "9.30 hs");
+const turnoL2 = new Turnos(1, 'Odontologia', "Lunes", "10.00 hs");
+const turnoL3 = new Turnos(2, 'Traumatologia', "Lunes", "10.30 hs");
+const turnoL4 = new Turnos(3, "Traumatologia", "Lunes", "10.00 hs");
+const turnoL5 = new Turnos(4, "Odontologia", "Lunes", "10.30 hs");
+const turnoL6 = new Turnos(5, "Odontologia", "Lunes", "11.00 hs");
+const turnoM1 = new Turnos(6, "Pediatria", "Martes", "9.00 hs");
+const turnoM2 = new Turnos(7, "Pediatria", "Martes", "9.30hs");
+const turnoM3 = new Turnos(8, "Pediatria", "Martes", "10.00 hs");
+const turnoM4 = new Turnos(9, "Pediatria", "Martes", "10.30 hs")
 
 
 // Todos los turnos en un Array
@@ -93,32 +93,31 @@ function selectTurno(turnoOk) {
     confirmTurn.push (turnoOk);
     
 }
-selectTurno(AcumArray[5])
-selectTurno(AcumArray [7])
-console.log("Turnos seleccionados: ", confirmTurn); //ESTO LO AGREGUE DEL EJERCICIO DEL AFTER ANTERIOR DONDE FUNCIONABA EN EL EJEMPLO, PERO NO ME QUEDO MUY CLARO Y ACA NO FUNCIONA CREO                          
-console.log(confirmTurn.length);
-//EL SENTIDO ES GENERAR UN ACUMULADOR QUE VAYA GUARDANDO LAS ENTRADAS? 
+//Eliminar Turno 
 
-
-/*function restTurno(AcumArray, confirmTurn,) {
-
-    elimTurno = (AcumArray - confirmTurn);   
-    
-}
-
-restTurno(AcumArray, confirmTurn);*/ 
 //ACA QUISE ARMAR UNA FUNCION QUE ME SAQUE/ELIMINE LOS "TURNOS ELEGIDOS" DEL AcumArray, PERO EVIDENTEMENTE NO FUNCIONA.
+/*function restTurno(deltTurn) {
 
+    confirmTurn.pop(deltTurn)
+    
+}*/
 
+selectTurno(AcumArray[5])
+////restTurno(AcumArray[5]);
+selectTurno(AcumArray [7])
+////restTurno(AcumArray[7]);
+console.log("Turnos seleccionados: ", confirmTurn); //ESTO LO AGREGUE DEL EJERCICIO DEL AFTER ANTERIOR DONDE FUNCIONABA EN EL EJEMPLO, PERO NO ME QUEDO MUY CLARO Y ACA NO FUNCIONA CREO                          
+console.log(AcumArray.length);
+//EL SENTIDO ES GENERAR UN ACUMULADOR QUE VAYA GUARDANDO LAS ENTRADAS? 
 
 
 //Agregue un elemento nuevo a la "Base de datos" con .push
 //AGREGAR TURNOS A LA BASE DE DATOS = AcumArray
 
-const turnoM5 = new Turnos(11,"Rayos", "Martes", "9.50 hs");
+const turnoM5 = new Turnos(10,"Rayos", "Martes", "9.50 hs");
 AcumArray.push(turnoM5)
-console.log(AcumArray.length)
-
+console.log((AcumArray[10]));
+console.log(AcumArray);
 
 
 //Turnos por dias // Funcion =>
@@ -135,3 +134,8 @@ const odont = AcumArray.filter ((areas) => areas.area == "Odontologia");
 const pediat = AcumArray.filter ((areas) => areas.area == "Pediatria");
 
 console.log("Turnos de Odontologia para esta semana: ", odont);
+
+//Mostrar Datos de Usuario y turno seleccionado con .concat - "Orden de Turno"
+
+const ordTurno = AcumUser.concat(confirmTurn);
+console.log(ordTurno);
