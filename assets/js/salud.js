@@ -94,7 +94,6 @@ function selectTurno(turnoOk) {
     
 }
 //Eliminar Turno 
-
 //ACA QUISE ARMAR UNA FUNCION QUE ME SAQUE/ELIMINE LOS "TURNOS ELEGIDOS" DEL AcumArray, PERO EVIDENTEMENTE NO FUNCIONA.
 /*function restTurno(deltTurn) {
 
@@ -116,7 +115,7 @@ console.log(AcumArray.length);
 
 const turnoM5 = new Turnos(10,"Rayos", "Martes", "9.50 hs");
 AcumArray.push(turnoM5)
-console.log((AcumArray[10]));
+console.log(AcumArray[10]);
 console.log(AcumArray);
 
 
