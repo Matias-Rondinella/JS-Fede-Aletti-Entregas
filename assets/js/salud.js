@@ -116,7 +116,7 @@ console.log(AcumArray.length);
 const turnoM5 = new Turnos(10,"Rayos", "Martes", "9.50 hs");
 AcumArray.push(turnoM5)
 console.log(AcumArray[10]);
-console.log(AcumArray);
+console.log(AcumArray.length);
 
 
 //Turnos por dias // Funcion =>
