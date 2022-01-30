@@ -81,7 +81,7 @@ const AcumArray = [
 ]
 
 
-
+//Acumulador de turnos pedidos
 const confirmTurn = [];
 console.log("Turnos Disponibles: ", AcumArray.length)
 console.log(AcumArray)
@@ -95,7 +95,7 @@ function selectTurno(turnoOk) {
     
 }
 //Eliminar Turno 
-//ACA QUISE ARMAR UNA FUNCION QUE ME SAQUE/ELIMINE LOS "TURNOS ELEGIDOS" DEL AcumArray, PERO EVIDENTEMENTE NO FUNCIONA.
+//ACA QUISE ARMAR UNA FUNCION QUE ME SAQUE/ELIMINE LOS "TURNOS ELEGIDOS" DEL AcumArray, PERO EVIDENTEMENTE NO PUDE JE.
 /*function restTurno(deltTurn) {
 
     confirmTurn.pop(deltTurn)
@@ -128,7 +128,7 @@ console.log("Elemento agregado a AcumArray en la posicion: " + AcumArray.indexOf
 //muestra la posicion de mi nuevo Objeto dentro del Array
 
 
-//For Of para mostrar las areas de Array
+//For Of para mostrar las areas deL AcumArray
 for (const iterator of AcumArray) {
     console.log(iterator.area);
     
