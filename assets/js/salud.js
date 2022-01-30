@@ -79,8 +79,12 @@ const AcumArray = [
     turnoM3,
     turnoM4    
 ]
+
+
 const confirmTurn = [];
-console.log("Turnos Disponibles: ", AcumArray)
+console.log("Turnos Disponibles: ", AcumArray.length)
+console.log(AcumArray)
+
 
 
 //Seleccionar un turno
@@ -90,9 +94,31 @@ function selectTurno(turnoOk) {
     
 }
 selectTurno(AcumArray[5])
-console.log("Turno seleccionado: ", confirmTurn); //ESTO LO AGREGUE DEL EJERCICIO DEL AFTER ANTERIOR DONDE FUNCIONABA EN EL EJEMPLO, PERO NO ME QUEDO MUY CLARO Y ACA NO FUNCIONA CREO                          
+selectTurno(AcumArray [7])
+console.log("Turnos seleccionados: ", confirmTurn); //ESTO LO AGREGUE DEL EJERCICIO DEL AFTER ANTERIOR DONDE FUNCIONABA EN EL EJEMPLO, PERO NO ME QUEDO MUY CLARO Y ACA NO FUNCIONA CREO                          
+console.log(confirmTurn.length);
+//EL SENTIDO ES GENERAR UN ACUMULADOR QUE VAYA GUARDANDO LAS ENTRADAS? 
 
-//EL SENTIDO ES GENERAR UN ACUMULADOR QUE VAYA GUARDANDO LAS ENTRADAS?  
+
+/*function restTurno(AcumArray, confirmTurn,) {
+
+    elimTurno = (AcumArray - confirmTurn);   
+    
+}
+
+restTurno(AcumArray, confirmTurn);*/ 
+//ACA QUISE ARMAR UNA FUNCION QUE ME SAQUE/ELIMINE LOS "TURNOS ELEGIDOS" DEL AcumArray, PERO EVIDENTEMENTE NO FUNCIONA.
+
+
+
+
+//Agregue un elemento nuevo a la "Base de datos" con .push
+//AGREGAR TURNOS A LA BASE DE DATOS = AcumArray
+
+const turnoM5 = new Turnos(11,"Rayos", "Martes", "9.50 hs");
+AcumArray.push(turnoM5)
+console.log(AcumArray.length)
+
 
 
 //Turnos por dias // Funcion =>
