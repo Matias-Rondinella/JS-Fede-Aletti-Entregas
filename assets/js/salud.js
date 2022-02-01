@@ -155,7 +155,7 @@ const pediat = AcumArray.filter ((areas) => areas.area == "Pediatria");
 
 console.log("Turnos de Odontologia para esta semana: ", odont);
 
-//Mostrar Datos de Usuario y turno seleccionado con .concat - "Orden de Turno"
+//Datos de Usuario y turno seleccionado con .concat - "Orden de Turno"
 
 const ordTurno = AcumUser.concat(confirmTurn);
 console.log(ordTurno);
