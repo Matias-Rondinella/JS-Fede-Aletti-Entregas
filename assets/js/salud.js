@@ -131,17 +131,21 @@ eliminar(7,1)
 //AGREGAR TURNOS A LA BASE DE DATOS = AcumArray
 
 const turnoM5 = new Turnos(10,"Rayos", "Martes", "9.50 hs");
-AcumArray.push(turnoM5) //carga turnoM5 a AcumArray
 
-console.log(AcumArray.includes(turnoM5));// se fija si turnoM5 fue agregado o no
-console.log("Elemento agregado a AcumArray en la posicion: " + AcumArray.indexOf(turnoM5) + "." + 
-//muestra la posicion de mi nuevo Objeto dentro del Array
-" Listado de turnos actualizado: " + AcumArray.length + " elementos.");
-//Muestra la cantidad de elementos dentro de mi Array
-for (const iterator of AcumArray) {
-    console.log(iterator.area);
-    
+function agregarTurnos(i) {
+    AcumArray.push(i) //carga turnoM5 a AcumArray
+    console.log(AcumArray.includes(i));// se fija si turnoM5 fue agregado o no
+    console.log("Elemento agregado a AcumArray en la posicion: " + AcumArray.indexOf(i) + "." + 
+    //muestra la posicion de mi nuevo Objeto dentro del Array
+    " Listado de turnos actualizado: " + AcumArray.length + " elementos.");
+    //Muestra la cantidad de elementos dentro de mi Array
+    for (const iterator of AcumArray) {
+        console.log(iterator.area);        
+    }    
 }
+
+agregarTurnos(turnoM5)
+
 
 //Turnos por dias // Funcion =>
 
