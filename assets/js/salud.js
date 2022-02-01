@@ -1,3 +1,8 @@
+//Generar un valor random entre un min y un max para el idUser
+
+function randomNumber(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 class User {
 	constructor(nombre, usuario, pass, email, edad, idUser) {        
 		this.nombre = nombre.toUpperCase();
@@ -5,15 +10,10 @@ class User {
 		this.pass = pass;
 		this.email = email;
 		this.edad = edad;
-        this.idUser = idUser;// QUIERO GENERAR ALGO QUE HAGA QUE EL ID DE USUARIO SE GENERE SOLO CON CADA ENTRADA, ES POSIBLE?
-        //let idUser = function idUser() {
-            //¿ACA DEBERIA ARMAR UNA FUNCION PARA ESO CON UNA OPERACION? 
-            /*const idUser = function sumaUsers() {}*///??
-        //} 
+        this.idUser = randomNumber(1,300);
+        alert ("Su ID de Usuario es: " + this.idUser + this.usuario) 
     }
 }
-
-
 //Nuevos usuarios creados por el usuario como objetos
 const user1 = new User(
     prompt("Ingrese su nombre"),
@@ -21,8 +21,7 @@ const user1 = new User(
     prompt("Ingrese su password"),
     /*prompt("Ingrese su email"),
     Number(prompt("Ingrese su edad"),
-    alert ("Su ID de Usuario es: " + this.idUser)
-)*/); //ACA ME GUSTARIA QUE EL "THIS.USER" SE GENERE SOLO CON CADA ENTRADA Y DESPUES SE LO MUESTRE AL USUARIO/
+    )*/); 
 
 /*const user2 = new User(
     prompt("Ingrese su nombre"),
@@ -31,15 +30,29 @@ const user1 = new User(
     /*prompt("Ingrese su email"),
     Number(prompt("Ingrese su edad"),
     alert ("Su ID de Usuario es: " + this.idUser)
-    ));*/
-
+    ));*/    
 const AcumUser = [
     user1, 
     //user2
         
 ]
+function crearUsuario() {
+    AcumUser.push ();
+    console.log("Usuario creado: ");
+    for (const iterator of AcumUser) {
+        console.log(iterator.usuario);    
+    }    
 
-console.log("Usuarios creados: ", AcumUser);
+}
+crearUsuario()
+
+/*function crearUsuario() {
+    //console.log("Usuarios creados: ", this.usu);
+    AcumUser.push()
+    for (const iterator of AcumUser) {
+        console.log("Usuario Creado: " + iterator.usuario);
+}
+}*/
 
 //Constructor de Turnos
 class Turnos {
@@ -65,7 +78,6 @@ const turnoM2 = new Turnos(7, "Pediatria", "Martes", "9.30 hs");
 const turnoM3 = new Turnos(8, "Pediatria", "Martes", "10.00 hs");
 const turnoM4 = new Turnos(9, "Pediatria", "Martes", "10.30 hs");
 
-
 // Todos los turnos en un Array
 const AcumArray = [
     turnoL1, 
@@ -80,64 +92,59 @@ const AcumArray = [
     turnoM4    
 ]
 
+function mostrarTurnos() {
+    console.log("Turnos Disponibles: ")
+    //For Of para mostrar las areas deL AcumArray
+    for (const iterator of AcumArray) {
+        console.log(iterator.area + " " + iterator.horario+ " " + iterator.dia);    
+    }    
+}
+mostrarTurnos()
 
 //Acumulador de turnos pedidos
 const confirmTurn = [];
-console.log("Turnos Disponibles: ", AcumArray.length)
-console.log(AcumArray)
-
-
 
 //Seleccionar un turno
-function selectTurno(turnoOk) {
-
-    confirmTurn.push (turnoOk);
-    
+function selectTurno(turno) {
+    confirmTurn.push (turno);
+    console.log("Turnos seleccionados: ");
+    for (const iterator of confirmTurn) {
+        console.log(iterator.area + " " + iterator.horario+ " " + iterator.dia);    
+    }
 }
-//Eliminar Turno 
-//ACA QUISE ARMAR UNA FUNCION QUE ME SAQUE/ELIMINE LOS "TURNOS ELEGIDOS" DEL AcumArray, PERO EVIDENTEMENTE NO PUDE JE.
-/*function restTurno(deltTurn) {
-
-    confirmTurn.pop(deltTurn)
-    
-}*/
-
 selectTurno(AcumArray[5])
-selectTurno(AcumArray [7])
+selectTurno(AcumArray [7]) 
 
-console.log("Turnos seleccionados: ", confirmTurn); //ESTO LO AGREGUE DEL EJERCICIO DEL AFTER ANTERIOR DONDE FUNCIONABA EN EL EJEMPLO, PERO NO ME QUEDO MUY CLARO Y ACA NO FUNCIONA CREO                          
-
-//EL SENTIDO ES GENERAR UN ACUMULADOR QUE VAYA GUARDANDO LAS ENTRADAS? 
-
-console.log(AcumArray.splice(5,1));
-console.log(AcumArray.splice(7, 1));
-
-console.log("Ahora quedan:" + AcumArray.length + " turnos disponibles.");
-console.log(AcumArray);
+function eliminar (a,b) {
+    AcumArray.splice(a,b) 
+    console.log("Ahora quedan:" + AcumArray.length + " turnos disponibles.");
+    //For Of para mostrar las areas deL AcumArray
+    for (const iterator of AcumArray) {
+        console.log(iterator.area);
+    
+}   
+}
+eliminar(5,1)
+eliminar(7,1)
 
 //Agregue un elemento nuevo a la "Base de datos" con .push
 //AGREGAR TURNOS A LA BASE DE DATOS = AcumArray
 
-const turnoM5 = new Turnos(8,"Rayos", "Martes", "9.50 hs");
-
-console.log("¿Agregue un turno?");
+const turnoM5 = new Turnos(10,"Rayos", "Martes", "9.50 hs");
 AcumArray.push(turnoM5) //carga turnoM5 a AcumArray
 
 console.log(AcumArray.includes(turnoM5));// se fija si turnoM5 fue agregado o no
 console.log("Elemento agregado a AcumArray en la posicion: " + AcumArray.indexOf(turnoM5) + "." + 
 //muestra la posicion de mi nuevo Objeto dentro del Array
-" Elementos totales actualizados: " + AcumArray.length + " elementos.");
+" Listado de turnos actualizado: " + AcumArray.length + " elementos.");
 //Muestra la cantidad de elementos dentro de mi Array
-
-
-
-//For Of para mostrar las areas deL AcumArray
 for (const iterator of AcumArray) {
     console.log(iterator.area);
     
 }
 
 //Turnos por dias // Funcion =>
+
 const turnosL = AcumArray.filter ((turnos) => turnos.dia == "Lunes");
 const turnosM = AcumArray.filter ((turnos) => turnos.dia == "Martes");
 const turnosMier = AcumArray.filter ((turnos) => turnos.dia == "Miercoles");
