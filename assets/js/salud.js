@@ -46,14 +46,6 @@ function crearUsuario() {
 }
 crearUsuario()
 
-/*function crearUsuario() {
-    //console.log("Usuarios creados: ", this.usu);
-    AcumUser.push()
-    for (const iterator of AcumUser) {
-        console.log("Usuario Creado: " + iterator.usuario);
-}
-}*/
-
 //Constructor de Turnos
 class Turnos {
 
