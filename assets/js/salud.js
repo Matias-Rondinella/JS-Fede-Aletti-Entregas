@@ -1,8 +1,9 @@
-//Generar un valor random entre un min y un max para el idUser
+// =================== CLASES CONSTRUCTORAS ====================== //
 
-function randomNumber(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+
+//CLASE USER
+
+//Constructor de Usuarios
 class User {
 	constructor(nombre, usuario, pass, email, edad, idUser) {        
 		this.nombre = nombre.toUpperCase();
@@ -14,45 +15,8 @@ class User {
         alert ("Su ID de Usuario es: " + this.idUser + this.usuario) 
     }
 }
-//Nuevos usuarios creados por el usuario como objetos
-const user1 = new User(
-    prompt("Ingrese su nombre"),
-    prompt("Ingrese su usuario"),
-    prompt("Ingrese su password"),
-    /*prompt("Ingrese su email"),
-    Number(prompt("Ingrese su edad"),
-    )*/); 
 
-/*const user2 = new User(
-    prompt("Ingrese su nombre"),
-    prompt("Ingrese su usuario"),
-    prompt("Ingrese su password"),
-    /*prompt("Ingrese su email"),
-    Number(prompt("Ingrese su edad"),
-    alert ("Su ID de Usuario es: " + this.idUser)
-    ));*/    
-const AcumUser = [
-    user1, 
-    //user2
-        
-]
-function crearUsuario() {
-    AcumUser.push ();
-    console.log("Usuario creado: ");
-    for (const iterator of AcumUser) {
-        console.log(iterator.usuario);    
-    }    
-
-}
-crearUsuario()
-
-/*function crearUsuario() {
-    //console.log("Usuarios creados: ", this.usu);
-    AcumUser.push()
-    for (const iterator of AcumUser) {
-        console.log("Usuario Creado: " + iterator.usuario);
-}
-}*/
+//CLASE TURNOS
 
 //Constructor de Turnos
 class Turnos {
@@ -66,6 +30,50 @@ class Turnos {
     }
 }
 
+
+
+
+//========================== FUNCIONES ============================ //
+
+
+//FUNCION RANDOM NUMBER
+//Generar un valor random entre un min y un max para nuestro idUser de la Class "User{constructor}"
+
+function randomNumber(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+//randomNumber(,) - ejecuta la función.
+
+
+//FUNCION CREAR USUARIO
+//Guarda los datos del nuevo usuario en "AcumUser[]".
+//Nuevos usuarios creados por el usuario como objetos
+const user1 = new User(
+    prompt("Ingrese su nombre"),
+    prompt("Ingrese su usuario"),
+    prompt("Ingrese su password"),
+    /*prompt("Ingrese su email"),
+    Number(prompt("Ingrese su edad"),
+    )*/); 
+
+const AcumUser = [
+    user1, 
+    //user2
+]
+
+function crearUsuario() {
+    AcumUser.push ();
+    console.log("Usuario creado: ");
+    for (const iterator of AcumUser) {
+        console.log(iterator.usuario);    
+    }    
+
+}
+//crearUsuario() //ejecuta la función.
+
+//FUNCION MOSTRAR TURNOS
+
 // Turnos
 const turnoL1 = new Turnos(0, 'Traumatologia', "Lunes", "9.30 hs");
 const turnoL2 = new Turnos(1, "Traumatologia", "Lunes", "10.00 hs");
@@ -77,6 +85,7 @@ const turnoM1 = new Turnos(6, "Pediatria", "Martes", "9.00 hs");
 const turnoM2 = new Turnos(7, "Pediatria", "Martes", "9.30 hs");
 const turnoM3 = new Turnos(8, "Pediatria", "Martes", "10.00 hs");
 const turnoM4 = new Turnos(9, "Pediatria", "Martes", "10.30 hs");
+const turnoM5 = new Turnos(10,"Rayos", "Martes", "9.50 hs"); 
 
 // Todos los turnos en un Array
 const AcumArray = [
@@ -92,6 +101,7 @@ const AcumArray = [
     turnoM4    
 ]
 
+//Muestra los turnos disponibles al usuario, estos estan alojados en "AcumArray[]".
 function mostrarTurnos() {
     console.log("Turnos Disponibles: ")
     //For Of para mostrar las areas deL AcumArray
@@ -99,12 +109,15 @@ function mostrarTurnos() {
         console.log(iterator.area + " " + iterator.horario+ " " + iterator.dia);    
     }    
 }
-mostrarTurnos()
+//mostrarTurnos()
 
-//Acumulador de turnos pedidos
+
+//FUNCION SELECCIONAR TURNOS
+//Seleccionar un turno y alojarlo en nuestro carrito: "confirmTurn[]"
+
+//Acumulador de turnos pedidos/Carrito de Turnos
 const confirmTurn = [];
 
-//Seleccionar un turno
 function selectTurno(turno) {
     confirmTurn.push (turno);
     console.log("Turnos seleccionados: ");
@@ -112,8 +125,9 @@ function selectTurno(turno) {
         console.log(iterator.area + " " + iterator.horario+ " " + iterator.dia);    
     }
 }
-selectTurno(AcumArray[5])
-selectTurno(AcumArray [7]) 
+
+//selectTurno(AcumArray[5])
+//selectTurno(AcumArray [7]) 
 
 function eliminar (a,b) {
     AcumArray.splice(a,b) 
@@ -124,13 +138,11 @@ function eliminar (a,b) {
     
 }   
 }
-eliminar(5,1)
-eliminar(7,1)
+//eliminar(5,1)
+//eliminar(7,1)
 
 //Agregue un elemento nuevo a la "Base de datos" con .push
 //AGREGAR TURNOS A LA BASE DE DATOS = AcumArray
-
-const turnoM5 = new Turnos(10,"Rayos", "Martes", "9.50 hs");
 
 function agregarTurnos(i) {
     AcumArray.push(i) //carga turnoM5 a AcumArray
@@ -144,23 +156,32 @@ function agregarTurnos(i) {
     }    
 }
 
-agregarTurnos(turnoM5)
+//agregarTurnos(turnoM5)
 
-
-//Turnos por dias // Funcion =>
+//Turnos por dias // Funcion => TURNOS FILTRADOS POR DIA
 
 const turnosL = AcumArray.filter ((turnos) => turnos.dia == "Lunes");
 const turnosM = AcumArray.filter ((turnos) => turnos.dia == "Martes");
 const turnosMier = AcumArray.filter ((turnos) => turnos.dia == "Miercoles");
 
-console.log("Los martes atiende: ", turnosM);
-
-//Turnos por Area // Funcion =>
+//Turnos por Area // Funcion => TURNOS FITRADOS POR AREA
 
 const traumat = AcumArray.filter ((areas) => areas.area == "Traumatologia");
 const odont = AcumArray.filter ((areas) => areas.area == "Odontologia");
 const pediat = AcumArray.filter ((areas) => areas.area == "Pediatria");
 
+//========================================= EJECUCION =============================================== //
+
+
+crearUsuario();
+mostrarTurnos();
+selectTurno(AcumArray[5]);
+selectTurno(AcumArray [7]);
+eliminar(5,1);
+eliminar(7,1);
+agregarTurnos(turnoM5);
+
+console.log("Los martes atiende: ", turnosM);
 console.log("Turnos de Odontologia para esta semana: ", odont);
 
 //Mostrar Datos de Usuario y turno seleccionado con .concat - "Orden de Turno"
