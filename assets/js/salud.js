@@ -1,5 +1,5 @@
 // =================== CLASES CONSTRUCTORAS ====================== //
-
+/*
 
 //CLASE USER
 
@@ -49,57 +49,31 @@ function randomNumber(min, max) {
 //FUNCION CREAR USUARIO
 //Guarda los datos del nuevo usuario en "AcumUser[]".
 //Nuevos usuarios creados por el usuario como objetos
-const user1 = new User(
+const user = new User(
     prompt("Ingrese su nombre"),
     prompt("Ingrese su usuario"),
     prompt("Ingrese su password"),
-    /*prompt("Ingrese su email"),
-    Number(prompt("Ingrese su edad"),
-    )*/); 
+    //prompt("Ingrese su email"),
+    //Number(prompt("Ingrese su edad"),
+    //)
+    );
 
 const AcumUser = [
-    user1, 
+    //user1, 
     //user2
 ]
 
-function crearUsuario() {
-    AcumUser.push ();
-    console.log("Usuario creado: ");
+function crearUsuario(user) {
+    AcumUser.push (user);
     for (const iterator of AcumUser) {
+        console.log("Usuario creado: ");
         console.log(iterator.usuario);    
-    }    
-
+    }   
 }
 //crearUsuario() //ejecuta la función.
 
 //FUNCION MOSTRAR TURNOS
 
-// Turnos
-const turnoL1 = new Turnos(0, 'Traumatologia', "Lunes", "9.30 hs");
-const turnoL2 = new Turnos(1, "Traumatologia", "Lunes", "10.00 hs");
-const turnoL3 = new Turnos(2, 'Traumatologia', "Lunes", "10.30 hs");
-const turnoL4 = new Turnos(3, 'Odontologia', "Lunes", "10.00 hs");
-const turnoL5 = new Turnos(4, "Odontologia", "Lunes", "10.30 hs");
-const turnoL6 = new Turnos(5, "Odontologia", "Lunes", "11.00 hs");
-const turnoM1 = new Turnos(6, "Pediatria", "Martes", "9.00 hs");
-const turnoM2 = new Turnos(7, "Pediatria", "Martes", "9.30 hs");
-const turnoM3 = new Turnos(8, "Pediatria", "Martes", "10.00 hs");
-const turnoM4 = new Turnos(9, "Pediatria", "Martes", "10.30 hs");
-const turnoM5 = new Turnos(10,"Rayos", "Martes", "9.50 hs"); 
-
-// Todos los turnos en un Array
-const AcumArray = [
-    turnoL1, 
-    turnoL2, 
-    turnoL3,
-    turnoL4,
-    turnoL5,
-    turnoL6,
-    turnoM1,
-    turnoM2,
-    turnoM3,
-    turnoM4    
-]
 
 //Muestra los turnos disponibles al usuario, estos estan alojados en "AcumArray[]".
 function mostrarTurnos() {
@@ -188,3 +162,84 @@ console.log("Turnos de Odontologia para esta semana: ", odont);
 
 const ordTurno = AcumUser.concat(confirmTurn);
 console.log(ordTurno);
+
+
+/*let email = document.getElementsByClassName("emailLog");
+let pass = document.getElementsByClassName("passLog")
+
+console.log(emailLog.innerhtml)
+console.log(passLog.innerhtml);*/
+
+
+//Login con eventos 
+
+let btnLog = document.getElementById("ingresar");
+    btnLog.addEventListener("click", crearUsuario) 
+    function crearUsuario(e) {
+        e.preventDefault()
+        let usuario = document.getElementById("emailLog").value;
+        let pass = document.getElementById("passLog").value;
+        let userAndPass = document.getElementById ("userAndPass")
+        userAndPass.innerHTML = 
+        "<h2> Su Email y Constraseña son : </h2><br><h3> Email: </h3>" 
+        + `${usuario}` 
+        + "<br>" 
+        + "<h3> Contraseña: </h3>" 
+        + `${pass}`
+    }
+
+
+const contenedorTurnos = document.getElementById("contenedorTurnos");
+const selectTurnos = document.getElementById("selectTurnos");
+
+selectTurnos.addEventListener("change",()=>{
+    console.log(selectTurnos.value)
+    if (selectTurnos.value == "Todos") {
+        mostrarTurnos(turnos)
+        
+    }else{
+        mostrarTurnos(turnos.filter(el=> el.area == selectTurnos.value))
+    }
+})
+
+mostrarTurnos(turnos)
+
+function mostrarTurnos(array) {
+    contenedorTurnos.innerHTML="";
+    array.forEach(listaTurnos => {
+        let section = document.createElement("section")
+        section.className = "listaTurnos"
+        section.innerHTML += `
+                            <div class="card mb-3" style="max-width: 540px;">
+                                <div class="row no-gutters">
+                                    <div class="col-md-4">
+                                        <img src= ${listaTurnos.img} alt="...">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h5>${listaTurnos.area} </h5>
+                                            <p>${listaTurnos.dia} </p>
+                                            <p>${listaTurnos.horario}</p>
+                                            <button id= "${listaTurnos.id}" class="btnSeleccionar">Reservar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>     
+        `
+        contenedorTurnos.appendChild(section)
+
+    });
+    
+}
+
+let btnSeleccionar = document.getElementsByClassName("btnSeleccionar")
+for (const iterator of btnSeleccionar) {
+    iterator.addEventListener("click",()=>{
+        let btnOk = turnos.find(item => item.id == iterator.id)
+        confirmTurn.push(btnOk)
+        console.log(btnOk);
+
+    })
+}
+
+
