@@ -79,7 +79,7 @@ function agregarAlCarrito(id) {
         actualizarCarrito()
     }else{
 
-<<<<<<< HEAD
+
         let productoAgregar = turnoStock.find(elemento => elemento.id == id)
         // console.log(productoAgregar)
         carritoDeCompras.push(productoAgregar)
@@ -108,7 +108,7 @@ function agregarAlCarrito(id) {
 }   
 
 
-=======
+
 // let btnLog = document.getElementById("ingresar");
 //     btnLog.addEventListener("click", crearUsuario) 
 //     function crearUsuario(e) {
@@ -137,7 +137,7 @@ selectTurnos.addEventListener("change",()=>{
         mostrarTurnos(turnos.filter(el=> el.area == selectTurnos.value))
     }
 })
->>>>>>> 8ef001a1da9aad192d6671131df19eb4f8c8f1fb
+
 
 
 function  actualizarCarrito (){
