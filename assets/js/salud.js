@@ -173,28 +173,28 @@ console.log(passLog.innerhtml);*/
 
 //Login con eventos 
 
-let btnLog = document.getElementById("ingresar");
-    btnLog.addEventListener("click", crearUsuario) 
-    function crearUsuario(e) {
-        e.preventDefault()
-        let usuario = document.getElementById("emailLog").value;
-        let pass = document.getElementById("passLog").value;
-        let userAndPass = document.getElementById ("userAndPass")
-        userAndPass.innerHTML = 
-        "<h2> Su Email y Constraseña son : </h2><br><h3> Email: </h3>" 
-        + `${usuario}` 
-        + "<br>" 
-        + "<h3> Contraseña: </h3>" 
-        + `${pass}`
-    }
+// let btnLog = document.getElementById("ingresar");
+//     btnLog.addEventListener("click", crearUsuario) 
+//     function crearUsuario(e) {
+//         e.preventDefault()
+//         let usuario = document.getElementById("emailLog").value;
+//         let pass = document.getElementById("passLog").value;
+//         let userAndPass = document.getElementById ("userAndPass")
+//         userAndPass.innerHTML = 
+//         "<h2> Su Email y Constraseña son : </h2><br><h3> Email: </h3>" 
+//         + `${usuario}` 
+//         + "<br>" 
+//         + "<h3> Contraseña: </h3>" 
+//         + `${pass}`
+//     }
 
-
+//SELECTORES DE ID // DOM
 const contenedorTurnos = document.getElementById("contenedorTurnos");
 const selectTurnos = document.getElementById("selectTurnos");
 
 selectTurnos.addEventListener("change",()=>{
     console.log(selectTurnos.value)
-    if (selectTurnos.value == "Todos") {
+    if (selectTurnos.value == "Todos"){
         mostrarTurnos(turnos)
         
     }else{
