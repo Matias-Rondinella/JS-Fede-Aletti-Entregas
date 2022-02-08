@@ -79,6 +79,7 @@ function agregarAlCarrito(id) {
         actualizarCarrito()
     }else{
 
+<<<<<<< HEAD
         let productoAgregar = turnoStock.find(elemento => elemento.id == id)
         // console.log(productoAgregar)
         carritoDeCompras.push(productoAgregar)
@@ -107,6 +108,36 @@ function agregarAlCarrito(id) {
 }   
 
 
+=======
+// let btnLog = document.getElementById("ingresar");
+//     btnLog.addEventListener("click", crearUsuario) 
+//     function crearUsuario(e) {
+//         e.preventDefault()
+//         let usuario = document.getElementById("emailLog").value;
+//         let pass = document.getElementById("passLog").value;
+//         let userAndPass = document.getElementById ("userAndPass")
+//         userAndPass.innerHTML = 
+//         "<h2> Su Email y Constraseña son : </h2><br><h3> Email: </h3>" 
+//         + `${usuario}` 
+//         + "<br>" 
+//         + "<h3> Contraseña: </h3>" 
+//         + `${pass}`
+//     }
+
+//SELECTORES DE ID // DOM
+const contenedorTurnos = document.getElementById("contenedorTurnos");
+const selectTurnos = document.getElementById("selectTurnos");
+
+selectTurnos.addEventListener("change",()=>{
+    console.log(selectTurnos.value)
+    if (selectTurnos.value == "Todos"){
+        mostrarTurnos(turnos)
+        
+    }else{
+        mostrarTurnos(turnos.filter(el=> el.area == selectTurnos.value))
+    }
+})
+>>>>>>> 8ef001a1da9aad192d6671131df19eb4f8c8f1fb
 
 
 function  actualizarCarrito (){
