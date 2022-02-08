@@ -63,13 +63,14 @@
                         </ul> 
                     </div>
                 </nav>
+                <div id="carrito-turnos"></div>
             </div> 
         <!-- CIERRE NAV -->
 
-        <div class="row">
-            <input id="search" type="text" class="input" placeholder="Buscar">
-            <button id="boton-carrito"><i class="fas fa-shopping-cart"></i><span id="contadorTurnos">0</span></button>
-        </div>
+        
+        <input id="search" type="text" class="input col-lg-10" placeholder="Buscar"> <br>
+        <button id="boton-carrito"><i class="fas fa-shopping-cart"></i><span id="contadorTurnos">0</span></button>
+        
 
           
         <!-- Inicio de contenido con foto de hospital y Login. Al loguear deben aparecer cards con los turnos disponibles-->
@@ -92,19 +93,8 @@
         -->        
         <!-- CIERRE LOGIN -->
 
-        <div id="contenedor-turnos"></div>
-        <div id="carrito-turnos"></div>
-        <div class="seleccion">
-            <select id="selectTurnos">
-                <option value="Todos">Todos</option>
-                <option value="Lunes">Lunes</option>
-                <option value="Martes">Martes</option>
-                <option value="Miercoles">Miercoles</option>
-            </select>
-        </div>
-
-        <!-- Filtros en Select -->
-        <!--<div class="row">
+        <!-- Filtros en Select 
+        <div class="row">
             <div class="col-lg-10">
                 <button>Filtrar por:
                     <select name="" id="selectTurnos">
@@ -116,11 +106,10 @@
                     </select>
                 </button>              
             </div>
-        </div>-->
-        <div class="row">
-            <div class="col-lg-10 listaTurnos" id="contenedorTurnos">
-            </div>
-        </div>
+        </div> -->
+        <!-- CONTENEDOR TURNOS -->
+        <div class="col-lg-10 listaTurnos" id="contenedor-turnos"></div>
+        
         <!-- INICIO DE FOOTER -->
         <div class="row">
             <footer>
