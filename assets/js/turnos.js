@@ -27,7 +27,7 @@ const turnoM4 = new Turnos(9, "Pediatria", "Martes", "10.30 hs") ;
 const turnoM5 = new Turnos(10,"Rayos", "Martes", "9.50 hs"); 
 
 // Todos los turnos en un Array
-const turnos = [
+const turnoStock = [
     turnoL1, 
     turnoL2, 
     turnoL3,

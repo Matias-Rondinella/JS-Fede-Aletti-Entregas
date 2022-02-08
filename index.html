@@ -19,10 +19,9 @@
     <div class="container-fluid">
         <div class="row">
             <!--Pre Header -->
-        </div>
-        <div class="row">            
+        </div>           
         <!-- INICIO NAV -->
-            <div>
+            <div class="row">
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
                     <a class="navbar-brand" href="">
                         <img src="assets/imgs/logo.png" alt="logo" width="70" height="70" class="d-inline-block align-text-top">
@@ -66,9 +65,15 @@
                 </nav>
             </div> 
         <!-- CIERRE NAV -->
-        </div>            
+
+        <div class="row">
+            <input id="search" type="text" class="input" placeholder="Buscar">
+            <button id="boton-carrito"><i class="fas fa-shopping-cart"></i><span id="contadorTurnos">0</span></button>
+        </div>
+
+          
         <!-- Inicio de contenido con foto de hospital y Login. Al loguear deben aparecer cards con los turnos disponibles-->
-        <!-- LOGIN -->
+        <!-- LOGIN 
         <div class="row">
             <form class="col-lg-6">
                 <div class="form-group">
@@ -83,9 +88,23 @@
                 <button type="button" class="btn btn-primary" id="ingresar">Ingresar</button>
                 <div id="userAndPass"></div>                    
             </form>
-        </div>
+        </div>       
+        -->        
         <!-- CIERRE LOGIN -->
-        <div class="row">
+
+        <div id="contenedor-turnos"></div>
+        <div id="carrito-turnos"></div>
+        <div class="seleccion">
+            <select id="selectTurnos">
+                <option value="Todos">Todos</option>
+                <option value="Lunes">Lunes</option>
+                <option value="Martes">Martes</option>
+                <option value="Miercoles">Miercoles</option>
+            </select>
+        </div>
+
+        <!-- Filtros en Select -->
+        <!--<div class="row">
             <div class="col-lg-10">
                 <button>Filtrar por:
                     <select name="" id="selectTurnos">
@@ -97,7 +116,7 @@
                     </select>
                 </button>              
             </div>
-        </div>
+        </div>-->
         <div class="row">
             <div class="col-lg-10 listaTurnos" id="contenedorTurnos">
             </div>
