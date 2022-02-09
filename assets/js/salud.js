@@ -10,6 +10,7 @@ const selecTurnos = document.getElementById("selecTurnos")
 const btnConfirmar = document.getElementById("boton-confirmar")
 
 
+
 //filtro por dia
 selecTurnos.addEventListener('change',()=>{
     console.log(selecTurnos.value)
@@ -83,18 +84,7 @@ function  actualizarTurnos (){
     
 }
 
-btnConfirmar.addEventListener("click", ()=> {
-    console.log("Turnos reservados");
-    let div = document.createElement("div")
-    div.className = "btnConfirmar"
-    div.innerHTML += `
-                    <h5>Reserva exitosa</h5> 
-                    <button id=botonFinalizar>
-                        salir
-                    </button>          
-    
-    `
-    btnConfirmar.append(div);
-    let botonFinalizar = //aca deberia decirle que reinicie todo
-    
+//funcion de Bootstrap para lanzar el Modal
+$('#myModal').on('shown.bs.modal', function () {
+    $('#myInput').trigger('focus')
 })
