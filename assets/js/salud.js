@@ -64,7 +64,7 @@ function agregarTurno(id) {
                     <p>${turnoSeleccionado.dia}</p>
                     <P>${turnoSeleccionado.horario}</P>
                     <button id=botonEliminar${turnoSeleccionado.id}>
-                        <img src="assets/imgs/carritoTurnos.svg" alt="eliminar">
+                        <img src="assets/imgs/eliminarTurnos.svg" alt="eliminar">
                     </button>
                     
                     
@@ -77,6 +77,20 @@ function agregarTurno(id) {
         carritoTurnos = carritoTurnos.filter(el => el.id != turnoSeleccionado.id)
         actualizarTurnos()
     })
+}
+
+function confirmar() {
+    let btnConfirmar = document.createElement ("div")
+    btnConfirmar.addEventListener ("click", () => {
+        div.className= "confirmar"
+        btnConfirmar.innerHTML += `
+        <h5>${turnoSeleccionado.area}</h5>
+        <p>${turnoSeleccionado.dia}</p>
+        <P>${turnoSeleccionado.horario}</P> 
+    `
+    btn.appendChild(div)
+    }) 
+    
 }
 
 function  actualizarTurnos (){
