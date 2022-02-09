@@ -1,20 +1,17 @@
-let carritoDeCompras = []
 
-//SELECTORES DE ID // DOM
+let carritoTurnos = []
 
 const contenedorTurnos = document.getElementById('contenedor-turnos');
-const turnosCarrito = document.getElementById('carrito-turnos');
+const contenedorCarrito = document.getElementById('carrito-contenedor');
 
-const contadorTurnos = document.getElementById('contadorTurnos');
-const precioTotal = document.getElementById('precioTotal');
+const contadorCarrito = document.getElementById('contadorCarrito');
+const selecTurnos = document.getElementById("selecTurnos")
 
-const selecTurnos = document.getElementById('selecTurnos')
-const buscador = document.getElementById('search')
-
+const btnConfirmar = document.getElementById("boton-confirmar")
 
 
-//filtrado por Select
-/*selecTurnos.addEventListener('change',()=>{
+//filtro por dia
+selecTurnos.addEventListener('change',()=>{
     console.log(selecTurnos.value)
     if(selecTurnos.value == 'Todos'){
         mostrarTurnos(turnoStock)
@@ -22,136 +19,82 @@ const buscador = document.getElementById('search')
         mostrarTurnos(turnoStock.filter(el => el.dia == selecTurnos.value))
         console.log(turnoStock.filter(el => el.dia == selecTurnos.value))
     }
-})*/
-
-//Buscador
-buscador.addEventListener('input', ()=>{
-    if (buscador.value == "") {
-        mostrarTurnos(turnoStock)
-    }else{
-        mostrarTurnos(turnoStock.filter(el => el.nombre.toLowerCase().includes(buscador.value.toLowerCase())))
-    }
 })
 
 
-//logica Ecommerce
+//logica
 
 mostrarTurnos(turnoStock)
 
 function mostrarTurnos(array){
-   contenedorTurnos.innerHTML ='';
-    for (const listaTurnos of array) {
+    contenedorTurnos.innerHTML ='';
+    for (const turno of array) {
         let div = document.createElement('div');
-        div.className = 'listaTurnos';
+        div.className = 'turno';
         div.innerHTML += `<div class="card">
                             <div class="card-image">
-                                <img src=${listaTurnos.img}>
-                                <span class="card-title">${listaTurnos.area}</span>
-                                <a id="botonAgregar${listaTurnos.id}" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add_shopping_cart</i></a>
+                                <img src=${turno.img}>
+                                <span class="card-title">${turno.area}</span>
+                                <a id="botonAgregar${turno.id}" class="btn-floating halfway-fab waves-effect waves-light red"><img src="assets/imgs/carritoTurnos.svg" alt=""></a>
                             </div>
                             <div class="card-content">
-                                <p>${listaTurnos.dia}</p>
-                                <p>${listaTurnos.horario}</p>
-                                <p>${listaTurnos.precio}</p>
+                                <p>${turno.dia}</p>
+                                <p>${turno.horario}</p>
                             </div>
                         </div> `
                         
         contenedorTurnos.appendChild(div);
-        
-        
-        let btnAgregar = document.getElementById(`botonAgregar${listaTurnos.id}`)
-        // console.log(btnAgregar)
-    
-        btnAgregar.addEventListener('click',()=>{
-
-            agregarAlCarrito(listaTurnos.id)
+        let botonAgregar = document.getElementById(`botonAgregar${turno.id}`)
+        botonAgregar.addEventListener("click",()=> {
+            agregarTurno(turno.id)
         })
     }
     
 }
-
-
-function agregarAlCarrito(id) {
-    let repetido = carritoDeCompras.find(item => item.id == id)
-    if(repetido){
-        console.log(repetido);
-        repetido.cantidad = repetido.cantidad + 1
-        document.getElementById(`cantidad${repetido.id}`).innerHTML = `<p id= cantidad${repetido.id}>Cantidad:${repetido.cantidad}</p>`
-        actualizarCarrito()
-    }else{
-
-
-        let productoAgregar = turnoStock.find(elemento => elemento.id == id)
-        // console.log(productoAgregar)
-        carritoDeCompras.push(productoAgregar)
-        actualizarCarrito()
-        let div = document.createElement('div')
-        div.className = 'productoEnCarrito'
-        div.innerHTML =`
-                        <p>${productoAgregar.nombre}</p>
-                        <p>Precio: $${productoAgregar.precio}</p>
-                        <p id= cantidad${productoAgregar.id}>Cantidad:${productoAgregar.cantidad}</p>
-                        <button id=botonEliminar${productoAgregar.id} class="boton-eliminar"><i class="fas fa-trash-alt"></i></button>
-        `
-        contenedorTurnos.appendChild(div)
+//Seleccionar un turno por ID y alojarlo en nuestro carrito: "carritoTurnos[]" Linea 1
+function agregarTurno(id) {
+    let turnoSeleccionado = turnoStock.find(el => el.id == id)
+    carritoTurnos.push(turnoSeleccionado)
+    actualizarTurnos()
+    let div = document.createElement("div")
+    div.className = "modal-content"
+    div.innerHTML += `
+                    <h5>${turnoSeleccionado.area}</h5>
+                    <p>${turnoSeleccionado.dia}</p>
+                    <P>${turnoSeleccionado.horario}</P>
+                    <button id=botonEliminar${turnoSeleccionado.id}>
+                        <img src="assets/imgs/carritoTurnos.svg" alt="eliminar">
+                    </button>
+                    
+                    
     
-        let btnEliminar = document.getElementById(`botonEliminar${productoAgregar.id}`)
-        btnEliminar.addEventListener('click',()=>{
-            console.log(productoAgregar.id);
-            btnEliminar.parentElement.remove()                         
-            carritoDeCompras = carritoDeCompras.filter(elemento => elemento.id != productoAgregar.id)
-            actualizarCarrito()
-            localStorage.setItem('carrito', JSON.stringify(carritoDeCompras))
-        })
-    }
+    `
+    contenedorCarrito.appendChild(div);
+    let botonEliminar = document.getElementById(`botonEliminar${turnoSeleccionado.id}`)
+    botonEliminar.addEventListener("click",()=>{
+        console.log(turnoSeleccionado.id); 
+        carritoTurnos = carritoTurnos.filter(el => el.id != turnoSeleccionado.id)
+        actualizarTurnos()
+    })
+}
 
-    localStorage.setItem('carrito', JSON.stringify(carritoDeCompras))
-}   
+function  actualizarTurnos (){
+    contadorCarrito.innerText = carritoTurnos.reduce((acc,el)=> acc + el.cantidad, 0)
+    
+}
 
-
-
-// let btnLog = document.getElementById("ingresar");
-//     btnLog.addEventListener("click", crearUsuario) 
-//     function crearUsuario(e) {
-//         e.preventDefault()
-//         let usuario = document.getElementById("emailLog").value;
-//         let pass = document.getElementById("passLog").value;
-//         let userAndPass = document.getElementById ("userAndPass")
-//         userAndPass.innerHTML = 
-//         "<h2> Su Email y Constraseña son : </h2><br><h3> Email: </h3>" 
-//         + `${usuario}` 
-//         + "<br>" 
-//         + "<h3> Contraseña: </h3>" 
-//         + `${pass}`
-//     }
-
-selectTurnos.addEventListener("change",()=>{
-    console.log(selectTurnos.value)
-    if (selectTurnos.value == "Todos"){
-        mostrarTurnos(turnos)
-        
-    }else{
-        mostrarTurnos(turnos.filter(el=> el.area == selectTurnos.value))
-    }
+btnConfirmar.addEventListener("click", ()=> {
+    console.log("Turnos reservados");
+    let div = document.createElement("div")
+    div.className = "btnConfirmar"
+    div.innerHTML += `
+                    <h5>Reserva exitosa</h5> 
+                    <button id=botonFinalizar>
+                        salir
+                    </button>          
+    
+    `
+    btnConfirmar.append(div);
+    let botonFinalizar = //aca deberia decirle que reinicie todo
+    
 })
-
-
-
-function  actualizarCarrito (){
-    contadorCarrito.innerText = carritoDeCompras.reduce((acc,el)=> acc + el.cantidad, 0)
-    precioTotal.innerText = carritoDeCompras.reduce((acc,el)=> acc + (el.precio * el.cantidad), 0)
-}
-
-
-function recuperar() {
-    let recuperarLS = JSON.parse(localStorage.getItem('carrito'))
-    console.log(recuperarLS);
-    if(recuperarLS){
-        recuperarLS.forEach(element => {
-            agregarAlCarrito(element.id)
-        });
-    }
-}
-
-recuperar()
-

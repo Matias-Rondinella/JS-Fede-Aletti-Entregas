@@ -21,6 +21,7 @@
             <!--Pre Header -->
         </div>           
         <!-- INICIO NAV -->
+        <header>
             <div class="row">
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
                     <a class="navbar-brand" href="">
@@ -65,14 +66,11 @@
                 </nav>
                 <div id="carrito-turnos"></div>
             </div> 
-        <!-- CIERRE NAV -->
-
+            <!-- CIERRE NAV -->
+            <input type="text" class="input col-lg-10" placeholder="Buscar">        <!-- buscador -->                       
+            <div id="boton-carrito"><i class="fas fa-shopping-cart"></i><span id="contadorCarrito"></span></div> <!-- contador de turnos -->
+        </header>
         
-        <input id="search" type="text" class="input col-lg-10" placeholder="Buscar"> <br>
-        <button id="boton-carrito"><i class="fas fa-shopping-cart"></i><span id="contadorTurnos">0</span></button>
-        
-
-          
         <!-- Inicio de contenido con foto de hospital y Login. Al loguear deben aparecer cards con los turnos disponibles-->
         <!-- LOGIN 
         <div class="row">
@@ -93,23 +91,38 @@
         -->        
         <!-- CIERRE LOGIN -->
 
-        <!-- Filtros en Select 
-        <div class="row">
-            <div class="col-lg-10">
+        <!-- Filtros en Select -->
+        <div class="row col-lg-10">
+            <div class="seleccion">
                 <button>Filtrar por:
-                    <select name="" id="selectTurnos">
+                    <select name="" id="selecTurnos">
                         <option value="Todos">Todos</option>
-                        <option value="Traumatologia">Traumatologia</option>
-                        <option value="Odontologia">Odontologia</option>
-                        <option value="Pediatria">Pediatria</option>
-                        <option value="Rayos">Rayos</option>
+                        <option value="Lunes">Lunes</option>
+                        <option value="Martes">Martes</option>
+                        <option value="Miercoles">Miercoles</option>
+                        <option value="Jueves">Jueves</option>
                     </select>
                 </button>              
             </div>
-        </div> -->
+        </div> 
         <!-- CONTENEDOR TURNOS -->
-        <div class="col-lg-10 listaTurnos" id="contenedor-turnos"></div>
-        
+        <div class="col-lg-10" id="contenedor-turnos">
+
+        </div>
+
+        <!-- CARRITO -->        
+        <p>
+            <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+            Turnos Reservados
+            </a>
+        </p>
+        <div class="collapse" id="collapseExample">
+            <div class="card card-body" id="carrito-contenedor">
+                
+            </div>
+            <button id="boton-confirmar">Confirmar</button>
+        </div>
+
         <!-- INICIO DE FOOTER -->
         <div class="row">
             <footer>
