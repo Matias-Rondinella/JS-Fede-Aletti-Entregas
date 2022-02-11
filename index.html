@@ -67,7 +67,6 @@
             </div> 
             <!-- CIERRE NAV -->
             <input type="text" class="input col-lg-10" placeholder="Buscar">        <!-- buscador -->                       
-            <div id="boton-carrito"><i class="fas fa-shopping-cart"></i><span id="contadorCarrito"></span></div> <!-- contador de turnos -->
         </header>
         
         <!-- Inicio de contenido con foto de hospital y Login. Al loguear deben aparecer cards con los turnos disponibles-->
@@ -111,9 +110,11 @@
 
         <!-- CARRITO -->        
         <p>
-            <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-            Turnos Reservados
-            </a>
+            <div id="boton-carrito">
+                <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                Turnos Reservados: <iclass="fas fa-shopping-cart"></iclass=><span id="contadorCarrito"></span>
+                </a>
+            </div> <!-- contador de turnos -->
         </p>
         <div class="collapse" id="collapseExample">
             <div class="card card-body" id="carrito-contenedor">
@@ -121,7 +122,7 @@
             </div>
         </div>
             <!-- Button trigger modal -->
-        <button id="boton-confirmar" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
             Confirmar
         </button>
         
@@ -135,8 +136,8 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
                 </div>
-                <div class="modal-body confirmar">
-                
+                <div class="modal-body" id="confirmar-modal">
+                    
                 </div>
                 <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

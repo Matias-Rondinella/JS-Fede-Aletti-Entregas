@@ -7,7 +7,7 @@ const contenedorCarrito = document.getElementById('carrito-contenedor');
 const contadorCarrito = document.getElementById('contadorCarrito');
 const selecTurnos = document.getElementById("selecTurnos")
 
-const btnConfirmar = document.getElementById("boton-confirmar")
+const contenedorConfirmar = document.getElementById("confirmar-modal")
 
 
 
@@ -58,7 +58,7 @@ function agregarTurno(id) {
     carritoTurnos.push(turnoSeleccionado)
     actualizarTurnos()
     let div = document.createElement("div")
-    div.className = "modal-content"
+    div.className = "lista-turnos"
     div.innerHTML += `
                     <h5>${turnoSeleccionado.area}</h5>
                     <p>${turnoSeleccionado.dia}</p>
@@ -80,18 +80,10 @@ function agregarTurno(id) {
 }
 
 function confirmar() {
-    let btnConfirmar = document.createElement ("div")
-    btnConfirmar.addEventListener ("click", () => {
-        div.className= "confirmar"
-        btnConfirmar.innerHTML += `
-        <h5>${turnoSeleccionado.area}</h5>
-        <p>${turnoSeleccionado.dia}</p>
-        <P>${turnoSeleccionado.horario}</P> 
-    `
-    btn.appendChild(div)
-    }) 
+
+} 
     
-}
+
 
 function  actualizarTurnos (){
     contadorCarrito.innerText = carritoTurnos.reduce((acc,el)=> acc + el.cantidad, 0)
