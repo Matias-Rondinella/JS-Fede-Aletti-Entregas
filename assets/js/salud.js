@@ -7,7 +7,7 @@ const contenedorCarrito = document.getElementById('carrito-contenedor');
 const contadorCarrito = document.getElementById('contadorCarrito');
 const selecTurnos = document.getElementById("selecTurnos")
 
-const contenedorConfirmar = document.getElementById("confirmar-modal")
+
 
 
 
@@ -19,6 +19,7 @@ selecTurnos.addEventListener('change',()=>{
     }else{
         mostrarTurnos(turnoStock.filter(el => el.dia == selecTurnos.value))
         console.log(turnoStock.filter(el => el.dia == selecTurnos.value))
+        actualizarTurnos ()
     }
 })
 
@@ -35,12 +36,12 @@ function mostrarTurnos(array){
         div.innerHTML += `<div class="card">
                             <div class="card-image">
                                 <img src=${turno.img}>
-                                <span class="card-title">${turno.area}</span>
-                                <a id="botonAgregar${turno.id}" class="btn-floating halfway-fab waves-effect waves-light red"><img src="assets/imgs/carritoTurnos.svg" alt=""></a>
+                                <span class="card-title">${turno.area}</span>                                
                             </div>
                             <div class="card-content">
                                 <p>${turno.dia}</p>
                                 <p>${turno.horario}</p>
+                                <a id="botonAgregar${turno.id}" class="btn-floating halfway-fab waves-effect waves-light red"><img src="assets/imgs/carritoTurnos.svg" alt=""></a>
                             </div>
                         </div> `
                         
@@ -48,35 +49,44 @@ function mostrarTurnos(array){
         let botonAgregar = document.getElementById(`botonAgregar${turno.id}`)
         botonAgregar.addEventListener("click",()=> {
             agregarTurno(turno.id)
+            
         })
     }
     
 }
 //Seleccionar un turno por ID y alojarlo en nuestro carrito: "carritoTurnos[]" Linea 1
 function agregarTurno(id) {
-    let turnoSeleccionado = turnoStock.find(el => el.id == id)
-    carritoTurnos.push(turnoSeleccionado)
-    actualizarTurnos()
-    let div = document.createElement("div")
-    div.className = "lista-turnos"
-    div.innerHTML += `
-                    <h5>${turnoSeleccionado.area}</h5>
-                    <p>${turnoSeleccionado.dia}</p>
-                    <P>${turnoSeleccionado.horario}</P>
-                    <button id=botonEliminar${turnoSeleccionado.id}>
-                        <img src="assets/imgs/eliminarTurnos.svg" alt="eliminar">
-                    </button>
-                    
-                    
-    
-    `
-    contenedorCarrito.appendChild(div);
-    let botonEliminar = document.getElementById(`botonEliminar${turnoSeleccionado.id}`)
-    botonEliminar.addEventListener("click",()=>{
-        console.log(turnoSeleccionado.id); 
-        carritoTurnos = carritoTurnos.filter(el => el.id != turnoSeleccionado.id)
+    let turnoRepetido = carritoTurnos.find(elemento => (elemento.id == id))
+    if (turnoRepetido) {
+        alert("El turno ya fue seleccionado")
+    }else{
+        let turnoSeleccionado = turnoStock.find(el => el.id == id)
+        carritoTurnos.push(turnoSeleccionado)
         actualizarTurnos()
-    })
+        let div = document.createElement("div")
+        div.className = "lista-turnos"
+        div.innerHTML += `
+                        <h5>${turnoSeleccionado.area}</h5>
+                        <p>${turnoSeleccionado.dia}</p>
+                        <P>${turnoSeleccionado.horario}</P>
+                        <button id=botonEliminar${turnoSeleccionado.id}>
+                            <img src="assets/imgs/eliminarTurnos.svg" alt="eliminar">
+                        </button>
+                        
+                        
+        
+        `
+        contenedorCarrito.appendChild(div);
+        let botonEliminar = document.getElementById(`botonEliminar${turnoSeleccionado.id}`)
+        botonEliminar.addEventListener("click",()=>{
+            console.log(turnoSeleccionado.id);
+            botonEliminar.parentElement.remove() 
+            carritoTurnos = carritoTurnos.filter(el => el.id != turnoSeleccionado.id)
+            actualizarTurnos()
+        })
+
+    }
+
 }
 
 function confirmar() {
@@ -87,10 +97,7 @@ function confirmar() {
 
 function  actualizarTurnos (){
     contadorCarrito.innerText = carritoTurnos.reduce((acc,el)=> acc + el.cantidad, 0)
+
     
 }
 
-//funcion de Bootstrap para lanzar el Modal
-$('#myModal').on('shown.bs.modal', function () {
-    $('#myInput').trigger('focus')
-})

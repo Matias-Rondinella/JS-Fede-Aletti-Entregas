@@ -13,6 +13,10 @@
 
     <link rel="shortcut icon" href="assets/imgs/favicon.ico" type="image/x-icon">
     <link rel="icon" href="assets/imgs/favicon.ico" type="image/x-icon">
+
+    <!-- Mi CSS -->
+
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
     <div class="container-fluid">
@@ -21,11 +25,14 @@
         </div>           
         <!-- INICIO NAV -->
         <header>
-            <div class="row">
+            <div class="row navContenedor">
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
                     <a class="navbar-brand" href="">
                         <img src="assets/imgs/logo.png" alt="logo" width="70" height="70" class="d-inline-block align-text-top">
-                        Municipalidad de Luján</a>
+                        <h1 class="h1MobTitle">
+                            Municipalidad de Luján
+                        </h1>
+                    </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -91,7 +98,7 @@
 
         <!-- Filtros en Select -->
         <div class="row col-lg-10">
-            <div class="seleccion">
+            <div>
                 <button>Filtrar por:
                     <select name="" id="selecTurnos">
                         <option value="Todos">Todos</option>
@@ -100,7 +107,12 @@
                         <option value="Miercoles">Miercoles</option>
                         <option value="Jueves">Jueves</option>
                     </select>
-                </button>              
+                </button>
+                
+                <a class="btn btn-primary"  data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    Turnos Disponibles: <iclass="fas fa-shopping-cart"></iclass=><span></span>
+                </a>
+
             </div>
         </div> 
         <!-- CONTENEDOR TURNOS -->
@@ -111,21 +123,14 @@
         <!-- CARRITO -->        
         <p>
             <div id="boton-carrito">
-                <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                Turnos Reservados: <iclass="fas fa-shopping-cart"></iclass=><span id="contadorCarrito"></span>
-                </a>
+                            <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                        Turnos Reservados: <iclass="fas fa-shopping-cart"></iclass=><span id="contadorCarrito"></span>
+                    </a>
+                </button>                
             </div> <!-- contador de turnos -->
-        </p>
-        <div class="collapse" id="collapseExample">
-            <div class="card card-body" id="carrito-contenedor">
-                <!-- ACA ESTA EL CARRITO DESDE JS CON .APPENDCHILD EN SALUD.JS-->
-            </div>
-        </div>
-            <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-            Confirmar
-        </button>
-        
+        </p>      
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -137,11 +142,13 @@
                 </button>
                 </div>
                 <div class="modal-body" id="confirmar-modal">
-                    
+                    <div class="card card-body" id="carrito-contenedor">
+                        <!-- ACA ESTA EL CARRITO DESDE JS CON .APPENDCHILD EN SALUD.JS-->
+                    </div>                    
                 </div>
                 <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
                 </div>
             </div>
             </div>

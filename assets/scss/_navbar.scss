@@ -9,7 +9,6 @@
 // Navbar position
 // Navbar themes
 
-
 // Navbar
 //
 // Provide a static navbar from which we expand to create full-width, fixed, and
@@ -44,7 +43,6 @@
   }
 }
 
-
 // Navbar brand
 //
 // Used for brand, project, or site names.
@@ -62,7 +60,6 @@
     text-decoration: none;
   }
 }
-
 
 // Navbar nav
 //
@@ -83,9 +80,9 @@
   .dropdown-menu {
     position: static;
     float: none;
+    background-color: #fad930;
   }
 }
-
 
 // Navbar text
 //
@@ -96,7 +93,6 @@
   padding-top: $nav-link-padding-y;
   padding-bottom: $nav-link-padding-y;
 }
-
 
 // Responsive navbar
 //
@@ -116,12 +112,12 @@
 
 // Button for toggling the navbar when in its collapsed state
 .navbar-toggler {
-  padding: $navbar-toggler-padding-y $navbar-toggler-padding-x;
-  @include font-size($navbar-toggler-font-size);
+  padding: 0.25rem 0.75rem;
+  font-size: 3.25rem;
   line-height: 1;
-  background-color: transparent; // remove default button style
-  border: $border-width solid transparent; // remove default button style
-  @include border-radius($navbar-toggler-border-radius);
+  background-color: transparent;
+  border: 0px solid transparent;
+  border-radius: 0.25rem;
 
   @include hover-focus() {
     text-decoration: none;
@@ -221,7 +217,6 @@
     }
   }
 }
-
 
 // Navbar themes
 //
@@ -327,6 +322,75 @@
       @include hover-focus() {
         color: $navbar-dark-active-color;
       }
+    }
+  }
+}
+/**************************************************************************************************/
+/**************************************  MI NAVBAR ************************************************/
+/**************************************************************************************************/
+
+// Mobile First
+@media only screen and (max-width: 767px) {
+  header {
+    display: flex;
+    flex-direction: column;
+    .navContenedor {
+      display: flex;
+      flex-direction: column;
+      .navbar {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        padding: 0.5rem 1rem;
+      }
+      nav a {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-end;
+        img {
+          margin-right: 10px;
+        }
+        .h1MobTitle {
+          font-size: 20px;
+        }
+      }
+
+      div {
+        margin-right: 10px;
+        ul {
+          align-items: flex-end;
+          li a {
+            font-size: 20px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// NAVBAR VISTA DESKTOP
+
+@media only screen and (min-width: 1024px) {
+  .navContenedor {
+    display: flex;
+    flex-direction: column;
+    nav a {
+      display: flex;
+      align-items: center;
+      h1 {
+        font-size: 25px;
+        color: white;
+        margin: 0;
+        padding-left: 10px;
+        padding-top: 2px;
+      }
+    }
+    div {
+      justify-content: flex-end;
+      margin-right: 15px;
     }
   }
 }
