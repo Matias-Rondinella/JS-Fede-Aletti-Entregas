@@ -1,0 +1,25 @@
+@media only screen and (max-width: 767px) {
+  .buscador {
+    display: flex;
+    justify-content: center;
+    padding: 25px;
+    font-size: 20px;
+    .buscador_input {
+      border: 0;
+      border-bottom: solid 2px;
+    }
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .buscador {
+    display: flex;
+    justify-content: center;
+    padding: 25px;
+    font-size: 20px;
+    .buscador_input {
+      border: 0;
+      border-bottom: solid 2px;
+    }
+  }
+}
