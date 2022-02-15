@@ -70,10 +70,11 @@
                         </ul> 
                     </div>
                 </nav>
-                <div id="carrito-turnos"></div>
+                
             </div> 
             <!-- CIERRE NAV -->
-            <input type="text" class="input col-lg-10" placeholder="Buscar">        <!-- buscador -->                       
+
+            <input type="text" class="input col-lg-10" placeholder="Buscar"><!-- buscador -->                       
         </header>
         
         <!-- Inicio de contenido con foto de hospital y Login. Al loguear deben aparecer cards con los turnos disponibles-->
@@ -93,9 +94,8 @@
                 <div id="userAndPass"></div>                    
             </form>
         </div>       
-        -->        
-        <!-- CIERRE LOGIN -->
-
+        --> 
+        
         <!-- Filtros en Select -->
         <div class="row col-lg-10">
             <div>
@@ -110,7 +110,7 @@
                 </button>
                 
                 <a class="btn btn-primary"  data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                    Turnos Disponibles: <iclass="fas fa-shopping-cart"></iclass=><span></span>
+                    Turnos Disponibles: <iclass="fas fa-shopping-cart"></iclass=><span ></span>
                 </a>
 
             </div>
@@ -119,6 +119,18 @@
         <div class="col-lg-10" id="contenedor-turnos">
 
         </div>
+
+        <!-- Turnos por area en un Dropdown de Bootstrap -->
+        <!-- TRAUMATOLOGIA -->
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+                Traumatologia
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="contenedor-turnos-traum">
+                
+            </div>
+        </div>
+        
 
         <!-- CARRITO -->        
         <p>
