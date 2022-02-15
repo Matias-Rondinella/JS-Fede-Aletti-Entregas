@@ -380,6 +380,9 @@
     flex-direction: column;
     nav {
       background-color: #fad930;
+      .navContenedor_logo {
+        margin-left: 15px;
+      }
       a {
         display: flex;
         align-items: center;

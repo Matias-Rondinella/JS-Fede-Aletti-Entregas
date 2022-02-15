@@ -33,7 +33,7 @@ function mostrarTurnos(array){
     for (const turno of array) {
         let div = document.createElement('div');
         div.className = 'turno';
-        div.innerHTML += `<div class="card">
+        div.innerHTML += `<div class="card col-lg-4">
                             <div class="card-image">
                                 <img src=${turno.img}>
                                 <span class="card-title">${turno.area}</span>                                
