@@ -1,7 +1,6 @@
 {
   "name": "municipalidad-de-lujan",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "dependencies": {
     "nodemon": "^2.0.15",
@@ -22,5 +21,6 @@
   "bugs": {
     "url": "https://github.com/Matias-Rondinella/Municipalidad-de-Lujan/issues"
   },
-  "homepage": "https://github.com/Matias-Rondinella/Municipalidad-de-Lujan#readme"
+  "homepage": "https://github.com/Matias-Rondinella/Municipalidad-de-Lujan#readme",
+  "description": ""
 }
