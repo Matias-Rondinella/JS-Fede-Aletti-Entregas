@@ -1,4 +1,3 @@
-
 let carritoTurnos = []
 
 const contenedorTurnos = document.getElementById('contenedor-turnos');
@@ -6,6 +5,33 @@ const contenedorCarrito = document.getElementById('carrito-contenedor');
 
 const contadorCarrito = document.getElementById('contadorCarrito');
 const selecTurnos = document.getElementById("selecTurnos")
+
+const turnosTraum = document.getElementById("contenedor-turnos-traum")
+
+
+//Turnos por Area // Funcion => TURNOS FITRADOS POR AREA
+
+let traumat = turnoStock.filter ((areas) => areas.area == "Traumatologia");
+let odont = turnoStock.filter ((areas) => areas.area == "Odontologia");
+let pediat = turnoStock.filter ((areas) => areas.area == "Pediatria");
+
+
+
+function mostrarTraum(traumat) {
+    //let traumat = turnoStock.filter ((areas) => areas.area == "Traumatologia");
+    turnosTraum.innerText = "";
+    for (const turno of traumat) {
+        let div = document.createElement("div")
+        div.className="turnos-traumatologia"
+        div.innerHTML=`
+                    <p>${turno.area}</p>
+        `
+        turnosTraum.appendChild(div)
+        console.log();
+    }
+    
+}
+
 
 
 
@@ -31,11 +57,12 @@ mostrarTurnos(turnoStock)
 function mostrarTurnos(array){
     contenedorTurnos.innerHTML ='';
     for (const turno of array) {
+        
         let div = document.createElement('div');
         div.className = 'turno';
         div.innerHTML += `<div class="card col-lg-4">
                             <div class="card-image">
-                                <img src=${turno.img}>
+                                <img src=${turno.img} class= "rounded-circle">
                                 <span class="card-title">${turno.area}</span>                                
                             </div>
                             <div class="card-content">
