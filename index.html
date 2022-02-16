@@ -9,7 +9,7 @@
     <!-- Bootstrap -->
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-
+    <link href="jumbotron.css" rel="stylesheet"> <!-- JUMBOTRON -->
     <!-- Favicon -->
 
     <link rel="shortcut icon" href="assets/imgs/favicon.ico" type="image/x-icon">
@@ -74,24 +74,63 @@
                 
             </div> 
             <!-- CIERRE NAV -->
-            
-            <div class="row col-lg-12 buscador">
-                <input id="buscador" type="search" class="input "  placeholder="Buscar turnos">  
-            </div>
-            <!-- buscador -->
         </header>
 
-        <!-- INICIO contador de turnos -->
-        <div id="boton-carrito" class="btnCarrito">
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                
-                <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                    Turnos Reservados: <i class="fas fa-shopping-cart"></i><span id="contadorCarrito">0</span>
-                </a>
-            </button>                
+        <!-- INICIO JUMBOTRON -->
+        <main role="main" class="jumboContainer">
+            <!-- Main jumbotron for a primary marketing message or call to action -->
+            <div class="jumbotron">
+                <div class="container">
+                <img src="assets/imgs/HospitalLujanJuanArturoKlipsons.png" alt="">
+                <h1 class="display-3">Hello, world!</h1>
+                <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+                <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+                </div>
+            </div>
+            
+            <div class="container">
+                <!-- Example row of columns -->
+                <div class="row">
+                <div class="col-md-4">
+                    <h2>Heading</h2>
+                    <p>Will you do the same for me? It's time to face the music I'm no longer your muse. Heard it's beautiful, be the judge and my girls gonna take a vote. I can feel a phoenix inside of me. Heaven is jealous of our love, angels are crying from up above. Yeah, you take me to utopia.</p>
+                    <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+                </div>
+                <div class="col-md-4">
+                    <h2>Heading</h2>
+                    <p>Standing on the frontline when the bombs start to fall. Heaven is jealous of our love, angels are crying from up above. Can't replace you with a million rings. Boy, when you're with me I'll give you a taste. There’s no going back. Before you met me I was alright but things were kinda heavy. Heavy is the head that wears the crown.</p>
+                    <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+                </div>
+                <div class="col-md-4">
+                    <h2>Heading</h2>
+                    <p>Playing ping pong all night long, everything's all neon and hazy. Yeah, she's so in demand. She's sweet as pie but if you break her heart. But down to earth. It's time to face the music I'm no longer your muse. I guess that I forgot I had a choice.</p>
+                    <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+                </div>
+                </div>
+            
+                <hr>
+            
+            </div> <!-- /container -->
+            
+        </main>
+        <!-- CIERRE JUMBOTRON -->
+        <div class="row col-lg-12 buscador">
+            <input id="buscador" type="search" class="input "  placeholder="Buscar turnos"> 
+            <!-- INICIO contador de turnos -->
+            <div id="boton-carrito" class="btnCarrito">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    
+                    <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                        Turnos Reservados: <i class="fas fa-shopping-cart"></i><span id="contadorCarrito">0</span>
+                    </a>
+                </button>                
+            </div>
+            <!-- CIERRE contador de turnos --> 
         </div>
-        <!-- CIERRE contador de turnos -->
+        <!-- buscador -->
+
+        
 
         <!-- Inicio de contenido con foto de hospital y Login. Al loguear deben aparecer cards con los turnos disponibles--> 
 

@@ -23,12 +23,13 @@
   .btnCarrito {
     display: flex;
     justify-content: center;
-    padding-bottom: 60px;
+    padding-top: 20px;
     button {
       background: #fad930;
       border: 0;
       border-radius: 10px;
       padding: 20px;
+      box-shadow: 0px 4px 5px -4px black;
     }
     a {
       font-size: 20px;
