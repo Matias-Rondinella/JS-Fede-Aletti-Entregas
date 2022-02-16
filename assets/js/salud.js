@@ -6,6 +6,8 @@ const contenedorCarrito = document.getElementById('carrito-contenedor');
 const contadorCarrito = document.getElementById('contadorCarrito');
 const selecTurnos = document.getElementById("selecTurnos")
 
+const buscador = document.getElementById("buscador")
+
 const turnosTraum = document.getElementById("contenedor-turnos-traum")
 
 
@@ -32,6 +34,17 @@ function mostrarTraum(traumat) {
     
 }
 
+
+//BUSCADOR
+
+buscador.addEventListener("input", ()=>{
+    if (buscador.value == "") {
+        mostrarTurnos(turnoStock)
+        
+    }else{
+        mostrarTurnos(turnoStock.filter(el => el.area.toLowerCase().includes(buscador.value.toLowerCase())))
+    }
+})
 
 
 
