@@ -7284,7 +7284,8 @@ a.text-dark:hover, a.text-dark:focus {
     display: flex;
     justify-content: center;
     padding: 25px;
-    font-size: 20px; }
+    font-size: 20px;
+    margin: 0; }
     .buscador input {
       border: 0;
       border-bottom: solid 2px;
@@ -7295,7 +7296,8 @@ a.text-dark:hover, a.text-dark:focus {
     display: flex;
     justify-content: center;
     padding: 80px;
-    font-size: 20px; }
+    font-size: 20px;
+    margin: 0; }
     .buscador input {
       border: 0;
       border-bottom: solid 2px;
