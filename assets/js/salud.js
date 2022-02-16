@@ -8,19 +8,11 @@ const selecTurnos = document.getElementById("selecTurnos")
 
 const buscador = document.getElementById("buscador")
 
-const turnosTraum = document.getElementById("contenedor-turnos-traum")
-
-
-//Turnos por Area // Funcion => TURNOS FITRADOS POR AREA
-
-let traumat = turnoStock.filter ((areas) => areas.area == "Traumatologia");
-let odont = turnoStock.filter ((areas) => areas.area == "Odontologia");
-let pediat = turnoStock.filter ((areas) => areas.area == "Pediatria");
 
 
 
 function mostrarTraum(traumat) {
-    //let traumat = turnoStock.filter ((areas) => areas.area == "Traumatologia");
+    
     turnosTraum.innerText = "";
     for (const turno of traumat) {
         let div = document.createElement("div")
@@ -131,10 +123,6 @@ function agregarTurno(id) {
 
 }
 
-function confirmar() {
-
-} 
-    
 
 
 function  actualizarTurnos (){
