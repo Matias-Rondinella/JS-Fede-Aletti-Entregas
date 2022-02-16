@@ -47,7 +47,7 @@
                                 Mi Municipio
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="salud.html">Salud</a>
+                                    <a class="dropdown-item" href="views/signin.html">Salud</a>
                                     <a class="dropdown-item" href="deportes.html">Deportes</a>                  
                                     <a class="dropdown-item" href="educacion.html">Educación</a>
                                     <a class="dropdown-item" href="espaciopub.html">Espacio Público</a>
@@ -81,6 +81,17 @@
             <!-- buscador -->
         </header>
 
+        <!-- INICIO contador de turnos -->
+        <div id="boton-carrito" class="btnCarrito">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    Turnos Reservados: <i class="fas fa-shopping-cart"></i><span id="contadorCarrito">0</span>
+                </a>
+            </button>                
+        </div>
+        <!-- CIERRE contador de turnos -->
+
         <!-- Inicio de contenido con foto de hospital y Login. Al loguear deben aparecer cards con los turnos disponibles--> 
 
         <!-- INICIO Filtros en Select -->
@@ -97,17 +108,6 @@
                         <option value="Viernes">Viernes</option>
                     </select>
                 </button>
-
-                <!-- INICIO contador de turnos -->
-                <div id="boton-carrito">
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                        <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                            Turnos Reservados: <i class="fas fa-shopping-cart"></i><span id="contadorCarrito">0</span>
-                        </a>
-                    </button>                
-                </div>
-                <!-- CIERRE contador de turnos -->
             </div>
         </div> 
 
