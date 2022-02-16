@@ -110,9 +110,11 @@ function agregarTurno(id) {
             botonEliminar.parentElement.remove() 
             carritoTurnos = carritoTurnos.filter(el => el.id != turnoSeleccionado.id)
             actualizarTurnos()
+            localStorage.setItem('carrito', JSON.stringify(carritoTurnos))
         })
 
     }
+    localStorage.setItem('carrito', JSON.stringify(carritoTurnos))
 
 }
 
@@ -128,3 +130,14 @@ function  actualizarTurnos (){
     
 }
 
+function recuperar() {
+    let recuperarLS = JSON.parse(localStorage.getItem('carrito'))
+    console.log(recuperarLS);
+    if(recuperarLS){
+        recuperarLS.forEach(element => {
+            agregarTurno(element.id)
+        });
+    }
+}
+
+recuperar()
