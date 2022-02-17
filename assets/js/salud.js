@@ -8,39 +8,30 @@ const selecTurnos = document.getElementById("selecTurnos")
 
 const buscador = document.getElementById("buscador")
 
-
-
-
-function mostrarTraum(traumat) {
-    
-    turnosTraum.innerText = "";
-    for (const turno of traumat) {
-        let div = document.createElement("div")
-        div.className="turnos-traumatologia"
-        div.innerHTML=`
-                    <p>${turno.area}</p>
-        `
-        turnosTraum.appendChild(div)
-        console.log();
-    }
-    
-}
-
-
 //BUSCADOR
-
 buscador.addEventListener("input", ()=>{
     if (buscador.value == "") {
         mostrarTurnos(turnoStock)
         
     }else{
-        mostrarTurnos(turnoStock.filter(el => el.area.toLowerCase().includes(buscador.value.toLowerCase())))
+        let arrayFiltrado = turnoStock.filter(el => el.area.toLowerCase().includes(buscador.value.toLowerCase()))
+        
+        mostrarTurnos(arrayFiltrado)
+        // arrayFiltrado.forEach(elemento => {
+        //     if(carritoTurnos.find(reserva=> reserva.id == elemento.id)){
+        //         if(carritoTurnos.find(turno => turno.area == elemento.area)){
+        //             validar(elemento, 'block', 'none')
+        //         }
+        //     }
+        // })
+        // if(carritoTurnos.find(reserva=> reserva.id == elemento.id)){
+        //     if(carritoTurnos.find(turno => turno.area == elemento.area)){
+        //         validar(elemento, 'block', 'none')
+        //     }
+        // }
+
     }
 })
-
-
-
-
 
 //filtro por dia
 selecTurnos.addEventListener('change',()=>{
@@ -53,7 +44,6 @@ selecTurnos.addEventListener('change',()=>{
         actualizarTurnos ()
     }
 })
-
 
 //logica
 
@@ -73,72 +63,115 @@ function mostrarTurnos(array){
                             <div class="card-content">
                                 <p>${turno.dia}</p>
                                 <p>${turno.horario}</p>
-                                <a id="botonAgregar${turno.id}" class="btn-floating halfway-fab waves-effect waves-light red"><img src="assets/imgs/carritoTurnos.svg" alt=""></a>
+                                <a id="botonAgregar${turno.id}" class="btn-floating halfway-fab waves-effect waves-light red boton${turno.area}"><img src="assets/imgs/carritoTurnos.svg" alt=""></a>
+                                <p id="parrafo${turno.id}" style='display:none; color:red'>ELEGIDA</p>
                             </div>
                         </div> `
                         
         contenedorTurnos.appendChild(div);
+        // if(carritoTurnos.find(reserva=> reserva.id == turno.id)){
+
+            if(carritoTurnos.find(element => element.area == turno.area)){
+                
+                if(carritoTurnos.find(reserva=> reserva.id == turno.id)){
+                    validar(turno, 'block', 'none')
+                   
+                }
+            }
+        
+        
         let botonAgregar = document.getElementById(`botonAgregar${turno.id}`)
         botonAgregar.addEventListener("click",()=> {
-            agregarTurno(turno.id)
+            agregarTurno(turno.id, turno.area)
+            
+            validar(turno, 'block', 'none')
+            
             
         })
     }
     
 }
+
+function validar(turno,si , no){
+    console.log(turno);
+    let ocultar = document.getElementsByClassName(`boton${turno.area}`)
+    
+    let parrafo = document.getElementById(`parrafo${turno.id}`)
+    for (const btn of ocultar) {
+        console.log(btn);
+        btn.style.display = no;
+    }
+
+    parrafo.style.display = si;
+}
+
+
 //Seleccionar un turno por ID y alojarlo en nuestro carrito: "carritoTurnos[]" Linea 1
 function agregarTurno(id) {
-    let turnoRepetido = carritoTurnos.find(elemento => (elemento.id == id))
-    if (turnoRepetido) {
-        alert("El turno ya fue seleccionado")
-    }else{
-        let turnoSeleccionado = turnoStock.find(el => el.id == id)
-        carritoTurnos.push(turnoSeleccionado)
-        actualizarTurnos()
-        let div = document.createElement("div")
-        div.className = "lista-turnos"
-        div.innerHTML += `
-                        <h5>${turnoSeleccionado.area}</h5>
-                        <p>${turnoSeleccionado.dia}</p>
-                        <P>${turnoSeleccionado.horario}</P>
-                        <button id=botonEliminar${turnoSeleccionado.id}>
-                            <img src="assets/imgs/eliminarTurnos.svg" alt="eliminar">
-                        </button>
-                        
-                        
-        
-        `
-        contenedorCarrito.appendChild(div);
-        let botonEliminar = document.getElementById(`botonEliminar${turnoSeleccionado.id}`)
-        botonEliminar.addEventListener("click",()=>{
-            console.log(turnoSeleccionado.id);
-            botonEliminar.parentElement.remove() 
-            carritoTurnos = carritoTurnos.filter(el => el.id != turnoSeleccionado.id)
-            actualizarTurnos()
-            localStorage.setItem('carrito', JSON.stringify(carritoTurnos))
-        })
+    let turnoSeleccionado = turnoStock.find(el => el.id == id)
+    carritoTurnos.push(turnoSeleccionado)
+    actualizarTurnos()
+    mostrarReserva(turnoSeleccionado)
 
-    }
-    localStorage.setItem('carrito', JSON.stringify(carritoTurnos))
+
+localStorage.setItem('carrito', JSON.stringify(carritoTurnos))
 
 }
 
 
+function mostrarReserva(turnoSeleccionado) {
+    let div = document.createElement("div")
+    div.className = "lista-turnos"
+    div.innerHTML += `
+                    <h5>${turnoSeleccionado.area}</h5>
+                    <p>${turnoSeleccionado.dia}</p>
+                    <P>${turnoSeleccionado.horario}</P>
+                    <button id=botonEliminar${turnoSeleccionado.id}>
+                        <img src="assets/imgs/eliminarTurnos.svg" alt="eliminar">
+                    </button>
+                    `
+    contenedorCarrito.appendChild(div);
+    let botonEliminar = document.getElementById(`botonEliminar${turnoSeleccionado.id}`)
+    botonEliminar.addEventListener("click",()=>{
+        console.log(turnoSeleccionado.id);
+        botonEliminar.parentElement.remove() 
+        carritoTurnos = carritoTurnos.filter(el => el.id != turnoSeleccionado.id)
+        actualizarTurnos()
+        localStorage.setItem('carrito', JSON.stringify(carritoTurnos))
+        validar(turnoSeleccionado, 'none', 'block')
+    })
+}
 
 function  actualizarTurnos (){
-    contadorCarrito.innerText = carritoTurnos.reduce((acc,el)=> acc + el.cantidad, 0)
-
-    
+    contadorCarrito.innerText = carritoTurnos.reduce((acc,el)=> acc + el.cantidad, 0)    
 }
 
 function recuperar() {
     let recuperarLS = JSON.parse(localStorage.getItem('carrito'))
-    console.log(recuperarLS);
+    
     if(recuperarLS){
         recuperarLS.forEach(element => {
-            agregarTurno(element.id)
+            mostrarReserva(element)
+            carritoTurnos.push(element)
+            actualizarTurnos()
+            validar(element, 'block', 'none')
+            
         });
     }
+
+    let user = JSON.parse(localStorage.getItem('dato'))
+    if(user){
+        let userIndex = document.getElementById('user')
+        userIndex.innerText= `${user[0].usuario}`
+    }
+
+    user.forEach(elemento=>{
+        console.log(elemento)
+        elemento.email = 'ejemplo@ejemplo.com'
+        elemento.turno = carritoTurnos
+    })
+  
 }
 
 recuperar()
+

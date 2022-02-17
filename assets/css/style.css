@@ -7394,3 +7394,16 @@ html {
 @media only screen and (min-width: 1024px) {
   .disNoDesk {
     display: none; } }
+
+
+
+
+
+#contenedor-turnos{
+  display: flex;
+  flex-wrap: wrap;
+  
+}
+.rounded-circle{
+  width: 100%;
+}
