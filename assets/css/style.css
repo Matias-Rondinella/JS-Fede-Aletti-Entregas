@@ -3784,7 +3784,7 @@ input[type="button"].btn-block {
     padding: 85px 0px 0px 0px;
     background-image: url("../imgs/parallax2.png");
     background-attachment: fixed;
-    background-size: contain; }
+    background-size: cover; }
   .jumbotron {
     display: flex;
     align-items: center;
@@ -7427,16 +7427,3 @@ html {
 @media only screen and (min-width: 1024px) {
   .disNoDesk {
     display: none; } }
-
-
-
-
-
-#contenedor-turnos{
-  display: flex;
-  flex-wrap: wrap;
-  
-}
-.rounded-circle{
-  width: 100%;
-}
