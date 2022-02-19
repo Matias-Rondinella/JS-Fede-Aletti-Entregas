@@ -127,7 +127,7 @@ function mostrarReserva(turnoSeleccionado) {
                     <p>${turnoSeleccionado.dia}</p>
                     <P>${turnoSeleccionado.horario}</P>
                     <button id=botonEliminar${turnoSeleccionado.id}>
-                        <img src="assets/imgs/eliminarTurnos.svg" alt="eliminar">
+                        <img src="../assets/imgs/eliminarTurnos.svg" alt="eliminar">
                     </button>
                     `
     contenedorCarrito.appendChild(div);
