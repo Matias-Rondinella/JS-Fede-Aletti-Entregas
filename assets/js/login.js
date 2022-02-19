@@ -60,7 +60,7 @@ function ingresar(){
             document.getElementById('user').value = "";
             document.getElementById('pass').value="";
             alert('inicio de sesion correcto')
-            window.location.replace('http://127.0.0.1:5500/index.html')
+            window.location.replace('http://127.0.0.1:5500/salud.html')
         }else{
             alert('Vete intruso!')
         }
