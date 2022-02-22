@@ -9,8 +9,8 @@ class Turnos {
         this.area = area;
 		this.dia = dia;
         this.horario = horario;
-        this.img = "../assets/imgs/saludTurnos.svg";
         this.cantidad = 1
+        this.img = "../assets/imgs/saludTurnos.svg";
     }
 }
 

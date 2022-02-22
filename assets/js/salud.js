@@ -7,51 +7,29 @@ const contadorCarrito = document.getElementById('contadorCarrito');
 const selecTurnos = document.getElementById("selecTurnos")
 
 const buscador = document.getElementById("buscador")
+const btnConfirmar = document.getElementById("btnConfirmar")
 
 //BUSCADOR
 buscador.addEventListener("input", ()=>{
-    if (buscador.value == "") {
-        mostrarTurnos(turnoStock)
-        
-    }else{
-        let arrayFiltrado = turnoStock.filter(el => el.area.toLowerCase().includes(buscador.value.toLowerCase()))
-        
-        mostrarTurnos(arrayFiltrado)
-        // arrayFiltrado.forEach(elemento => {
-        //     if(carritoTurnos.find(reserva=> reserva.id == elemento.id)){
-        //         if(carritoTurnos.find(turno => turno.area == elemento.area)){
-        //             validar(elemento, 'block', 'none')
-        //         }
-        //     }
-        // })
-        // if(carritoTurnos.find(reserva=> reserva.id == elemento.id)){
-        //     if(carritoTurnos.find(turno => turno.area == elemento.area)){
-        //         validar(elemento, 'block', 'none')
-        //     }
-        // }
-
-    }
-})
+    let arrayFiltrado = turnoStock.filter(el => el.area.toLowerCase().includes(buscador.value.toLowerCase()))
+    buscador.value == "" ? mostrarTurnos(turnoStock) : mostrarTurnos(arrayFiltrado) // ===>> TERNARIO
+    })
 
 //filtro por dia
 selecTurnos.addEventListener('change',()=>{
     console.log(selecTurnos.value)
-    if(selecTurnos.value == 'Todos'){
-        mostrarTurnos(turnoStock)
-    }else{
-        mostrarTurnos(turnoStock.filter(el => el.dia == selecTurnos.value))
-        console.log(turnoStock.filter(el => el.dia == selecTurnos.value))
+    selecTurnos.value == "Todos" ? mostrarTurnos(turnoStock) : mostrarTurnos(turnoStock.filter(el => el.dia == selecTurnos.value)) // ===>> TERNARIO
         actualizarTurnos ()
     }
-})
+)
 
 //logica
 
 mostrarTurnos(turnoStock)
 
-function mostrarTurnos(array){
+function mostrarTurnos(turnoStock){
     contenedorTurnos.innerHTML ='';
-    for (const turno of array) {
+    for (const turno of turnoStock) {
         
         let div = document.createElement('div');
         div.className = 'turno';
@@ -63,19 +41,18 @@ function mostrarTurnos(array){
                             <div class="card-content">
                                 <p>${turno.dia}</p>
                                 <p>${turno.horario}</p>
-                                <a id="botonAgregar${turno.id}" class="btn-floating halfway-fab waves-effect waves-light red boton${turno.area}"><img src="assets/imgs/carritoTurnos.svg" alt=""></a>
+                                <a id="botonAgregar${turno.id}" class="btn-floating halfway-fab waves-effect waves-light red boton${turno.area}"><img src="../assets/imgs/carritoTurnos.svg" alt=""></a>
                                 <p id="parrafo${turno.id}" style='display:none; color:red'>ELEGIDA</p>
                             </div>
                         </div> `
                         
         contenedorTurnos.appendChild(div);
-        // if(carritoTurnos.find(reserva=> reserva.id == turno.id)){
-
+            
             if(carritoTurnos.find(element => element.area == turno.area)){
                 
                 if(carritoTurnos.find(reserva=> reserva.id == turno.id)){
                     validar(turno, 'block', 'none')
-                   
+                
                 }
             }
         
@@ -93,16 +70,15 @@ function mostrarTurnos(array){
 }
 
 function validar(turno,si , no){
-    console.log(turno);
     let ocultar = document.getElementsByClassName(`boton${turno.area}`)
     
     let parrafo = document.getElementById(`parrafo${turno.id}`)
     for (const btn of ocultar) {
-        console.log(btn);
+        
         btn.style.display = no;
+        parrafo.style.display = si;
     }
-
-    parrafo.style.display = si;
+    
 }
 
 
@@ -120,22 +96,24 @@ localStorage.setItem('carrito', JSON.stringify(carritoTurnos))
 
 
 function mostrarReserva(turnoSeleccionado) {
+
+    const {id, area, dia, horario} = turnoSeleccionado //========>> Desestructuracion de objeto
+
     let div = document.createElement("div")
     div.className = "lista-turnos"
     div.innerHTML += `
-                    <h5>${turnoSeleccionado.area}</h5>
-                    <p>${turnoSeleccionado.dia}</p>
-                    <P>${turnoSeleccionado.horario}</P>
-                    <button id=botonEliminar${turnoSeleccionado.id}>
+                    <h5>${area}</h5>
+                    <p>${dia}</p>
+                    <P>${horario}</P>
+                    <button id=botonEliminar${id}>
                         <img src="../assets/imgs/eliminarTurnos.svg" alt="eliminar">
                     </button>
                     `
     contenedorCarrito.appendChild(div);
-    let botonEliminar = document.getElementById(`botonEliminar${turnoSeleccionado.id}`)
+    let botonEliminar = document.getElementById(`botonEliminar${id}`)
     botonEliminar.addEventListener("click",()=>{
-        console.log(turnoSeleccionado.id);
         botonEliminar.parentElement.remove() 
-        carritoTurnos = carritoTurnos.filter(el => el.id != turnoSeleccionado.id)
+        carritoTurnos = carritoTurnos.filter(el => el.id != id)
         actualizarTurnos()
         localStorage.setItem('carrito', JSON.stringify(carritoTurnos))
         validar(turnoSeleccionado, 'none', 'block')
@@ -143,34 +121,46 @@ function mostrarReserva(turnoSeleccionado) {
 }
 
 function  actualizarTurnos (){
-    contadorCarrito.innerText = carritoTurnos.reduce((acc,el)=> acc + el.cantidad, 0)    
+
+    contadorCarrito.innerText = carritoTurnos.reduce((acc,el)=> acc + el.cantidad, 0) 
+
 }
 
 function recuperar() {
     let recuperarLS = JSON.parse(localStorage.getItem('carrito'))
-    
-    if(recuperarLS){
-        recuperarLS.forEach(element => {
-            mostrarReserva(element)
-            carritoTurnos.push(element)
-            actualizarTurnos()
-            validar(element, 'block', 'none')
-            
-        });
-    }
-
-    let user = JSON.parse(localStorage.getItem('dato'))
-    if(user){
+    recuperarLS && recuperarLS.forEach(element => {  // ========================>>>>>>>>> Operador Logico AND
+        mostrarReserva(element)
+        carritoTurnos.push(element)
+        actualizarTurnos()
+        validar(element, 'block', 'none')
+        
+    });
+    let userLs = JSON.parse(localStorage.getItem('usuario'))
+    if(userLs){
         let userIndex = document.getElementById('user')
-        userIndex.innerText= `${user[0].usuario}`
+        userIndex.innerText= `${userLs[0].usuario}`
     }
 
-    user.forEach(elemento=>{
-        console.log(elemento)
-        elemento.email = 'ejemplo@ejemplo.com'
+    userLs?.forEach(elemento=>{
         elemento.turno = carritoTurnos
+        actualizarTurnos()
     })
-  
+
+    
+    
+// BOTON PARA GUARDAR EL DETALLE DEL PEDIDO DEL USUARIO - "USUARIO + TURNOS SELECCIONADOS"
+
+    btnConfirmar.addEventListener("click",()=> {
+
+        localStorage.setItem("pedido", JSON.stringify(userLs))
+
+        let pedido = JSON.parse(localStorage.getItem("carrito"))
+        let user = JSON.parse(localStorage.getItem('usuario'))
+        let pedidoDetalle = (user + pedido)
+        
+        console.log("Su reserva: " + pedidoDetalle)
+        alert("Su reserva ha sido enviada: " + pedidoDetalle)
+    })    
 }
 
 recuperar()
