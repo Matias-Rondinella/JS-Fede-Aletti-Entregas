@@ -35,12 +35,12 @@ buscador.addEventListener("input", ()=>{
 
 //filtro por dia
 selecTurnos.addEventListener('change',()=>{
-    console.log(selecTurnos.value)
+
     if(selecTurnos.value == 'Todos'){
         mostrarTurnos(turnoStock)
     }else{
         mostrarTurnos(turnoStock.filter(el => el.dia == selecTurnos.value))
-        console.log(turnoStock.filter(el => el.dia == selecTurnos.value))
+
         actualizarTurnos ()
     }
 })
@@ -72,12 +72,13 @@ function mostrarTurnos(array){
         // if(carritoTurnos.find(reserva=> reserva.id == turno.id)){
 
             if(carritoTurnos.find(element => element.area == turno.area)){
-                
-                if(carritoTurnos.find(reserva=> reserva.id == turno.id)){
-                    validar(turno, 'block', 'none')
-                   
-                }
+                validar(turno, 'none', 'none')
             }
+            if(carritoTurnos.find(reserva=> reserva.id == turno.id)){
+                validar(turno, 'block', 'none')
+            
+            }
+            
         
         
         let botonAgregar = document.getElementById(`botonAgregar${turno.id}`)
@@ -93,12 +94,9 @@ function mostrarTurnos(array){
 }
 
 function validar(turno,si , no){
-    console.log(turno);
-    let ocultar = document.getElementsByClassName(`boton${turno.area}`)
-    
+    let ocultar = document.getElementsByClassName(`boton${turno.area}`)    
     let parrafo = document.getElementById(`parrafo${turno.id}`)
     for (const btn of ocultar) {
-        console.log(btn);
         btn.style.display = no;
     }
 
@@ -133,7 +131,6 @@ function mostrarReserva(turnoSeleccionado) {
     contenedorCarrito.appendChild(div);
     let botonEliminar = document.getElementById(`botonEliminar${turnoSeleccionado.id}`)
     botonEliminar.addEventListener("click",()=>{
-        console.log(turnoSeleccionado.id);
         botonEliminar.parentElement.remove() 
         carritoTurnos = carritoTurnos.filter(el => el.id != turnoSeleccionado.id)
         actualizarTurnos()
@@ -166,8 +163,7 @@ function recuperar() {
     }
 
     user.forEach(elemento=>{
-        console.log(elemento)
-        elemento.email = 'ejemplo@ejemplo.com'
+        elemento.user = user
         elemento.turno = carritoTurnos
     })
   
