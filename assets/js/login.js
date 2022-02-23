@@ -3,8 +3,10 @@ let datos =[]
 let btnRegistro = document.getElementById('registro')
 let btnIngreso = document.getElementById('ingreso')
 
+
 let validarLog = false
 localStorage.setItem('validar',(validarLog))
+
 
 
 function randomNumber(min, max) {
@@ -134,6 +136,8 @@ function ingresar(){
         
     }
 }
+
+
 
 
 function validarIngreso(usuario,contraseña) {

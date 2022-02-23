@@ -9,6 +9,11 @@ const selecTurnos = document.getElementById("selecTurnos")
 const buscador = document.getElementById("buscador")
 const btnConfirmar = document.getElementById("btnConfirmar")
 
+
+
+
+
+
 //BUSCADOR
 buscador.addEventListener("input", ()=>{
     let arrayFiltrado = turnoStock.filter(el => el.area.toLowerCase().includes(buscador.value.toLowerCase()))
@@ -96,7 +101,7 @@ function validar(turno,si , no){
 //Seleccionar un turno por ID y alojarlo en nuestro carrito: "carritoTurnos[]" Linea 1
 function agregarTurno(id) {
     let turnoSeleccionado = turnoStock.find(el => el.id == id)
-    carritoTurnos = [...carritoTurnos, turnoSeleccionado] //=======> Operador Spread "..."
+    carritoTurnos.push(turnoSeleccionado)
     actualizarTurnos()
     mostrarReserva(turnoSeleccionado)
 
@@ -158,7 +163,7 @@ function  actualizarTurnos (){
 }
 
 function recuperar() {
-    let recuperarLS = JSON.parse(localStorage.getItem('carrito'))
+    let recuperarLS = JSON.parse(localStorage.getItem('carrito')) 
     recuperarLS && recuperarLS.forEach(element => {  // ========================>>>>>>>>> Operador Logico AND
         mostrarReserva(element)
         carritoTurnos.push(element)
@@ -172,17 +177,19 @@ function recuperar() {
         userIndex.innerText= ` Usuario: ${userLs[0].usuario} `
         Swal.fire({
             title: ` Bienvenido/a ${userLs[0].usuario} `,
+            timer: 5000,
             width: 600,
             padding: '3em',
             color: '#716add',
             background: '#fff url(https://media.giphy.com/media/hOO2m87AWvU7XRmOp2/giphy.gif)',
             backdrop: `
-              rgba(0,0,123,0.4)
-              url("https://media.giphy.com/media/h4TtDH4T1k6CUtPXJv/giphy.gif")
-              left top
-              no-repeat
-            `
-          })
+            rgba(0,0,123,0.4)
+            url("https://media.giphy.com/media/h4TtDH4T1k6CUtPXJv/giphy.gif")
+            left top
+            no-repeat
+        `
+            
+        })
     }
 
     userLs?.forEach(elemento=>{
