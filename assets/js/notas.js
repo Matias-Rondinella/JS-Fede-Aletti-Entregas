@@ -173,7 +173,7 @@ console.log(passLog.innerhtml);*/
 
 //Login con eventos 
 
-let btnLog = document.getElementById("ingresar");
+/*let btnLog = document.getElementById("ingresar");
     btnLog.addEventListener("click", crearUsuario) 
     function crearUsuario(e) {
         e.preventDefault()
@@ -240,6 +240,23 @@ for (const iterator of btnSeleccionar) {
         console.log(btnOk);
 
     })
-}
+}*/
+
+
+/* PARA PROBAR MOSTRAR TURNOS CON SELECTS
+
+        <!--*************************************** A PROBAR **********************************************************-->
+        <!-- INICIO Turnos por area en un Dropdown de Bootstrap -->
+        <!-- TRAUMATOLOGIA -->
+        <!--<div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+                Traumatologia
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="contenedor-turnos-traum">
+                
+            </div>
+        </div>-->        
+        <!--************************************************************************************************************-->
+        */
 
 
