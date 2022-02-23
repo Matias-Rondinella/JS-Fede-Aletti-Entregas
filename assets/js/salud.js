@@ -28,40 +28,51 @@ selecTurnos.addEventListener('change',()=>{
 mostrarTurnos(turnoStock)
 
 function mostrarTurnos(turnoStock){
+    
     contenedorTurnos.innerHTML ='';
+    
     for (const turno of turnoStock) {
         
+        const {id, area, dia, horario, img } = turno //=====>> Desestructuracion de Objeto
+
         let div = document.createElement('div');
         div.className = 'turno';
         div.innerHTML += `<div class="card col-lg-4">
                             <div class="card-image">
-                                <img src=${turno.img} class= "rounded-circle">
-                                <span class="card-title">${turno.area}</span>                                
+                                <img src=${img} class= "rounded-circle">
+                                <span class="card-title">${area}</span>                                
                             </div>
                             <div class="card-content">
-                                <p>${turno.dia}</p>
-                                <p>${turno.horario}</p>
-                                <a id="botonAgregar${turno.id}" class="btn-floating halfway-fab waves-effect waves-light red boton${turno.area}"><img src="../assets/imgs/carritoTurnos.svg" alt=""></a>
-                                <p id="parrafo${turno.id}" style='display:none; color:red'>ELEGIDA</p>
+                                <p>${dia}</p>
+                                <p>${horario}</p>
+                                <a id="botonAgregar${id}" class="btn-floating halfway-fab waves-effect waves-light red boton${area}"><img src="../assets/imgs/carritoTurnos.svg" alt=""></a>
+                                <p id="parrafo${id}" style='display:none; color:red'>ELEGIDA</p>
                             </div>
                         </div> `
                         
         contenedorTurnos.appendChild(div);
             
-            if(carritoTurnos.find(element => element.area == turno.area)){
+            if(carritoTurnos.find(element => element.area == area)){
                 
-                if(carritoTurnos.find(reserva=> reserva.id == turno.id)){
+                if(carritoTurnos.find(reserva=> reserva.id == id)){
                     validar(turno, 'block', 'none')
                 
                 }
             }
         
         
-        let botonAgregar = document.getElementById(`botonAgregar${turno.id}`)
+        let botonAgregar = document.getElementById(`botonAgregar${id}`)
         botonAgregar.addEventListener("click",()=> {
-            agregarTurno(turno.id, turno.area)
+            agregarTurno(id, area)
             
             validar(turno, 'block', 'none')
+            Toastify({
+
+                text: "Turno seleccionado",
+                
+                duration: 3000
+                
+                }).showToast();
             
             
         })
@@ -85,7 +96,7 @@ function validar(turno,si , no){
 //Seleccionar un turno por ID y alojarlo en nuestro carrito: "carritoTurnos[]" Linea 1
 function agregarTurno(id) {
     let turnoSeleccionado = turnoStock.find(el => el.id == id)
-    carritoTurnos.push(turnoSeleccionado)
+    carritoTurnos = [...carritoTurnos, turnoSeleccionado] //=======> Operador Spread "..."
     actualizarTurnos()
     mostrarReserva(turnoSeleccionado)
 
@@ -111,14 +122,34 @@ function mostrarReserva(turnoSeleccionado) {
                     `
     contenedorCarrito.appendChild(div);
     let botonEliminar = document.getElementById(`botonEliminar${id}`)
+
     botonEliminar.addEventListener("click",()=>{
-        botonEliminar.parentElement.remove() 
-        carritoTurnos = carritoTurnos.filter(el => el.id != id)
-        actualizarTurnos()
-        localStorage.setItem('carrito', JSON.stringify(carritoTurnos))
-        validar(turnoSeleccionado, 'none', 'block')
+        Swal.fire({
+            title: '¿Seguro quieres eliminar este turno?',
+            text: "No podras revertir este proceso",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, eliminar!'
+        }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire(
+            'Deleted!',
+            'El turno ha sido eliminado.',
+            'success'
+            )
+            botonEliminar.parentElement.remove() 
+            carritoTurnos = carritoTurnos.filter(el => el.id != id)
+            actualizarTurnos()
+            localStorage.setItem('carrito', JSON.stringify(carritoTurnos))
+            validar(turnoSeleccionado, 'none', 'block')
+        }
+        })
+        
     })
 }
+
 
 function  actualizarTurnos (){
 
@@ -136,9 +167,22 @@ function recuperar() {
         
     });
     let userLs = JSON.parse(localStorage.getItem('usuario'))
-    if(userLs){
-        let userIndex = document.getElementById('user')
-        userIndex.innerText= `${userLs[0].usuario}`
+    if(localStorage.getItem('validar')== 'true'){
+        let userIndex = document.getElementById('userLocal')
+        userIndex.innerText= ` Usuario: ${userLs[0].usuario} `
+        Swal.fire({
+            title: ` Bienvenido/a ${userLs[0].usuario} `,
+            width: 600,
+            padding: '3em',
+            color: '#716add',
+            background: '#fff url(https://media.giphy.com/media/hOO2m87AWvU7XRmOp2/giphy.gif)',
+            backdrop: `
+              rgba(0,0,123,0.4)
+              url("https://media.giphy.com/media/h4TtDH4T1k6CUtPXJv/giphy.gif")
+              left top
+              no-repeat
+            `
+          })
     }
 
     userLs?.forEach(elemento=>{
@@ -149,18 +193,48 @@ function recuperar() {
     
     
 // BOTON PARA GUARDAR EL DETALLE DEL PEDIDO DEL USUARIO - "USUARIO + TURNOS SELECCIONADOS"
-
     btnConfirmar.addEventListener("click",()=> {
+        if (carritoTurnos == "") {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: ('debes seleccionar algo'),
+                showConfirmButton: false,
+                timer: 2000
+            })
+        }
+        else if(localStorage.getItem('validar') == 'true'){
+            localStorage.setItem("pedido", JSON.stringify(userLs))
 
-        localStorage.setItem("pedido", JSON.stringify(userLs))
+            let pedido = JSON.parse(localStorage.getItem("carrito"))
+            console.log(pedido);
+            let user = JSON.parse(localStorage.getItem('usuario'))
+            console.log(user);
+            let pedidoDetalle = user.concat(pedido)
 
-        let pedido = JSON.parse(localStorage.getItem("carrito"))
-        let user = JSON.parse(localStorage.getItem('usuario'))
-        let pedidoDetalle = (user + pedido)
-        
-        console.log("Su reserva: " + pedidoDetalle)
-        alert("Su reserva ha sido enviada: " + pedidoDetalle)
-    })    
+            console.log(pedidoDetalle)
+            
+            Toastify({
+
+                text: "Reserva Confirmada",
+                
+                duration: 3000
+                
+                }).showToast();
+            
+            
+        }           
+        else{
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: ('Lo siento debes iniciar sesion'),
+                showConfirmButton: false,
+                timer: 2000
+            })
+            
+        }
+    }) 
 }
 
 recuperar()
