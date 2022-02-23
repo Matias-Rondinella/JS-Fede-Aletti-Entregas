@@ -12,6 +12,10 @@ html {
   font-size: 62.5%;
 }
 
+body {
+  background-image: url(../imgs/loginSalud.jpg);
+}
+
 //Ocultar en Mobile
 .disNoMob {
   @media only screen and (max-width: 767px) {
