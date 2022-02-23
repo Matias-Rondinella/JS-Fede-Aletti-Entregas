@@ -10,10 +10,6 @@ const buscador = document.getElementById("buscador")
 const btnConfirmar = document.getElementById("btnConfirmar")
 
 
-
-
-
-
 //BUSCADOR
 buscador.addEventListener("input", ()=>{
     let arrayFiltrado = turnoStock.filter(el => el.area.toLowerCase().includes(buscador.value.toLowerCase()))
@@ -22,17 +18,8 @@ buscador.addEventListener("input", ()=>{
 
 //filtro por dia
 selecTurnos.addEventListener('change',()=>{
-<<<<<<< HEAD
-
-    if(selecTurnos.value == 'Todos'){
-        mostrarTurnos(turnoStock)
-    }else{
-        mostrarTurnos(turnoStock.filter(el => el.dia == selecTurnos.value))
-
-=======
     console.log(selecTurnos.value)
     selecTurnos.value == "Todos" ? mostrarTurnos(turnoStock) : mostrarTurnos(turnoStock.filter(el => el.dia == selecTurnos.value)) // ===>> TERNARIO
->>>>>>> bd2efa3d1a107c95d739179c7c418a117f932e9f
         actualizarTurnos ()
     }
 )
@@ -65,16 +52,6 @@ function mostrarTurnos(turnoStock){
                         </div> `
                         
         contenedorTurnos.appendChild(div);
-<<<<<<< HEAD
-        // if(carritoTurnos.find(reserva=> reserva.id == turno.id)){
-
-            if(carritoTurnos.find(element => element.area == turno.area)){
-                validar(turno, 'none', 'none')
-            }
-            if(carritoTurnos.find(reserva=> reserva.id == turno.id)){
-                validar(turno, 'block', 'none')
-            
-=======
             
             if(carritoTurnos.find(element => element.area == area)){
                 
@@ -82,7 +59,6 @@ function mostrarTurnos(turnoStock){
                     validar(turno, 'block', 'none')
                 
                 }
->>>>>>> bd2efa3d1a107c95d739179c7c418a117f932e9f
             }
             
         
@@ -107,17 +83,11 @@ function mostrarTurnos(turnoStock){
 }
 
 function validar(turno,si , no){
-<<<<<<< HEAD
-    let ocultar = document.getElementsByClassName(`boton${turno.area}`)    
-    let parrafo = document.getElementById(`parrafo${turno.id}`)
-    for (const btn of ocultar) {
-=======
     let ocultar = document.getElementsByClassName(`boton${turno.area}`)
     
     let parrafo = document.getElementById(`parrafo${turno.id}`)
     for (const btn of ocultar) {
         
->>>>>>> bd2efa3d1a107c95d739179c7c418a117f932e9f
         btn.style.display = no;
         parrafo.style.display = si;
     }
@@ -156,13 +126,6 @@ function mostrarReserva(turnoSeleccionado) {
     let botonEliminar = document.getElementById(`botonEliminar${id}`)
 
     botonEliminar.addEventListener("click",()=>{
-<<<<<<< HEAD
-        botonEliminar.parentElement.remove() 
-        carritoTurnos = carritoTurnos.filter(el => el.id != turnoSeleccionado.id)
-        actualizarTurnos()
-        localStorage.setItem('carrito', JSON.stringify(carritoTurnos))
-        validar(turnoSeleccionado, 'none', 'block')
-=======
         Swal.fire({
             title: '¿Seguro quieres eliminar este turno?',
             text: "No podras revertir este proceso",
@@ -186,7 +149,6 @@ function mostrarReserva(turnoSeleccionado) {
         }
         })
         
->>>>>>> bd2efa3d1a107c95d739179c7c418a117f932e9f
     })
 }
 
@@ -227,12 +189,7 @@ function recuperar() {
         })
     }
 
-<<<<<<< HEAD
-    user.forEach(elemento=>{
-        elemento.user = user
-=======
     userLs?.forEach(elemento=>{
->>>>>>> bd2efa3d1a107c95d739179c7c418a117f932e9f
         elemento.turno = carritoTurnos
         actualizarTurnos()
     })
