@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
-<body class="img-fluid">
+<body>
 
     <div class="container-fluid">
         <div class="row">
@@ -33,13 +33,16 @@
         </div>           
         <!-- INICIO NAV -->
         <header>
-            <div class="row navContenedor">
+            <div class="row">
                 <nav class="navbar navbar-expand-lg navbar-light">
                     <a class="navbar-brand" href="">
                         <img src="assets/imgs/logo.png" alt="logo" width="70" height="70" class="d-inline-block align-text-top">
-                        <h1 class="h1MobTitle">
-                            Municipalidad de Luján
-                        </h1>
+                        <div>
+                            <h1 class="h1MobTitle">
+                                Municipalidad de Luján <hr>
+                                <h2>Creciendo Juntos</h2>
+                            </h1>
+                        </div>                        
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -78,63 +81,76 @@
                             </li>
                         </ul> 
                     </div>
-                </nav>
-                <!-- INICIO DE LOGIN -->
-                <div class="login-wrap">
-                    <div class="login-html">
-                        <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Iniciar Sesión</label>
-                        <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Registrarse</label>
-                        <div class="login-form">
-                            <div class="sign-in-htm">
-                                <div class="group">
-                                    <label for="user" class="label">Usuario</label>
-                                    <input id="user" type="text" class="input">
-                                </div>
-                                <div class="group">
-                                    <label for="pass" class="label">Contraseña</label>
-                                    <input id="pass" type="password" class="input" data-type="password">
-                                </div>
-                                <div class="group">
-                                    <input id="check" type="checkbox" class="check" checked>
-                                    <label for="check"><span class="icon"></span> Mantenerme conectado</label>
-                                </div>
-                                <div class="group">
-                                    <input type="submit" id="ingreso" class="button" value="Ingresar">
-                                </div>
-                            </div>
-                            <div class="sign-up-htm">
-                                <div class="group">
-                                    <label for="user" class="label">Usuario</label>
-                                    <input id="userRegis" type="text" class="input">
-                                </div>
-                                <div class="group">
-                                    <label for="pass" class="label">Contraseña</label>
-                                    <input id="passRegis" type="password" class="input" data-type="password">
-                                </div>
-                                <div class="group">
-                                    <label for="pass" class="label">Repetir contraseña</label>
-                                    <input id="rePassRegis" type="password" class="input" data-type="password">
-                                </div>
-                                <div class="group">
-                                    <label for="pass" class="label">Email</label>
-                                    <input id="email" type="text" class="input">
-                                </div>
-                                <div class="group">
-                                    <input type="submit" id="registro" class="button"  value="Registrarse">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- CIERRE LOGIN -->
-                
+                </nav>                
             </div> 
             <!-- CIERRE NAV -->
         </header>
-    </div>
-    
 
+        <!-- INICIO DE CARROUSEL 
 
+        <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="assets/imgs/HospitalLujanJuanArturoKlipsons.png" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/imgs/HospitalLujanJuanArturoKlipsons.png" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/imgs/HospitalLujanJuanArturoKlipsons.png" class="d-block w-100" alt="...">
+                </div>
+            </div>
+        </div>
+        CIERRE DE CARROUSEL -->
+
+        <!-- INICIO DE LOGIN -->
+        <div class="login-wrap">
+            <div class="login-html">
+                <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Iniciar Sesión</label>
+                <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Registrarse</label>
+                <div class="login-form">
+                    <div class="sign-in-htm">
+                        <div class="group">
+                            <label for="user" class="label">Usuario</label>
+                            <input id="user" type="text" class="input">
+                        </div>
+                        <div class="group">
+                            <label for="pass" class="label">Contraseña</label>
+                            <input id="pass" type="password" class="input" data-type="password">
+                        </div>
+                        <div class="group">
+                            <input id="check" type="checkbox" class="check" checked>
+                            <label for="check"><span class="icon"></span> Mantenerme conectado</label>
+                        </div>
+                        <div class="group">
+                            <input type="submit" id="ingreso" class="button" value="Ingresar">
+                        </div>
+                    </div>
+                    <div class="sign-up-htm">
+                        <div class="group">
+                            <label for="user" class="label">Usuario</label>
+                            <input id="userRegis" type="text" class="input">
+                        </div>
+                        <div class="group">
+                            <label for="pass" class="label">Contraseña</label>
+                            <input id="passRegis" type="password" class="input" data-type="password">
+                        </div>
+                        <div class="group">
+                            <label for="pass" class="label">Repetir contraseña</label>
+                            <input id="rePassRegis" type="password" class="input" data-type="password">
+                        </div>
+                        <div class="group">
+                            <label for="pass" class="label">Email</label>
+                            <input id="email" type="text" class="input">
+                        </div>
+                        <div class="group">
+                            <input type="submit" id="registro" class="button"  value="Registrarse">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- CIERRE LOGIN -->
     </div>
     <!-- CIERRE DE CONTENEDOR PRINCIPAL -->
 
