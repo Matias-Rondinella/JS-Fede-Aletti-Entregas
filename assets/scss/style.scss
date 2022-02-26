@@ -1,7 +1,6 @@
 @import "signin";
 @import "buscador";
 @import "btnCarrito";
-@import "colores";
 
 * {
   margin: 0px;
@@ -10,6 +9,10 @@
 
 html {
   font-size: 62.5%;
+}
+
+body {
+  background-image: url(../imgs/loginSalud.jpg);
 }
 
 //Ocultar en Mobile

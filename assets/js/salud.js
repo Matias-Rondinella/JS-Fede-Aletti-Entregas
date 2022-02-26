@@ -10,10 +10,6 @@ const buscador = document.getElementById("buscador")
 const btnConfirmar = document.getElementById("btnConfirmar")
 
 
-
-
-
-
 //BUSCADOR
 buscador.addEventListener("input", ()=>{
     let arrayFiltrado = turnoStock.filter(el => el.area.toLowerCase().includes(buscador.value.toLowerCase()))
@@ -64,6 +60,7 @@ function mostrarTurnos(turnoStock){
                 
                 }
             }
+            
         
         
         let botonAgregar = document.getElementById(`botonAgregar${id}`)
@@ -201,7 +198,7 @@ function recuperar() {
     
 // BOTON PARA GUARDAR EL DETALLE DEL PEDIDO DEL USUARIO - "USUARIO + TURNOS SELECCIONADOS"
     btnConfirmar.addEventListener("click",()=> {
-        if (carritoTurnos == "") {
+        if (carritoTurnos == ""){
             Swal.fire({
                 position: 'top-end',
                 icon: 'success',
@@ -209,8 +206,7 @@ function recuperar() {
                 showConfirmButton: false,
                 timer: 2000
             })
-        }
-        else if(localStorage.getItem('validar') == 'true'){
+        }else if(localStorage.getItem('validar') == 'true'){
             localStorage.setItem("pedido", JSON.stringify(userLs))
 
             let pedido = JSON.parse(localStorage.getItem("carrito"))
@@ -229,22 +225,25 @@ function recuperar() {
                 
                 }).showToast();
             
-                carritoTurnos = []
-                console.log(carritoTurnos);
+                
+                
+                let reiniciarTurnos = document.getElementById("carrito-contenedor");
+                while (reiniciarTurnos.firstChild) {
+                    reiniciarTurnos.removeChild(reiniciarTurnos.firstChild);
+                    localStorage.removeItem("carrito");
+                }
+                localStorage.removeItem("contadorCarrito");
             
-        }           
-        else{
+        }else{
             Swal.fire({
-                position: 'top-end',
                 icon: 'success',
                 title: ('Lo siento debes iniciar sesion'),
                 showConfirmButton: false,
                 timer: 2000
             })
             
-        }
-    }) 
+    }
+})
 }
 
 recuperar()
-
