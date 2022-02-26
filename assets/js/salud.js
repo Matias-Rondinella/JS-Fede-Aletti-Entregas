@@ -168,10 +168,20 @@ function recuperar() {
         validar(element, 'block', 'none')
         
     });
+    
+}
+    
+// BOTON PARA GUARDAR EL DETALLE DEL PEDIDO DEL USUARIO - "USUARIO + TURNOS SELECCIONADOS"
+
+function finalizarPedido() {
+
     let userLs = JSON.parse(localStorage.getItem('usuario'))
+
     if(localStorage.getItem('validar')== 'true'){
+
         let userIndex = document.getElementById('userLocal')
         userIndex.innerText= ` Usuario: ${userLs[0].usuario} `
+
         Swal.fire({
             title: ` Bienvenido/a ${userLs[0].usuario} `,
             timer: 5000,
@@ -184,8 +194,7 @@ function recuperar() {
             url("https://media.giphy.com/media/h4TtDH4T1k6CUtPXJv/giphy.gif")
             left top
             no-repeat
-        `
-            
+        `        
         })
     }
 
@@ -194,9 +203,6 @@ function recuperar() {
         actualizarTurnos()
     })
 
-    
-    
-// BOTON PARA GUARDAR EL DETALLE DEL PEDIDO DEL USUARIO - "USUARIO + TURNOS SELECCIONADOS"
     btnConfirmar.addEventListener("click",()=> {
         if (carritoTurnos == ""){
             Swal.fire({
@@ -207,14 +213,13 @@ function recuperar() {
                 timer: 2000
             })
         }else if(localStorage.getItem('validar') == 'true'){
-            localStorage.setItem("pedido", JSON.stringify(userLs))
 
+            localStorage.setItem("pedido", JSON.stringify(userLs))
             let pedido = JSON.parse(localStorage.getItem("carrito"))
             console.log(pedido);
             let user = JSON.parse(localStorage.getItem('usuario'))
             console.log(user);
             let pedidoDetalle = user.concat(pedido)
-
             console.log(pedidoDetalle)
             
             Toastify({
@@ -229,27 +234,26 @@ function recuperar() {
                 let reiniciarContador = document.getElementById("contadorCarrito");
                 while (reiniciarContador.firstChild) {
                     reiniciarContador.removeChild(reiniciarContador.firstChild);
-                    localStorage.removeItem("contadorCarrito");
+                    
                 }
                 let reiniciarTurnos = document.getElementById("carrito-contenedor");
                 while (reiniciarTurnos.firstChild) {
                     reiniciarTurnos.removeChild(reiniciarTurnos.firstChild);
                     localStorage.removeItem("carrito");
                 }
-            
-        }           
-        else{
+            }else{
             Swal.fire({
                 position: 'top-end',
                 icon: 'success',
                 title: ('Lo siento debes iniciar sesion'),
                 showConfirmButton: false,
                 timer: 2000
-            })
-            
+            })            
         }
-    }) 
+        carritoTurnos = []
+    })
 }
 
 recuperar()
+finalizarPedido()
 
