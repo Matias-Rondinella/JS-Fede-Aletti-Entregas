@@ -198,7 +198,7 @@ function recuperar() {
     
 // BOTON PARA GUARDAR EL DETALLE DEL PEDIDO DEL USUARIO - "USUARIO + TURNOS SELECCIONADOS"
     btnConfirmar.addEventListener("click",()=> {
-        if (carritoTurnos == ""){
+        if (!carritoTurnos){
             Swal.fire({
                 position: 'top-end',
                 icon: 'success',
@@ -225,14 +225,17 @@ function recuperar() {
                 
                 }).showToast();
             
-                
-                
                 let reiniciarTurnos = document.getElementById("carrito-contenedor");
                 while (reiniciarTurnos.firstChild) {
                     reiniciarTurnos.removeChild(reiniciarTurnos.firstChild);
                     localStorage.removeItem("carrito");
                 }
-                localStorage.removeItem("contadorCarrito");
+                let reiniciarCarrito = document.getElementById("contadorCarrito");
+                while (reiniciarCarrito.firstChild) {
+                    reiniciarCarrito.removeChild(reiniciarCarrito.firstChild);
+                    
+                }
+                
             
         }else{
             Swal.fire({
