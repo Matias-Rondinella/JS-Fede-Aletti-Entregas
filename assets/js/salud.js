@@ -198,7 +198,7 @@ function recuperar() {
     
 // BOTON PARA GUARDAR EL DETALLE DEL PEDIDO DEL USUARIO - "USUARIO + TURNOS SELECCIONADOS"
     btnConfirmar.addEventListener("click",()=> {
-        if (!carritoTurnos){
+        if (carritoTurnos == ""){
             Swal.fire({
                 position: 'top-end',
                 icon: 'success',
@@ -225,28 +225,31 @@ function recuperar() {
                 
                 }).showToast();
             
+                // Eliminando todos los hijos del carrito
+                let reiniciarContador = document.getElementById("contadorCarrito");
+                while (reiniciarContador.firstChild) {
+                    reiniciarContador.removeChild(reiniciarContador.firstChild);
+                    localStorage.removeItem("contadorCarrito");
+                }
                 let reiniciarTurnos = document.getElementById("carrito-contenedor");
                 while (reiniciarTurnos.firstChild) {
                     reiniciarTurnos.removeChild(reiniciarTurnos.firstChild);
                     localStorage.removeItem("carrito");
                 }
-                let reiniciarCarrito = document.getElementById("contadorCarrito");
-                while (reiniciarCarrito.firstChild) {
-                    reiniciarCarrito.removeChild(reiniciarCarrito.firstChild);
-                    
-                }
-                
             
-        }else{
+        }           
+        else{
             Swal.fire({
+                position: 'top-end',
                 icon: 'success',
                 title: ('Lo siento debes iniciar sesion'),
                 showConfirmButton: false,
                 timer: 2000
             })
             
-    }
-})
+        }
+    }) 
 }
 
 recuperar()
+
