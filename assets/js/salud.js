@@ -229,6 +229,8 @@ function recuperar() {
                 
                 }).showToast();
             
+                carritoTurnos = []
+                console.log(carritoTurnos);
             
         }           
         else{
