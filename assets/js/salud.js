@@ -9,6 +9,10 @@ const selecTurnos = document.getElementById("selecTurnos")
 const buscador = document.getElementById("buscador")
 const btnConfirmar = document.getElementById("btnConfirmar")
 
+const divInfoClima = document.getElementById('divInfoClima')
+
+
+
 
 //BUSCADOR
 buscador.addEventListener("input", ()=>{
@@ -20,7 +24,7 @@ buscador.addEventListener("input", ()=>{
 selecTurnos.addEventListener('change',()=>{
     console.log(selecTurnos.value)
     selecTurnos.value == "Todos" ? mostrarTurnos(turnoStock) : mostrarTurnos(turnoStock.filter(el => el.dia == selecTurnos.value)) // ===>> TERNARIO
-        actualizarTurnos ()
+        
     }
 )
 
@@ -34,13 +38,12 @@ function mostrarTurnos(turnoStock){
     
     for (const turno of turnoStock) {
         
-        const {id, area, dia, horario, img } = turno //=====>> Desestructuracion de Objeto
+        const {id, area, dia, horario} = turno //=====>> Desestructuracion de Objeto
 
         let div = document.createElement('div');
         div.className = 'turno';
-        div.innerHTML += `<div class="card col-lg-4">
+        div.innerHTML += `<div class="card">
                             <div class="card-image">
-                                <img src=${img} class= "rounded-circle">
                                 <span class="card-title">${area}</span>                                
                             </div>
                             <div class="card-content">
@@ -54,15 +57,13 @@ function mostrarTurnos(turnoStock){
         contenedorTurnos.appendChild(div);
             
             if(carritoTurnos.find(element => element.area == area)){
-                
+                    validar(turno, 'none', 'none')
                 if(carritoTurnos.find(reserva=> reserva.id == id)){
                     validar(turno, 'block', 'none')
                 
                 }
             }
             
-        
-        
         let botonAgregar = document.getElementById(`botonAgregar${id}`)
         botonAgregar.addEventListener("click",()=> {
             agregarTurno(id, area)
@@ -182,28 +183,31 @@ function finalizarPedido() {
         let userIndex = document.getElementById('userLocal')
         userIndex.innerText= ` Usuario: ${userLs[0].usuario} `
 
-        Swal.fire({
-            title: ` Bienvenido/a ${userLs[0].usuario} `,
-            timer: 5000,
-            width: 600,
-            padding: '3em',
-            color: '#716add',
-            background: '#fff url(https://media.giphy.com/media/hOO2m87AWvU7XRmOp2/giphy.gif)',
-            backdrop: `
-            rgba(0,0,123,0.4)
-            url("https://media.giphy.com/media/h4TtDH4T1k6CUtPXJv/giphy.gif")
-            left top
-            no-repeat
-        `        
-        })
+        setTimeout(() => {
+            Swal.fire({
+                title: ` Bienvenido/a ${userLs[0].usuario} `,
+                confirmButtonText:"HOLA",
+                timer: 5000,
+                width: 600,
+                padding: '3em',
+                color: '#716add',
+                background: '#fff url(https://media.giphy.com/media/hOO2m87AWvU7XRmOp2/giphy.gif)',
+                backdrop: `
+                rgba(0,0,123,0.4)
+                url("https://media.giphy.com/media/h4TtDH4T1k6CUtPXJv/giphy.gif")
+                left top
+                no-repeat
+                
+            `        
+            })            
+        }, 1000);
+        
     }
 
-    userLs?.forEach(elemento=>{
-        elemento.turno = carritoTurnos
-        actualizarTurnos()
-    })
+    
 
-    btnConfirmar.addEventListener("click",()=> {
+    btnConfirmar.addEventListener("click",(e)=> {
+        e.preventDefault()
         if (carritoTurnos == ""){
             Swal.fire({
                 position: 'top-end',
@@ -213,6 +217,11 @@ function finalizarPedido() {
                 timer: 2000
             })
         }else if(localStorage.getItem('validar') == 'true'){
+
+            userLs?.forEach(elemento=>{
+                elemento.turno = carritoTurnos
+                actualizarTurnos()
+            })
 
             localStorage.setItem("pedido", JSON.stringify(userLs))
             let pedido = JSON.parse(localStorage.getItem("carrito"))
@@ -230,7 +239,7 @@ function finalizarPedido() {
                 
                 }).showToast();
             
-                // Eliminando todos los hijos del carrito
+                //Eliminando todos los hijos del carrito
                 let reiniciarContador = document.getElementById("contadorCarrito");
                 while (reiniciarContador.firstChild) {
                     reiniciarContador.removeChild(reiniciarContador.firstChild);
@@ -254,6 +263,55 @@ function finalizarPedido() {
     })
 }
 
-recuperar()
-finalizarPedido()
 
+async function obtenerClima() {
+
+    const clima = await fetch("https://api.openweathermap.org/data/2.5/weather?lat=-32.3667&lon=-65.95&units=metric&appid=2d752eb5c3adf8b088db06dedd5a5dbb")
+    const datos = await clima.json();
+    const {main} = datos
+
+    console.log(datos);
+    mostrarClima(main)
+    
+}
+
+obtenerClima()
+
+function mostrarClima (tiempo) {
+    console.log(tiempo);    
+    
+    //scripting
+    const divClima = document.createElement('div');
+    divClima.classList.add('card');
+    console.log(divClima);
+
+    const temp = document.createElement('p')
+    temp.textContent = "Temperatura: " + tiempo.temp
+
+    const feels_like = document.createElement('p')
+    feels_like.textContent = "Sensacion Termica: " + tiempo.feels_like
+
+    const temp_max = document.createElement('p')
+    temp_max.textContent = "Maxima: " + tiempo.temp_max
+
+    const temp_min = document.createElement('p')
+    temp_min.textContent = "Minima: " + tiempo.temp_min
+
+    const humidity = document.createElement('p')
+    humidity.textContent = "Humedad: " + tiempo.humidity
+    
+
+    divClima.appendChild(temp)
+    divClima.appendChild(feels_like) 
+    divClima.appendChild(temp_max) 
+    divClima.appendChild(temp_min) 
+    divClima.appendChild(humidity)   
+    
+    divInfoClima.appendChild(divClima)
+
+    console.log(divClima);   
+
+}
+
+finalizarPedido()
+recuperar()

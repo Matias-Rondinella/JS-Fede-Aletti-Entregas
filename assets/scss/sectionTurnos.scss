@@ -1,0 +1,38 @@
+.sectionTurnos {
+  background-image: url(../imgs/saludSectionTurnos.png);
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  height: auto;
+  background-position-x: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-content: space-around;
+  padding-top: 50px;
+  .contenedorTurnos {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    .turno {
+      padding: 25px;
+      width: 500px;
+    }
+  }
+  .buscadorContenedor {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    .input {
+      background: #dee2e6;
+      font-size: 20px;
+      color: -internal-light-dark(black, white);
+      border: 0;
+      border-bottom: 1px solid;
+    }
+    .filtroDia {
+      display: flex;
+      align-items: center;
+    }
+  }
+}

@@ -1,6 +1,7 @@
 @import "signin";
-@import "buscador";
+@import "sectionTurnos";
 @import "btnCarrito";
+@import "wtsAppChat";
 
 * {
   margin: 0px;
@@ -9,10 +10,6 @@
 
 html {
   font-size: 62.5%;
-}
-
-body {
-  background-image: url(../imgs/loginSalud.jpg);
 }
 
 //Ocultar en Mobile

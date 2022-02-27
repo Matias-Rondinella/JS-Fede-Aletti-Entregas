@@ -32,7 +32,8 @@
   color: $dropdown-color;
   text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
   list-style: none;
-  background-color: $dropdown-bg;
+  font-size: 14px;
+  background-color: #309dfaa8;
   background-clip: padding-box;
   border: $dropdown-border-width solid $dropdown-border-color;
   @include border-radius($dropdown-border-radius);
@@ -130,7 +131,7 @@
   padding: $dropdown-item-padding-y $dropdown-item-padding-x;
   clear: both;
   font-weight: $font-weight-normal;
-  color: $dropdown-link-color;
+  color: white;
   text-align: inherit; // For `<button>`s
   text-decoration: if($link-decoration == none, null, none);
   white-space: nowrap; // prevent links from randomly breaking onto new lines

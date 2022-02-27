@@ -24,87 +24,67 @@
     <link rel="stylesheet" href="assets/css/login.css">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
-
 <body>
-
     <div class="container-fluid">
         <div class="row">
             <!--Pre Header -->
         </div>           
         <!-- INICIO NAV -->
-        <header>
-            <div class="row">
-                <nav class="navbar navbar-expand-lg navbar-light">
-                    <a class="navbar-brand" href="">
-                        <img src="assets/imgs/logo.png" alt="logo" width="70" height="70" class="d-inline-block align-text-top">
-                        <div>
-                            <h1 class="h1MobTitle">
-                                Municipalidad de Luján <hr>
-                                <h2>Creciendo Juntos</h2>
-                            </h1>
-                        </div>                        
-                    </a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <h3 id="userLocal"></h3>
-                        <ul class="navbar-nav">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                                Mi Municipio
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="views/salud.html">Salud</a>
-                                    <a class="dropdown-item" href="views/deportes.html">Deportes</a>                  
-                                    <a class="dropdown-item" href="views/educacion.html">Educación</a>
-                                    <a class="dropdown-item" href="views/espaciopub.html">Espacio Público</a>
-                                </div>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                                Turismo
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="../turismo/alojamientos.html">Alojamientos</a>
-                                    <a class="dropdown-item" href="../turismo/actividades.html">Actividades</a>                  
-                                    <a class="dropdown-item" href="../turismo/reservaNat.html">Reserva Natural</a>
-                                    <a class="dropdown-item" href="../turismo/fiestasCult.html">Fiestas Culturales</a>
-                                    <a class="dropdown-item" href="../turismo/gastronomiaCom.html">Gastronomia y Comercios</a>
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="../boletin.html">Boletín Oficial</a>
-                            </li>
-                        </ul> 
-                    </div>
-                </nav>                
-            </div> 
-            <!-- CIERRE NAV -->
-        </header>
-
-        <!-- INICIO DE CARROUSEL 
-
-        <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="assets/imgs/HospitalLujanJuanArturoKlipsons.png" class="d-block w-100" alt="...">
+        
+        <div class="row contenedorNav">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <a class="navbar-brand" href="">
+                    <img src="assets/imgs/logo.png" alt="logo" width="50" height="50" class="d-inline-block align-text-top">
+                    <div>
+                        <h1 class="h1MobTitle">
+                            Municipalidad de Luján 
+                        </h1>
+                    </div>                        
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <h3 id="userLocal"></h3>
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                            Mi Municipio
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="views/salud.html">Salud</a>
+                                <a class="dropdown-item" href="views/deportes.html">Deportes</a>                  
+                                <a class="dropdown-item" href="views/educacion.html">Educación</a>
+                                <a class="dropdown-item" href="views/espaciopub.html">Espacio Público</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                            Turismo
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="../turismo/alojamientos.html">Alojamientos</a>
+                                <a class="dropdown-item" href="../turismo/actividades.html">Actividades</a>                  
+                                <a class="dropdown-item" href="../turismo/reservaNat.html">Reserva Natural</a>
+                                <a class="dropdown-item" href="../turismo/fiestasCult.html">Fiestas Culturales</a>
+                                <a class="dropdown-item" href="../turismo/gastronomiaCom.html">Gastronomia y Comercios</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../boletin.html">Boletín Oficial</a>
+                        </li>
+                    </ul> 
                 </div>
-                <div class="carousel-item">
-                    <img src="assets/imgs/HospitalLujanJuanArturoKlipsons.png" class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="assets/imgs/HospitalLujanJuanArturoKlipsons.png" class="d-block w-100" alt="...">
-                </div>
-            </div>
-        </div>
-        CIERRE DE CARROUSEL -->
+            </nav>                
+        </div> 
+        <!-- CIERRE NAV -->
+        
 
         <!-- INICIO DE LOGIN -->
-        <div class="login-wrap">
+        <div class="row loginContenedor">
             <div class="login-html">
                 <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Iniciar Sesión</label>
                 <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Registrarse</label>
@@ -124,6 +104,7 @@
                         </div>
                         <div class="group">
                             <input type="submit" id="ingreso" class="button" value="Ingresar">
+                            <a href="views/salud.html" style="text-decoration: none;"><input type="button" id="ingreso" class="button" value="Ingresar como invitado" style="margin-top: 10px;"></a>
                         </div>
                     </div>
                     <div class="sign-up-htm">
@@ -149,9 +130,44 @@
                     </div>
                 </div>
             </div>
+
         </div>
+        
+        
         <!-- CIERRE LOGIN -->
-    </div>
+        <!-- INICIO DE FOOTER -->
+        <div class="row">
+            <footer>
+            <div>
+                <h5>Redes Sociales</h5>
+                <ul>
+                <li><a href=""><img src="" alt="">Instagram</a></li>
+                <li><a href=""><img src="" alt="">Facebook</a></li>
+                <li><a href=""><img src="" alt="">YouTube</a></li>
+                </ul>            
+            </div>
+            <div>
+                <h5>Redes Sociales</h5>
+                <ul>
+                <li><a href=""><img src="" alt="">Instagram</a></li>
+                <li><a href=""><img src="" alt="">Facebook</a></li>
+                <li><a href=""><img src="" alt="">YouTube</a></li>
+                </ul>
+            </div>
+            <div>
+                <h5>Redes Sociales</h5>
+                <ul>
+                <li><a href=""><img src="" alt="">Instagram</a></li>
+                <li><a href=""><img src="" alt="">Facebook</a></li>
+                <li><a href=""><img src="" alt="">YouTube</a></li>
+                </ul>
+            </div>
+            <!-- ACA VAMOS A PONER DATOS GENERALES COMO TELEFONOS DE CONTACTO Y CASILLA DE EMAILS. TAMBIEN ESTA BUENO PONER ALGUN PLANITO -->
+            </footer>
+        </div>
+
+        <!-- CIERRE DE FOOTER --> 
+    </div> 
     <!-- CIERRE DE CONTENEDOR PRINCIPAL -->
 
     <!-- LIBRERIAS -->

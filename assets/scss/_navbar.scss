@@ -22,6 +22,7 @@
   align-items: center;
   justify-content: space-between; // space out brand from logo
   padding: $navbar-padding-y $navbar-padding-x;
+  max-height: 60px;
 
   // Because flex properties aren't inherited, we need to redeclare these first
   // few properties so that content nested within behave properly.
@@ -49,7 +50,8 @@
 // Used for brand, project, or site names.
 
 .navbar-brand {
-  display: inline-block;
+  display: flex;
+  align-items: center;
   padding-top: $navbar-brand-padding-y;
   padding-bottom: $navbar-brand-padding-y;
   margin-right: $navbar-padding-x;
@@ -72,6 +74,7 @@
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
+  font-size: 15px;
 
   .nav-link {
     padding-right: 0;
@@ -81,7 +84,7 @@
   .dropdown-menu {
     position: static;
     float: none;
-    background-color: #fad930;
+    background-color: #4ea4f5cc;
   }
 }
 
@@ -252,7 +255,7 @@
     .active > .nav-link,
     .nav-link.show,
     .nav-link.active {
-      color: $navbar-light-active-color;
+      color: white;
     }
   }
 
@@ -331,3 +334,15 @@
 /**************************************************************************************************/
 /**************************************  MI NAVBAR ************************************************/
 /**************************************************************************************************/
+
+.contenedorNav {
+  max-height: 60px;
+  background-color: rgba(0, 108, 203, 0.774);
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+  .h1MobTitle {
+    font-size: 2rem;
+    margin-left: 5px;
+  }
+}

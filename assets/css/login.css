@@ -24,11 +24,9 @@ a {
 .login-html {
   max-width: 485px;
   max-height: 570px;
-  position: absolute;
   padding: 50px 70px 90px 70px;
-  background: rgb(73 173 241 / 85%);
+  background: rgb(8 75 120 / 85%);
   margin-top: 25px;
-  border-radius: 85px;
 }
 .login-html .sign-in-htm,
 .login-html .sign-up-htm {
@@ -150,4 +148,13 @@ a {
 }
 .login-html .sign-up:checked + .tab + .login-form .sign-up-htm {
   transform: rotate(0);
+}
+
+.loginContenedor {
+  justify-content: center;
+  padding-top: 95px;
+  padding-bottom: 95px;
+  background-image: url(../imgs/loginBgd.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
