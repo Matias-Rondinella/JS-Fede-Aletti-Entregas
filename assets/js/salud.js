@@ -10,7 +10,7 @@ const buscador = document.getElementById("buscador")
 const btnConfirmar = document.getElementById("btnConfirmar")
 
 const divInfoClima = document.getElementById('divInfoClima')
-
+const cerrarSesion = document.getElementById('cerrarSesion')
 
 
 
@@ -179,9 +179,19 @@ function finalizarPedido() {
     let userLs = JSON.parse(localStorage.getItem('usuario'))
 
     if(localStorage.getItem('validar')== 'true'){
-
+        
         let userIndex = document.getElementById('userLocal')
+        
         userIndex.innerText= ` Usuario: ${userLs[0].usuario} `
+
+        let div = document.createElement("div")
+        div.className = "btnCerrar"
+        div.innerHTML += `
+                            <a class="nav-link" href="../index.html">Cerrar Sesion</a>
+                        `
+        userLocal.appendChild(div);
+
+        console.log(cerrarSesion);        
 
         setTimeout(() => {
             Swal.fire({
@@ -202,6 +212,9 @@ function finalizarPedido() {
             })            
         }, 1000);
         
+    }else if (localStorage.getItem('validar') == 'false') {
+        //console.log(cerrarSesion);
+        cerrarSesion.innerText = ``
     }
 
     
@@ -240,17 +253,18 @@ function finalizarPedido() {
                 }).showToast();
             
                 //Eliminando todos los hijos del carrito
-                let reiniciarContador = document.getElementById("contadorCarrito");
-                while (reiniciarContador.firstChild) {
-                    reiniciarContador.removeChild(reiniciarContador.firstChild);
-                    
-                }
-                let reiniciarTurnos = document.getElementById("carrito-contenedor");
-                while (reiniciarTurnos.firstChild) {
-                    reiniciarTurnos.removeChild(reiniciarTurnos.firstChild);
-                    localStorage.removeItem("carrito");
-                }
-            }else{
+            let reiniciarContador = document.getElementById("contadorCarrito");
+            while (reiniciarContador.firstChild) {
+                reiniciarContador.removeChild(reiniciarContador.firstChild);
+                
+            }
+            let reiniciarTurnos = document.getElementById("carrito-contenedor");
+            while (reiniciarTurnos.firstChild) {
+                reiniciarTurnos.removeChild(reiniciarTurnos.firstChild);
+                localStorage.removeItem("carrito");
+            }
+            }else if (localStorage.getItem('validar') == 'false'){
+
             Swal.fire({
                 position: 'top-end',
                 icon: 'success',
@@ -258,8 +272,10 @@ function finalizarPedido() {
                 showConfirmButton: false,
                 timer: 2000
             })            
+        }else{
+            
         }
-        carritoTurnos = []
+        
     })
 }
 
@@ -315,3 +331,4 @@ function mostrarClima (tiempo) {
 
 finalizarPedido()
 recuperar()
+

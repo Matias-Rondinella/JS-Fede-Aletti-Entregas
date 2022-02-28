@@ -46,9 +46,10 @@
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <div>
                             <h3 id="userLocal">
-                                <a class="nav-link" href="../index.html">Cerrar Sesion<span class="sr-only">(current)</span></a>
+                                <div id="cerrarSesion">
+                                    
+                                </div>
                             </h3>
-                            <a class="nav-link" href="../index.html">Iniciar Sesion<span class="sr-only">(current)</span></a>
                         </div>
                         
                         <ul class="navbar-nav">
@@ -238,6 +239,15 @@
         js.src = 'https://connect.facebook.net/es_ES/sdk/xfbml.customerchat.js';
         fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+    <script type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+    (function(){
+    emailjs.init("service_hxmt5ly");
+    })();
     </script>
 
     <!-- LIBRERIAS -->
