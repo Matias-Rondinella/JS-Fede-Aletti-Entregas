@@ -1,0 +1,23 @@
+// .climaContenedor{};
+// .temperatura{};
+// .termica{};
+// .maxima{};
+// .minima{};
+// .humedad{};
+.divInfoClima {
+  width: 100%;
+}
+.climaContenedor {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 35px;
+  background-color: #17b37f;
+  font-size: 13px;
+  color: #bdbdbd;
+  align-items: center;
+  p {
+    margin: 0;
+    padding-right: 20px;
+  }
+}

@@ -55,6 +55,8 @@
   padding-top: $navbar-brand-padding-y;
   padding-bottom: $navbar-brand-padding-y;
   margin-right: $navbar-padding-x;
+  margin-left: 15px;
+  position: relative;
   @include font-size($navbar-brand-font-size);
   line-height: inherit;
   white-space: nowrap;
@@ -240,14 +242,14 @@
 
   .navbar-nav {
     .nav-link {
-      color: $navbar-light-color;
+      color: white;
 
       @include hover-focus() {
-        color: $navbar-light-hover-color;
+        color: rgb(129, 129, 129);
       }
 
       &.disabled {
-        color: $navbar-light-disabled-color;
+        color: white;
       }
     }
 
@@ -336,13 +338,19 @@
 /**************************************************************************************************/
 
 .contenedorNav {
-  max-height: 60px;
+  max-height: 100px;
   background-color: rgba(0, 108, 203, 0.774);
   position: fixed;
   width: 100%;
   z-index: 1;
-  .h1MobTitle {
-    font-size: 2rem;
-    margin-left: 5px;
+  .titleNav {
+    position: relative;
+    bottom: 20px;
+    font-family: initial;
+    color: #c1c1c1;
+    .h1MobTitle {
+      font-size: 2rem;
+      margin-left: 5px;
+    }
   }
 }

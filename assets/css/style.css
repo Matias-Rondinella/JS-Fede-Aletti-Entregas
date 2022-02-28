@@ -3070,6 +3070,8 @@ input[type="button"].btn-block {
   padding-top: 0.3125rem;
   padding-bottom: 0.3125rem;
   margin-right: 1rem;
+  margin-left: 15px;
+  position: relative;
   font-size: 1.25rem;
   line-height: inherit;
   white-space: nowrap; }
@@ -3276,11 +3278,11 @@ input[type="button"].btn-block {
     color: rgba(0, 0, 0, 0.9); }
 
 .navbar-light .navbar-nav .nav-link {
-  color: rgba(0, 0, 0, 0.5); }
+  color: white; }
   .navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link:focus {
-    color: rgba(0, 0, 0, 0.7); }
+    color: #818181; }
   .navbar-light .navbar-nav .nav-link.disabled {
-    color: rgba(0, 0, 0, 0.3); }
+    color: white; }
 
 .navbar-light .navbar-nav .show > .nav-link,
 .navbar-light .navbar-nav .active > .nav-link,
@@ -3338,14 +3340,19 @@ input[type="button"].btn-block {
 /**************************************  MI NAVBAR ************************************************/
 /**************************************************************************************************/
 .contenedorNav {
-  max-height: 60px;
+  max-height: 100px;
   background-color: rgba(0, 108, 203, 0.774);
   position: fixed;
   width: 100%;
   z-index: 1; }
-  .contenedorNav .h1MobTitle {
-    font-size: 2rem;
-    margin-left: 5px; }
+  .contenedorNav .titleNav {
+    position: relative;
+    bottom: 20px;
+    font-family: initial;
+    color: #c1c1c1; }
+    .contenedorNav .titleNav .h1MobTitle {
+      font-size: 2rem;
+      margin-left: 5px; }
 
 .card {
   position: relative;
@@ -7337,6 +7344,22 @@ a.text-dark:hover, a.text-dark:focus {
   .wtsAppChat img {
     width: 100%;
     height: auto; }
+
+.divInfoClima {
+  width: 100%; }
+
+.climaContenedor {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 35px;
+  background-color: #17b37f;
+  font-size: 13px;
+  color: #bdbdbd;
+  align-items: center; }
+  .climaContenedor p {
+    margin: 0;
+    padding-right: 20px; }
 
 * {
   margin: 0px;

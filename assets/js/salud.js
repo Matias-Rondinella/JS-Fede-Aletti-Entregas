@@ -9,7 +9,6 @@ const selecTurnos = document.getElementById("selecTurnos")
 const buscador = document.getElementById("buscador")
 const btnConfirmar = document.getElementById("btnConfirmar")
 
-const divInfoClima = document.getElementById('divInfoClima')
 const cerrarSesion = document.getElementById('cerrarSesion')
 
 
@@ -187,7 +186,7 @@ function finalizarPedido() {
         let div = document.createElement("div")
         div.className = "btnCerrar"
         div.innerHTML += `
-                            <a class="nav-link" href="../index.html">Cerrar Sesion</a>
+                            <a class="nav-link" href="saludInvitados.html">Cerrar Sesion</a>
                         `
         userLocal.appendChild(div);
 
@@ -279,55 +278,6 @@ function finalizarPedido() {
     })
 }
 
-
-async function obtenerClima() {
-
-    const clima = await fetch("https://api.openweathermap.org/data/2.5/weather?lat=-32.3667&lon=-65.95&units=metric&appid=2d752eb5c3adf8b088db06dedd5a5dbb")
-    const datos = await clima.json();
-    const {main} = datos
-
-    console.log(datos);
-    mostrarClima(main)
-    
-}
-
-obtenerClima()
-
-function mostrarClima (tiempo) {
-    console.log(tiempo);    
-    
-    //scripting
-    const divClima = document.createElement('div');
-    divClima.classList.add('card');
-    console.log(divClima);
-
-    const temp = document.createElement('p')
-    temp.textContent = "Temperatura: " + tiempo.temp
-
-    const feels_like = document.createElement('p')
-    feels_like.textContent = "Sensacion Termica: " + tiempo.feels_like
-
-    const temp_max = document.createElement('p')
-    temp_max.textContent = "Maxima: " + tiempo.temp_max
-
-    const temp_min = document.createElement('p')
-    temp_min.textContent = "Minima: " + tiempo.temp_min
-
-    const humidity = document.createElement('p')
-    humidity.textContent = "Humedad: " + tiempo.humidity
-    
-
-    divClima.appendChild(temp)
-    divClima.appendChild(feels_like) 
-    divClima.appendChild(temp_max) 
-    divClima.appendChild(temp_min) 
-    divClima.appendChild(humidity)   
-    
-    divInfoClima.appendChild(divClima)
-
-    console.log(divClima);   
-
-}
 
 finalizarPedido()
 recuperar()
