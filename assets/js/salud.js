@@ -233,7 +233,7 @@ function finalizarPedido() {
             localStorage.setItem("pedido", JSON.stringify(userLs))
             let pedido = JSON.parse(localStorage.getItem("carrito"))
             let user = JSON.parse(localStorage.getItem('usuario'))
-            let pedidoDetalle = user.concat(pedido)            
+            user.concat(pedido)            
             
             Toastify({
 
@@ -269,7 +269,7 @@ function limpiarCarrito() {
         let reiniciarTurnos = document.getElementById("carrito-contenedor");
         while (reiniciarTurnos.firstChild) {
             reiniciarTurnos.removeChild(reiniciarTurnos.firstChild);
-            localStorage.removeItem("carrito");
+            localStorage.removeItem("carrito")
         }
         })    
 }

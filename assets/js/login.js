@@ -122,7 +122,8 @@ function ingresar(){
                 timer: 2000
             })
         }
-    }else{
+    }
+    else{
         Swal.fire({
             position: 'top-end',
             icon: 'success',

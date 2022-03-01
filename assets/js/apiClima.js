@@ -6,7 +6,7 @@ async function obtenerClima() {
     const datos = await clima.json();
     const {main} = datos
 
-    mostrarClima(main)
+    mostrarClima(main);
     
 }
 
