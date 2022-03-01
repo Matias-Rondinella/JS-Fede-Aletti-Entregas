@@ -50,6 +50,9 @@
 // Used for brand, project, or site names.
 
 .navbar-brand {
+  position: relative;
+  bottom: -3px;
+  height: 46px;
   display: flex;
   align-items: center;
   padding-top: $navbar-brand-padding-y;
@@ -63,6 +66,10 @@
 
   @include hover-focus() {
     text-decoration: none;
+  }
+  .img-logo {
+    position: relative;
+    bottom: 20px;
   }
 }
 
@@ -343,13 +350,45 @@
   position: fixed;
   width: 100%;
   z-index: 1;
+  .divInfoClima {
+    width: 100%;
+    display: flex;
+    background: #17b37f;
+    .divSesionUser {
+      width: 100%;
+      background: #17b37f;
+      display: flex;
+      margin-left: 100px;
+      h3 {
+        display: flex;
+        width: 100%;
+        font-size: 14px;
+        margin-bottom: 0;
+        align-items: center;
+      }
+    }
+    .climaContenedor {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      padding-right: 35px;
+      background-color: #17b37f;
+      font-size: 13px;
+      color: #bdbdbd;
+      align-items: center;
+      p {
+        margin: 0;
+        padding-right: 20px;
+      }
+    }
+  }
   .titleNav {
     position: relative;
-    bottom: 20px;
+    bottom: 2px;
     font-family: initial;
-    color: #c1c1c1;
+    color: white;
     .h1MobTitle {
-      font-size: 2rem;
+      font-size: 23px;
       margin-left: 5px;
     }
   }

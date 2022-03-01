@@ -4,7 +4,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     display: flex;
-    height: 600px;
+    height: 1000px;
     background-position-x: center;
     flex-direction: column;
     justify-content: flex-end;
@@ -20,6 +20,8 @@
 
     @include media-breakpoint-up(sm) {
       padding: 4rem 60rem 4rem 2rem;
+      position: relative;
+      bottom: 150px;
     }
     .container {
       display: flex;

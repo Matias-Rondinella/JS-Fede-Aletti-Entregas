@@ -3065,6 +3065,9 @@ input[type="button"].btn-block {
     justify-content: space-between; }
 
 .navbar-brand {
+  position: relative;
+  bottom: -3px;
+  height: 46px;
   display: flex;
   align-items: center;
   padding-top: 0.3125rem;
@@ -3077,6 +3080,9 @@ input[type="button"].btn-block {
   white-space: nowrap; }
   .navbar-brand:hover, .navbar-brand:focus {
     text-decoration: none; }
+  .navbar-brand .img-logo {
+    position: relative;
+    bottom: 20px; }
 
 .navbar-nav {
   display: flex;
@@ -3345,13 +3351,40 @@ input[type="button"].btn-block {
   position: fixed;
   width: 100%;
   z-index: 1; }
+  .contenedorNav .divInfoClima {
+    width: 100%;
+    display: flex;
+    background: #17b37f; }
+    .contenedorNav .divInfoClima .divSesionUser {
+      width: 100%;
+      background: #17b37f;
+      display: flex;
+      margin-left: 100px; }
+      .contenedorNav .divInfoClima .divSesionUser h3 {
+        display: flex;
+        width: 100%;
+        font-size: 14px;
+        margin-bottom: 0;
+        align-items: center; }
+    .contenedorNav .divInfoClima .climaContenedor {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      padding-right: 35px;
+      background-color: #17b37f;
+      font-size: 13px;
+      color: #bdbdbd;
+      align-items: center; }
+      .contenedorNav .divInfoClima .climaContenedor p {
+        margin: 0;
+        padding-right: 20px; }
   .contenedorNav .titleNav {
     position: relative;
-    bottom: 20px;
+    bottom: 2px;
     font-family: initial;
-    color: #c1c1c1; }
+    color: white; }
     .contenedorNav .titleNav .h1MobTitle {
-      font-size: 2rem;
+      font-size: 23px;
       margin-left: 5px; }
 
 .card {
@@ -3742,7 +3775,7 @@ input[type="button"].btn-block {
     background-size: cover;
     background-repeat: no-repeat;
     display: flex;
-    height: 600px;
+    height: 1000px;
     background-position-x: center;
     flex-direction: column;
     justify-content: flex-end; }
@@ -3755,7 +3788,9 @@ input[type="button"].btn-block {
     border-radius: 0.3rem; } }
   @media only screen and (min-width: 1024px) and (min-width: 576px) {
     .jumbotron {
-      padding: 4rem 60rem 4rem 2rem; } }
+      padding: 4rem 60rem 4rem 2rem;
+      position: relative;
+      bottom: 150px; } }
 
 @media only screen and (min-width: 1024px) {
     .jumbotron .container {
@@ -7344,22 +7379,6 @@ a.text-dark:hover, a.text-dark:focus {
   .wtsAppChat img {
     width: 100%;
     height: auto; }
-
-.divInfoClima {
-  width: 100%; }
-
-.climaContenedor {
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-  padding-right: 35px;
-  background-color: #17b37f;
-  font-size: 13px;
-  color: #bdbdbd;
-  align-items: center; }
-  .climaContenedor p {
-    margin: 0;
-    padding-right: 20px; }
 
 * {
   margin: 0px;

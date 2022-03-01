@@ -30,58 +30,68 @@
             <!--Pre Header -->
         </div>           
         <!-- INICIO NAV -->
-        
-        <div class="row contenedorNav">
-            <nav class="navbar navbar-expand-lg navbar-light">
-                <a class="navbar-brand" href="">
-                    <img src="assets/imgs/logo.png" alt="logo" width="50" height="50" class="d-inline-block align-text-top">
-                    <div>
-                        <h1 class="h1MobTitle">
-                            Municipalidad de Luján 
-                        </h1>
-                    </div>                        
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <h3 id="userLocal"></h3>
-                    <ul class="navbar-nav">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                            Mi Municipio
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="views/salud.html">Salud</a>
-                                <a class="dropdown-item" href="views/deportes.html">Deportes</a>                  
-                                <a class="dropdown-item" href="views/educacion.html">Educación</a>
-                                <a class="dropdown-item" href="views/espaciopub.html">Espacio Público</a>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                            Turismo
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="../turismo/alojamientos.html">Alojamientos</a>
-                                <a class="dropdown-item" href="../turismo/actividades.html">Actividades</a>                  
-                                <a class="dropdown-item" href="../turismo/reservaNat.html">Reserva Natural</a>
-                                <a class="dropdown-item" href="../turismo/fiestasCult.html">Fiestas Culturales</a>
-                                <a class="dropdown-item" href="../turismo/gastronomiaCom.html">Gastronomia y Comercios</a>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="../boletin.html">Boletín Oficial</a>
-                        </li>
-                    </ul> 
-                </div>
-            </nav>                
-        </div> 
-        <!-- CIERRE NAV -->
-        
+        <header>
+            <div class="row contenedorNav">
+                <div class="row-fluid" id="divInfoClima" style="width: 100%;">
+                    <!--Pre Header -->
+                </div> 
+                <nav class="navbar navbar-expand-lg navbar-light">                    
+                    <a class="navbar-brand" href="">
+                        <img src="assets/imgs/logo.png" alt="logo" width="70" height="70" class="d-inline-block align-text-top">
+                        <div class="titleNav">
+                            <h1 class="h1MobTitle">
+                                Municipalidad de Luján 
+                            </h1>
+                        </div>                        
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <div>
+                            <h3 id="userLocal">
+                                <div id="cerrarSesion">
+                                    
+                                </div>
+                            </h3>
+                        </div>
+                        
+                        <ul class="navbar-nav">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="../index.html">Home <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                                Mi Municipio
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="salud.html">Salud</a>
+                                    <a class="dropdown-item" href="views/deportes.html">Deportes</a>                  
+                                    <a class="dropdown-item" href="views/educacion.html">Educación</a>
+                                    <a class="dropdown-item" href="views/espaciopub.html">Espacio Público</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                                Turismo
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="../turismo/alojamientos.html">Alojamientos</a>
+                                    <a class="dropdown-item" href="../turismo/actividades.html">Actividades</a>                  
+                                    <a class="dropdown-item" href="../turismo/reservaNat.html">Reserva Natural</a>
+                                    <a class="dropdown-item" href="../turismo/fiestasCult.html">Fiestas Culturales</a>
+                                    <a class="dropdown-item" href="../turismo/gastronomiaCom.html">Gastronomia y Comercios</a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../boletin.html">Boletín Oficial</a>
+                            </li>
+                        </ul> 
+                    </div>
+                </nav>                
+            </div> 
+            <!-- CIERRE NAV -->
+        </header>
         <!-- INICIO DE LOGIN -->
         <div class="row loginContenedor">
             <div class="login-html">
@@ -179,6 +189,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
 
     <!-- Mi JavaScript -->
+    <script src="../assets/js/apiClima.js"></script> 
     <script src="assets/js/login.js"></script>
 </body>
 </html>
