@@ -1,3 +1,5 @@
+// Variables
+
 let carritoTurnos = []
 
 const contenedorTurnos = document.getElementById('contenedor-turnos');
@@ -8,9 +10,9 @@ const selecTurnos = document.getElementById("selecTurnos")
 
 const buscador = document.getElementById("buscador")
 const btnConfirmar = document.getElementById("btnConfirmar")
+const btnLimpiarCarrito = document.getElementById('btnLimpiarCarrito')
 
 const cerrarSesion = document.getElementById('cerrarSesion')
-
 
 
 //BUSCADOR
@@ -21,15 +23,12 @@ buscador.addEventListener("input", ()=>{
 
 //filtro por dia
 selecTurnos.addEventListener('change',()=>{
-    console.log(selecTurnos.value)
     selecTurnos.value == "Todos" ? mostrarTurnos(turnoStock) : mostrarTurnos(turnoStock.filter(el => el.dia == selecTurnos.value)) // ===>> TERNARIO
         
     }
 )
 
-//logica
-
-mostrarTurnos(turnoStock)
+//LOGICA
 
 function mostrarTurnos(turnoStock){
     
@@ -94,6 +93,45 @@ function validar(turno,si , no){
     
 }
 
+function mostrarUsuario() {
+    let userLs = JSON.parse(localStorage.getItem('usuario'))
+
+if(localStorage.getItem('validar')== 'true'){
+    
+    let userIndex = document.getElementById('userLocal')
+    
+    userIndex.innerText= ` Usuario: ${userLs[0].usuario} `
+
+    let div = document.createElement("div")
+    div.className = "btnCerrar"
+    div.innerHTML += `
+                        <a class="nav-link" href="saludInvitados.html">Cerrar Sesion</a>
+                    `
+    userLocal.appendChild(div);        
+
+    setTimeout(() => {
+        Swal.fire({
+            title: ` Bienvenido/a ${userLs[0].usuario} `,
+            confirmButtonText:"HOLA",
+            timer: 5000,
+            width: 600,
+            padding: '3em',
+            color: '#716add',
+            background: '#fff url(https://media.giphy.com/media/hOO2m87AWvU7XRmOp2/giphy.gif)',
+            backdrop: `
+            rgba(0,0,123,0.4)
+            url("https://media.giphy.com/media/h4TtDH4T1k6CUtPXJv/giphy.gif")
+            left top
+            no-repeat
+            
+        `        
+        })            
+    }, 1000);
+    
+}else if (localStorage.getItem('validar') == 'false') {
+    cerrarSesion.innerText = ``
+}
+}
 
 //Seleccionar un turno por ID y alojarlo en nuestro carrito: "carritoTurnos[]" Linea 1
 function agregarTurno(id) {
@@ -161,65 +199,22 @@ function  actualizarTurnos (){
 
 function recuperar() {
     let recuperarLS = JSON.parse(localStorage.getItem('carrito')) 
+
     recuperarLS && recuperarLS.forEach(element => {  // ========================>>>>>>>>> Operador Logico AND
+        
         mostrarReserva(element)
         carritoTurnos.push(element)
         actualizarTurnos()
-        validar(element, 'block', 'none')
-        
-    });
-    
+        validar(element, 'block', 'none')        
+    });    
 }
-    
+
 // BOTON PARA GUARDAR EL DETALLE DEL PEDIDO DEL USUARIO - "USUARIO + TURNOS SELECCIONADOS"
 
 function finalizarPedido() {
-
-    let userLs = JSON.parse(localStorage.getItem('usuario'))
-
-    if(localStorage.getItem('validar')== 'true'){
-        
-        let userIndex = document.getElementById('userLocal')
-        
-        userIndex.innerText= ` Usuario: ${userLs[0].usuario} `
-
-        let div = document.createElement("div")
-        div.className = "btnCerrar"
-        div.innerHTML += `
-                            <a class="nav-link" href="saludInvitados.html">Cerrar Sesion</a>
-                        `
-        userLocal.appendChild(div);
-
-        console.log(cerrarSesion);        
-
-        setTimeout(() => {
-            Swal.fire({
-                title: ` Bienvenido/a ${userLs[0].usuario} `,
-                confirmButtonText:"HOLA",
-                timer: 5000,
-                width: 600,
-                padding: '3em',
-                color: '#716add',
-                background: '#fff url(https://media.giphy.com/media/hOO2m87AWvU7XRmOp2/giphy.gif)',
-                backdrop: `
-                rgba(0,0,123,0.4)
-                url("https://media.giphy.com/media/h4TtDH4T1k6CUtPXJv/giphy.gif")
-                left top
-                no-repeat
-                
-            `        
-            })            
-        }, 1000);
-        
-    }else if (localStorage.getItem('validar') == 'false') {
-        //console.log(cerrarSesion);
-        cerrarSesion.innerText = ``
-    }
-
-    
-
     btnConfirmar.addEventListener("click",(e)=> {
         e.preventDefault()
+        let userLs = JSON.parse(localStorage.getItem('usuario'))
         if (carritoTurnos == ""){
             Swal.fire({
                 position: 'top-end',
@@ -237,11 +232,8 @@ function finalizarPedido() {
 
             localStorage.setItem("pedido", JSON.stringify(userLs))
             let pedido = JSON.parse(localStorage.getItem("carrito"))
-            console.log(pedido);
             let user = JSON.parse(localStorage.getItem('usuario'))
-            console.log(user);
-            let pedidoDetalle = user.concat(pedido)
-            console.log(pedidoDetalle)
+            let pedidoDetalle = user.concat(pedido)            
             
             Toastify({
 
@@ -251,17 +243,6 @@ function finalizarPedido() {
                 
                 }).showToast();
             
-                //Eliminando todos los hijos del carrito
-            let reiniciarContador = document.getElementById("contadorCarrito");
-            while (reiniciarContador.firstChild) {
-                reiniciarContador.removeChild(reiniciarContador.firstChild);
-                
-            }
-            let reiniciarTurnos = document.getElementById("carrito-contenedor");
-            while (reiniciarTurnos.firstChild) {
-                reiniciarTurnos.removeChild(reiniciarTurnos.firstChild);
-                localStorage.removeItem("carrito");
-            }
             }else if (localStorage.getItem('validar') == 'false'){
 
             Swal.fire({
@@ -271,14 +252,32 @@ function finalizarPedido() {
                 showConfirmButton: false,
                 timer: 2000
             })            
-        }else{
-            
         }
         
     })
 }
 
+function limpiarCarrito() {
+    //Eliminando todos los hijos del carrito
+    btnLimpiarCarrito.addEventListener("click", ()=>{
 
+        let reiniciarContador = document.getElementById("contadorCarrito");
+        while (reiniciarContador.firstChild) {
+            reiniciarContador.removeChild(reiniciarContador.firstChild);
+            
+        }
+        let reiniciarTurnos = document.getElementById("carrito-contenedor");
+        while (reiniciarTurnos.firstChild) {
+            reiniciarTurnos.removeChild(reiniciarTurnos.firstChild);
+            localStorage.removeItem("carrito");
+        }
+        })    
+}
+
+
+mostrarTurnos(turnoStock)
+mostrarUsuario()
+limpiarCarrito()
 finalizarPedido()
 recuperar()
 

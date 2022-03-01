@@ -8,11 +8,9 @@ let validarLog = false
 localStorage.setItem('validar',(validarLog))
 
 
-
 function randomNumber(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-
 
 
 btnRegistro.addEventListener('click', ()=>{
@@ -33,12 +31,12 @@ class Usuario{
             title: "Usuario creado",
             title: "Tu Usuario es: " + this.usuario,
             showClass: {
-              popup: 'animate__animated animate__fadeInDown'
+                popup: 'animate__animated animate__fadeInDown'
             },
             hideClass: {
-              popup: 'animate__animated animate__fadeOutUp'
+                popup: 'animate__animated animate__fadeOutUp'
             }
-          })
+        })
     }
 }
 
@@ -90,10 +88,10 @@ function validar(usuarioRegistrado, contraseñaRegistrada,reContraseña,email){
 
 btnIngreso.addEventListener('click',ingresar)
 
-
 function ingresar(){
     const usuario =document.getElementById('user').value
     const contraseña = document.getElementById('pass').value
+
     let validacion = validarIngreso(usuario,contraseña)
     let recuperoLocalS= JSON.parse(localStorage.getItem('usuario'))
 
@@ -113,8 +111,7 @@ function ingresar(){
             console.log(validarLog);
 
             localStorage.setItem('validar', validarLog) 
-            window.location.replace('views/salud.html')
-            
+            window.location.replace('views/salud.html')            
 
         }else{
             Swal.fire({
@@ -136,9 +133,6 @@ function ingresar(){
         
     }
 }
-
-
-
 
 function validarIngreso(usuario,contraseña) {
     if(usuario == "" || contraseña == ""){
