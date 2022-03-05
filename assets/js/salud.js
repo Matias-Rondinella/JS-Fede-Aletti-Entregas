@@ -1,6 +1,7 @@
 // Variables
 
 let carritoTurnos = []
+let validarCerrar = false
 
 const contenedorTurnos = document.getElementById('contenedor-turnos');
 const contenedorCarrito = document.getElementById('carrito-contenedor');
@@ -13,6 +14,7 @@ const btnConfirmar = document.getElementById("btnConfirmar")
 const btnLimpiarCarrito = document.getElementById('btnLimpiarCarrito')
 
 const cerrarSesion = document.getElementById('cerrarSesion')
+
 
 
 //BUSCADOR
@@ -93,45 +95,60 @@ function validar(turno,si , no){
     
 }
 
+
+
+
 function mostrarUsuario() {
     let userLs = JSON.parse(localStorage.getItem('usuario'))
 
-if(localStorage.getItem('validar')== 'true'){
-    
-    let userIndex = document.getElementById('userLocal')
-    
-    userIndex.innerText= ` Usuario: ${userLs[0].usuario} `
+    if(localStorage.getItem('validar')== 'true'){
+        
+        let userIndex = document.getElementById('userLocal')
+        
+        userIndex.innerText= ` Usuario: ${userLs[0].usuario} `
 
-    let div = document.createElement("div")
-    div.className = "btnCerrar"
-    div.innerHTML += `
-                        <a class="nav-link" href="saludInvitados.html">Cerrar Sesion</a>
-                    `
-    userLocal.appendChild(div);        
+        let div = document.createElement("div")
+        div.className = "btnCerrar"
+        div.innerHTML += `
+                        <button id= "btnCerrar">Cerrar Sesion</button>
+                        `
+        userLocal.appendChild(div);
+        const btnCerrar = document.getElementById ('btnCerrar') 
+        btnCerrar.addEventListener('click', ()=>{
 
-    setTimeout(() => {
-        Swal.fire({
-            title: ` Bienvenido/a ${userLs[0].usuario} `,
-            confirmButtonText:"HOLA",
-            timer: 5000,
-            width: 600,
-            padding: '3em',
-            color: '#716add',
-            background: '#fff url(https://media.giphy.com/media/hOO2m87AWvU7XRmOp2/giphy.gif)',
-            backdrop: `
-            rgba(0,0,123,0.4)
-            url("https://media.giphy.com/media/h4TtDH4T1k6CUtPXJv/giphy.gif")
-            left top
-            no-repeat
-            
-        `        
-        })            
-    }, 1000);
-    
-}else if (localStorage.getItem('validar') == 'false') {
-    cerrarSesion.innerText = ``
+            localStorage.setItem('validar', validarCerrar) 
+            window.location.replace('saludInvitados.html')
+        
+        })
+        
+        
+        setTimeout(() => {
+            Swal.fire({
+                title: ` Bienvenido/a ${userLs[0].usuario} `,
+                confirmButtonText:"HOLA",
+                timer: 5000,
+                width: 600,
+                padding: '3em',
+                color: '#716add',
+                background: '#fff url(https://media.giphy.com/media/hOO2m87AWvU7XRmOp2/giphy.gif)',
+                backdrop: `
+                rgba(0,0,123,0.4)
+                url("https://media.giphy.com/media/h4TtDH4T1k6CUtPXJv/giphy.gif")
+                left top
+                no-repeat
+                
+            `        
+            })            
+        }, 1000);
+        
+    }else {
+        cerrarSesion.innerText = ``
+        
+    }
 }
-}
+
+
+
 
 //Seleccionar un turno por ID y alojarlo en nuestro carrito: "carritoTurnos[]" Linea 1
 function agregarTurno(id) {

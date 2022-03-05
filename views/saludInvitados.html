@@ -25,16 +25,23 @@
 </head>
 <body>
     <div class="container-fluid">
-        <div class="row" id="divInfoClima">
-            <!--Pre Header -->
-        </div>           
         <!-- INICIO NAV -->
         <header>
             <div class="row contenedorNav">
-                <nav class="navbar navbar-expand-lg navbar-light">
+                <div class="row-fluid divInfoClima" id="divInfoClima" style="width: 100%;">
+                    <!--Pre Header -->
+                    <div class="divSesionUser">
+                        <h3 id="userLocal">
+                            <div id="cerrarSesion">
+                                
+                            </div>
+                        </h3>
+                    </div>
+                </div> 
+                <nav class="navbar navbar-expand-lg navbar-light">                    
                     <a class="navbar-brand" href="">
-                        <img src="../assets/imgs/logo.png" alt="logo" width="50" height="50" class="d-inline-block align-text-top">
-                        <div>
+                        <img src="../assets/imgs/logo.png" alt="logo" width="70" height="70" class="d-inline-block align-text-top img-logo">
+                        <div class="titleNav">
                             <h1 class="h1MobTitle">
                                 Municipalidad de Luján 
                             </h1>
@@ -43,15 +50,7 @@
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <div>
-                            <h3 id="userLocal">
-                                <div id="cerrarSesion">
-                                    
-                                </div>
-                            </h3>
-                        </div>
-                        
+                    <div class="collapse navbar-collapse" id="navbarNav">                        
                         <ul class="navbar-nav">
                             <li class="nav-item active">
                                 <a class="nav-link" href="../index.html">Home <span class="sr-only">(current)</span></a>
@@ -61,7 +60,7 @@
                                 Mi Municipio
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="salud.html">Salud</a>
+                                    <a class="dropdown-item" href="saludInvitados.html">Salud</a>
                                     <a class="dropdown-item" href="views/deportes.html">Deportes</a>                  
                                     <a class="dropdown-item" href="views/educacion.html">Educación</a>
                                     <a class="dropdown-item" href="views/espaciopub.html">Espacio Público</a>
@@ -192,7 +191,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
         
     <!-- Mi JavaScript -->
-    <script src="../assets/js/turnos.js"></script>
+    <script src="../assets/js/apiClima.js"></script>
     <script src="../assets/js/salud.js"></script>
 </body>
 </html>
