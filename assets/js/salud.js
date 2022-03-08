@@ -33,55 +33,59 @@ selecTurnos.addEventListener('change',()=>{
 //LOGICA
 
 function mostrarTurnos(turnoStock){
-    
-    contenedorTurnos.innerHTML ='';
-    
-    for (const turno of turnoStock) {
+    if (localStorage.getItem('validar')== 'true') {
         
-        const {id, area, dia, horario} = turno //=====>> Desestructuracion de Objeto
-
-        let div = document.createElement('div');
-        div.className = 'turno';
-        div.innerHTML += `<div class="card">
-                            <div class="card-image">
-                                <span class="card-title">${area}</span>                                
-                            </div>
-                            <div class="card-content">
-                                <p>${dia}</p>
-                                <p>${horario}</p>
-                                <a id="botonAgregar${id}" class="btn-floating halfway-fab waves-effect waves-light red boton${area}"><img src="../assets/imgs/carritoTurnos.svg" alt=""></a>
-                                <p id="parrafo${id}" style='display:none; color:red'>ELEGIDA</p>
-                            </div>
-                        </div> `
-                        
-        contenedorTurnos.appendChild(div);
+        contenedorTurnos.innerHTML ='';
+        
+        for (const turno of turnoStock) {
             
-            if(carritoTurnos.find(element => element.area == area)){
-                    validar(turno, 'none', 'none')
-                if(carritoTurnos.find(reserva=> reserva.id == id)){
-                    validar(turno, 'block', 'none')
+            const {id, area, dia, horario} = turno //=====>> Desestructuracion de Objeto
+
+            let div = document.createElement('div');
+            div.className = 'turno';
+            div.innerHTML += `<div class="card cardTurno">
+                                <div class="card-image">
+                                    <span class="card-title">${area}</span>                                
+                                </div>
+                                <div class="card-content">
+                                    <p>${dia}</p>
+                                    <p>${horario}</p>
+                                    <a id="botonAgregar${id}" class="btn-floating halfway-fab waves-effect waves-light red boton${area}"><img src="../assets/imgs/carritoTurnos.svg" alt=""></a>
+                                    <p id="parrafo${id}" style='display:none; color:red'>ELEGIDA</p>
+                                </div>
+                            </div> `
+                            
+            contenedorTurnos.appendChild(div);
                 
+                if(carritoTurnos.find(element => element.area == area)){
+                        validar(turno, 'none', 'none')
+                    if(carritoTurnos.find(reserva=> reserva.id == id)){
+                        validar(turno, 'block', 'none')
+                    
+                    }
                 }
-            }
-            
-        let botonAgregar = document.getElementById(`botonAgregar${id}`)
-        botonAgregar.addEventListener("click",()=> {
-            agregarTurno(id, area)
-            
-            validar(turno, 'block', 'none')
-            Toastify({
+                
+            let botonAgregar = document.getElementById(`botonAgregar${id}`)
+            botonAgregar.addEventListener("click",()=> {
+                agregarTurno(id, area)
+                
+                validar(turno, 'block', 'none')
+                Toastify({
 
-                text: "Turno seleccionado",
+                    text: "Turno seleccionado",
+                    
+                    duration: 3000
+                    
+                    }).showToast();
                 
-                duration: 3000
                 
-                }).showToast();
-            
-            
-        })
+            })
+        }
+    }else{
+        document.getElementsByClassName('turno').innerHTML=``
     }
-    
 }
+    
 
 function validar(turno,si , no){
     let ocultar = document.getElementsByClassName(`boton${turno.area}`)

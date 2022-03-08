@@ -13,10 +13,14 @@
   .contenedorTurnos {
     display: flex;
     justify-content: space-evenly;
-    width: 100%;
+    width: 90%;
+    padding-bottom: 145px;
     .turno {
-      padding: 25px;
-      width: 500px;
+      margin: 50px;
+      width: 350px;
+      background: #007bff;
+      padding-left: 15px;
+      height: 80px;
     }
   }
   .buscadorContenedor {
