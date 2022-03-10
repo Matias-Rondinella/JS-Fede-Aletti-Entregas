@@ -116,7 +116,7 @@ function mostrarUsuario() {
         btnCerrar.addEventListener('click', ()=>{
 
             localStorage.setItem('validar', validarCerrar) 
-            window.location.replace('salud.html')
+            window.location.replace('saludInvitados.html')
         
         })
         
