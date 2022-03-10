@@ -111,7 +111,6 @@ function ingresar(){
             })
 
             validarLog = true
-            console.log(validarLog);
 
             localStorage.setItem('validar', validarLog) 
             window.location.replace('views/salud.html')            

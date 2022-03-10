@@ -106,9 +106,9 @@
         <section class="row sectionTurnos">            
             <div>
                 <div class="buscadorContenedor">
-                    <input id="buscador" type="search" class="input col-lg-4"  placeholder="Buscar turnos"> <!-- buscador --> 
+                    <input id="buscador" type="search" class="input"  placeholder="Buscar turnos"> <!-- buscador --> 
                     <!-- INICIO Filtros en Select -->
-                    <div class="col-lg-3 filtroDia" style="margin : 0; max-width: 100%;">
+                    <div class="filtroDia" style="margin : 0; max-width: 100%;">
                         <div class="containerFilter">
                             <button>Filtrar por día:
                                 <select name="" id="selecTurnos">
@@ -125,16 +125,12 @@
                     <!-- CIERRE Filtros en Select -->
 
                     <!-- INICIO contador de turnos -->
-
-                    <div id="boton-carrito" class="btnCarrito col-lg-5">
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">                            
-                            <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                Turnos Reservados: <i class="fas fa-shopping-cart"></i><span id="contadorCarrito">0</span>
-                            </a>
-                        </button>                
-                    </div>
-                    
+                    <div id="boton-carrito" class="btnCarrito">
+                        <!-- Button trigger modal -->                                                    
+                        <a class="btn btn-primary btnCarrito" type="button" data-toggle="modal" data-target="#exampleModal" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                            Turnos Reservados: <i class="fas fa-shopping-cart"></i><span id="contadorCarrito">0</span>
+                        </a>                                        
+                    </div>                    
                     <!-- CIERRE contador de turnos -->
                 </div>                
             </div>            
@@ -163,7 +159,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" id="btnConfirmar">Confirmar</button>
-                    <button type="button" class="btn btn-primary" id="btnLimpiarCarrito">Limpiar</button>
+                    
                 </div>
             </div>
             </div>
