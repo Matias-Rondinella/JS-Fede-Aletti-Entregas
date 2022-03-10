@@ -141,6 +141,9 @@
         <!-- INICIO DE FOOTER -->
         <div class="row">
             <footer>
+            <a href="https://api.whatsapp.com/send?phone=5491132044787&text=Hola&nbsp;como&nbsp;podemos&nbsp;ayudarte?" class="wtsAppChat" target="target_blank">
+                <img src="assets/imgs/whatsapp.png" alt="whatsapp">
+            </a>
             <div>
                 <h5>Redes Sociales</h5>
                 <ul>
@@ -172,6 +175,49 @@
         <!-- CIERRE DE FOOTER --> 
     </div> 
     <!-- CIERRE DE CONTENEDOR PRINCIPAL -->
+
+        <!-- INICIO CHAT DE FB -->
+    <!-- CHAT DE FB //// Messenger Plugin de chat Code -->
+    <div id="fb-root"></div>
+
+    <!-- CHAT DE FB //// Your Plugin de chat code -->
+    <div id="fb-customer-chat" class="fb-customerchat">
+    </div>
+
+    <script>
+    var chatbox = document.getElementById('fb-customer-chat');
+    chatbox.setAttribute("page_id", "451855271523825");
+    chatbox.setAttribute("attribution", "biz_inbox");
+    </script>
+
+    <!-- CHAT DE FB //// Your SDK code -->
+    <script>
+    window.fbAsyncInit = function() {
+    FB.init({
+        xfbml            : true,
+        version          : 'v13.0'
+    });
+    };
+
+    (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = 'https://connect.facebook.net/es_ES/sdk/xfbml.customerchat.js';
+    fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+    <script type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+    (function(){
+    emailjs.init("service_hxmt5ly");
+    })();
+    </script>
+
+    <!-- CIERRE CHAT DE FB -->
 
     <!-- LIBRERIAS -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
