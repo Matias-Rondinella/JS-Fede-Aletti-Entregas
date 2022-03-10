@@ -7424,7 +7424,6 @@ a {
   max-width: 485px;
   max-height: 570px;
   padding: 50px 70px 90px 70px;
-  background: #084b01;
   margin-top: 25px; }
 
 .login-html .sign-in-htm,
@@ -7491,7 +7490,7 @@ a {
   font-size: 14px; }
 
 .login-form .group .button {
-  background: #06c053; }
+  background: #17b37fd6; }
 
 .login-form .group label .icon {
   width: 15px;
