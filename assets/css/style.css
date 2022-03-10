@@ -3792,7 +3792,7 @@ input[type="button"].btn-block {
     background-size: cover;
     background-repeat: no-repeat;
     display: flex;
-    height: 1000px;
+    height: 750px;
     background-position-x: center;
     flex-direction: column;
     justify-content: flex-end; }
@@ -7548,6 +7548,28 @@ a {
   background-image: url(../imgs/loginBgd.jpg);
   background-repeat: no-repeat;
   background-size: cover; }
+
+.footerCont {
+  width: 100%;
+  height: 400px;
+  background-color: #17b37f; }
+  .footerCont .footerCont-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-right: 35px;
+    padding-top: 35px; }
+    .footerCont .footerCont-logo h5 {
+      font-size: 25px;
+      color: white; }
+    .footerCont .footerCont-logo h6 {
+      font-size: 20px;
+      color: white; }
+  .footerCont .footerCont-datos {
+    font-size: 18px;
+    color: white;
+    padding-left: 35px;
+    padding-top: 50px; }
 
 * {
   margin: 0px;
