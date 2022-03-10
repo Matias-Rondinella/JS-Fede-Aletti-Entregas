@@ -1,11 +1,7 @@
-// Variables
+// VARIABLES
 
 let carritoTurnos = []
 let validarCerrar = false
-let validarConfirmar = true
-
-
-
 
 const contenedorTurnos = document.getElementById('contenedor-turnos');
 const contenedorCarrito = document.getElementById('carrito-contenedor');
@@ -16,18 +12,17 @@ const selecTurnos = document.getElementById("selecTurnos")
 const buscador = document.getElementById("buscador")
 const btnConfirmar = document.getElementById("btnConfirmar")
 
-
 const cerrarSesion = document.getElementById('cerrarSesion')
 
+//EVENTOS BUSCADOR Y SELECT
 
-
-//BUSCADOR
+//filtrado BUSCADOR
 buscador.addEventListener("input", ()=>{
     let arrayFiltrado = turnoStock.filter(el => el.area.toLowerCase().includes(buscador.value.toLowerCase()))
     buscador.value == "" ? mostrarTurnos(turnoStock) : mostrarTurnos(arrayFiltrado) // ===>> TERNARIO
     })
 
-//filtro por dia
+//FILTRO SELECT * value.dia
 selecTurnos.addEventListener('change',()=>{
     selecTurnos.value == "Todos" ? mostrarTurnos(turnoStock) : mostrarTurnos(turnoStock.filter(el => el.dia == selecTurnos.value)) // ===>> TERNARIO
         
@@ -36,10 +31,21 @@ selecTurnos.addEventListener('change',()=>{
 
 //LOGICA
 
-function mostrarTurnos(turnoStock){
-    if (localStorage.getItem('validar')== 'true') {
+// FUNCIONES GENERALES
+function validar(turno,si , no){
+
+    let ocultarTurno = document.getElementsByClassName(`boton${turno.area}`)    
+    let parrafo = document.getElementById(`parrafo${turno.id}`)
+    for (const btn of ocultarTurno) {
         
-        contenedorTurnos.innerHTML ='';
+        btn.style.display = no;
+        parrafo.style.display = si;
+    }
+    
+}
+
+function mostrarTurnos(turnoStock){
+    if (localStorage.getItem('validar')== 'true') {       
         
         for (const turno of turnoStock) {
             
@@ -87,25 +93,8 @@ function mostrarTurnos(turnoStock){
         }
     }else{
         contenedorTurnos.innerHTML ='';
+        document.getElementsByClassName('ocultar').style.display = 'none'
     }
-}
-
-function validar(turno,si , no){
-
-    let ocultar = document.getElementsByClassName(`boton${turno.area}`)    
-    let parrafo = document.getElementById(`parrafo${turno.id}`)
-    for (const btn of ocultar) {
-        
-        btn.style.display = no;
-        parrafo.style.display = si;
-    }
-    
-}
-
-function  actualizarTurnos (){
-
-    contadorCarrito.innerText = carritoTurnos.reduce((acc,el)=> acc + el.cantidad, 0) 
-
 }
 
 function mostrarUsuario() {
@@ -166,60 +155,8 @@ function mostrarReserva(turnoSeleccionado) {
                     `
     
     contenedorCarrito.appendChild(div);
-    let botonEliminar = document.getElementById(`botonEliminar${id}`)
-    localStorage.setItem ('validarConf', validarConfirmar)
-    btnConfirmar.addEventListener("click",()=> {
 
-        validarConfirmar = false
-        localStorage.setItem('validarConf',validarConfirmar)
-
-        document.getElementById(`botonEliminar${id}`).style.display = 'none'
-        document.getElementById(`parrafoModal${id}`).style.display = 'none'
-        
-        let userLs = JSON.parse(localStorage.getItem('usuario'))
-        if(carritoTurnos == []){
-            Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: ('debes seleccionar algo'),
-                showConfirmButton: false,
-                timer: 2000
-            })
-        }else if(localStorage.getItem('validar') == 'true'){
-
-            userLs?.forEach(elemento=>{
-                
-                elemento.turno = carritoTurnos
-                
-            })
-
-            localStorage.setItem("pedido", JSON.stringify(userLs))
-            let pedido = JSON.parse(localStorage.getItem("carrito"))
-            let user = JSON.parse(localStorage.getItem('usuario'))
-            user.concat(pedido)
-            
-            Toastify({
-
-                text: "Reserva Confirmada",
-                
-                duration: 3000
-                
-                }).showToast();
-            
-            }else if (localStorage.getItem('validar') == 'false'){
-
-            Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: ('Lo siento debes iniciar sesion'),
-                showConfirmButton: false,
-                timer: 2000
-            })            
-        }
-        
-    })
-    if (validarConfirmar) {     
-        
+    let botonEliminar = document.getElementById(`botonEliminar${id}`)    
     botonEliminar.addEventListener("click",()=>{
         Swal.fire({
             title: '¿Seguro quieres eliminar este turno?',
@@ -246,12 +183,61 @@ function mostrarReserva(turnoSeleccionado) {
         
     })
 
-    }else if (validarConfirmar = false){
-        document.getElementById(`botonEliminar${id}`).style.display = 'none'
-        document.getElementById(`parrafoModal${id}`).style.display = 'none'
-    }    
-    
-    
+    btnConfirmar.addEventListener("click",()=> {       
+        
+        let userLs = JSON.parse(localStorage.getItem('usuario'))
+        if(carritoTurnos == []){
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: ('debes seleccionar algo'),
+                showConfirmButton: false,
+                timer: 2000
+            })
+        }else if(localStorage.getItem('validar') == 'true'){
+
+            userLs?.forEach(elemento=>{
+                elemento.turno = carritoTurnos
+                
+            })
+
+            localStorage.setItem("pedido", JSON.stringify(userLs))
+            let pedido = JSON.parse(localStorage.getItem("carrito"))
+            let user = JSON.parse(localStorage.getItem('usuario'))
+            user.concat(pedido)            
+            
+            document.getElementById(`botonEliminar${id}`).style.display = 'none'
+            document.getElementById(`parrafoModal${id}`).style.display = 'none'
+            
+            Toastify({
+
+                text: "Reserva Confirmada",
+                
+                duration: 3000
+                
+                }).showToast();
+            
+            }else if (localStorage.getItem('validar') == 'false'){
+
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: ('Lo siento debes iniciar sesion'),
+                showConfirmButton: false,
+                timer: 2000
+            })            
+        }
+        
+    })
+
+}
+
+// FUNCIONES SECUNDARIAS
+
+function  actualizarTurnos (){
+
+    contadorCarrito.innerText = carritoTurnos.reduce((acc,el)=> acc + el.cantidad, 0) 
+
 }
 
 function recuperar() {
@@ -270,6 +256,8 @@ function recuperar() {
 function confirmarPedido() {
     
 }
+
+// EJECUCION
 
 mostrarTurnos(turnoStock)
 mostrarUsuario()

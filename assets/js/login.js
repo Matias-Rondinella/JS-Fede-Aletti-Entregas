@@ -3,18 +3,12 @@ let datos =[]
 let btnRegistro = document.getElementById('registro')
 let btnIngreso = document.getElementById('ingreso')
 
-
-
 let validarLog = false
 localStorage.setItem('validar',(validarLog))
-
-
-
 
 function randomNumber(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-
 
 btnRegistro.addEventListener('click', ()=>{
     const usuarioRegistrado =document.getElementById('userRegis').value.toLowerCase()
