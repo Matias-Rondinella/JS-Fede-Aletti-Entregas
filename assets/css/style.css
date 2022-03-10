@@ -3082,7 +3082,7 @@ input[type="button"].btn-block {
     text-decoration: none; }
   .navbar-brand .img-logo {
     position: relative;
-    bottom: 20px; }
+    bottom: 15px; }
 
 .navbar-nav {
   display: flex;
