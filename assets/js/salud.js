@@ -173,7 +173,8 @@ function mostrarReserva(turnoSeleccionado) {
     
     contenedorCarrito.appendChild(div);
 
-    let botonEliminar = document.getElementById(`botonEliminar${id}`)    
+    let botonEliminar = document.getElementById(`botonEliminar${id}`)  
+    
     botonEliminar.addEventListener("click",()=>{
         Swal.fire({
             title: '¿Seguro quieres eliminar este turno?',
@@ -200,31 +201,29 @@ function mostrarReserva(turnoSeleccionado) {
         
     })
 
-    btnConfirmar.addEventListener("click",()=> {       
-        
+    btnConfirmar.addEventListener("click",()=> {    
+
+        let parrafoConfirmado = document.createElement('div')
+
+        div.className = 'parrafoConfirmado'
+        parrafoConfirmado.innerHTML = `
+            <p id="parrafoConfirmado" style='color:green;'>Confirmado</p>
+        `
+        document.getElementById(`botonEliminar${id}`).style.display = 'none'
+        document.getElementById(`parrafoModal${id}`).style.display = 'none'
+        contenedorCarrito.appendChild(parrafoConfirmado)
+
         let userLs = JSON.parse(localStorage.getItem('usuario'))
-        if(carritoTurnos == []){
-            Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: ('debes seleccionar algo'),
-                showConfirmButton: false,
-                timer: 2000
-            })
-        }else if(localStorage.getItem('validar') == 'true'){
+        if(localStorage.getItem('validar') == 'true'){
 
             userLs?.forEach(elemento=>{
-                elemento.turno = carritoTurnos
-                
+                elemento.turno = carritoTurnos                
             })
 
             localStorage.setItem("pedido", JSON.stringify(userLs))
             let pedido = JSON.parse(localStorage.getItem("carrito"))
             let user = JSON.parse(localStorage.getItem('usuario'))
-            user.concat(pedido)            
-            
-            document.getElementById(`botonEliminar${id}`).style.display = 'none'
-            document.getElementById(`parrafoModal${id}`).style.display = 'none'
+            user.concat(pedido)
             
             Toastify({
 
@@ -234,16 +233,7 @@ function mostrarReserva(turnoSeleccionado) {
                 
                 }).showToast();
             
-            }else if (localStorage.getItem('validar') == 'false'){
-
-            Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: ('Lo siento debes iniciar sesion'),
-                showConfirmButton: false,
-                timer: 2000
-            })            
-        }
+            }
         
     })
 
