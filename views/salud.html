@@ -31,13 +31,6 @@
             <div class="row contenedorNav">
                 <div class="row-fluid divInfoClima" id="divInfoClima" style="width: 100%;">
                     <!--Pre Header -->
-                    <div class="divSesionUser">
-                        <h3 id="userLocal">
-                            <div id="cerrarSesion">
-                                
-                            </div>
-                        </h3>
-                    </div>
                 </div> 
                 <nav class="navbar navbar-expand-lg navbar-light">                    
                     <a class="navbar-brand" href="">
@@ -95,15 +88,26 @@
             <!-- Main jumbotron for a primary marketing message or call to action -->
                 <div class="jumbotron">
                     <div class="container">
-                    <h1 class="display-3">¡Hola Vecino!</h1>
+                    <h3 class="display-3" id="userLocal"></h3>
+                    <h3 id="btnIniciar"></h3>
                     <p>Ahora podes reservar tus turnos de forma Online desde la comodidad de tu hogar.</p>
-                    <a class="btn btn-primary btn-lg" href="#" role="button">Ver turnos &raquo;</a>
-                    </div>
+                    <!-- INICIO contador de turnos -->
+                    <!-- Button trigger modal -->                                                    
+                    <a class="btn btn-primary btn-lg" id="boton-carrito" type="button" data-toggle="modal" data-target="#exampleModal" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                        Mis Turnos: <i class="fas fa-shopping-cart"></i><span id="contadorCarrito">0</span>
+                    </a>                            
+                    <!-- CIERRE contador de turnos -->
+                    <div class="divSesionUser">                        
+                            <div id="cerrarSesion">
+                                
+                            </div>                        
+                    </div>                    
+                    
                 </div>        
         </main>
         <!-- CIERRE JUMBOTRON -->
         <!-- INICIO BUSCADOR Y CONTADOR CARRITO -->
-        <section class="row sectionTurnos ocultar">            
+        <section class="row sectionTurnos" id="sectionTurnos">            
             <div>
                 <div class="buscadorContenedor">
                     <input id="buscador" type="search" class="input"  placeholder="Buscar turnos"> <!-- buscador --> 
@@ -123,23 +127,16 @@
                         </div>
                     </div> 
                     <!-- CIERRE Filtros en Select -->
-
-                    <!-- INICIO contador de turnos -->
-                    <div id="boton-carrito" class="btnCarrito">
-                        <!-- Button trigger modal -->                                                    
-                        <a class="btn btn-primary btnCarrito" type="button" data-toggle="modal" data-target="#exampleModal" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                            Mis Turnos: <i class="fas fa-shopping-cart"></i><span id="contadorCarrito">0</span>
-                        </a>                                        
-                    </div>                    
-                    <!-- CIERRE contador de turnos -->
+                    
                 </div>                
-            </div>            
+            </div>          
             
             <!-- CONTENEDOR TURNOS -->
-            <div class="row contenedorTurnos ocultar" id="contenedor-turnos">
+            <div class="row contenedorTurnos" id="contenedor-turnos">
                 <!-- ACA ESTAN LAS CARDS DESDE JS CON .APPENDCHILD EN SALUD.JS-->
             </div>
-            <!-- CIERRE CONTENEDOR TURNOS -->            
+            <!-- CIERRE CONTENEDOR TURNOS -->
+                        
         </section>
         <!-- CIERRE BUSCADOR Y CONTADOR CARRITO -->
         <!-- INICIO Modal -->

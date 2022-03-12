@@ -8,6 +8,7 @@ const contenedorCarrito = document.getElementById('carrito-contenedor');
 
 const contadorCarrito = document.getElementById('contadorCarrito');
 const selecTurnos = document.getElementById("selecTurnos")
+const sectionTurnos = document.getElementById('sectionTurnos')
 
 const buscador = document.getElementById("buscador")
 const btnConfirmar = document.getElementById("btnConfirmar")
@@ -93,7 +94,9 @@ function mostrarTurnos(turnoStock){
         }
     }else{
         contenedorTurnos.innerHTML ='';
-        document.getElementsByClassName('ocultar').style.display = 'none'
+        document.getElementById('contenedor-turnos').style.display = 'none';
+        document.getElementById('boton-carrito').style.display = 'none';
+        document.getElementById('sectionTurnos').style.display = 'none';
     }
 }
 
@@ -104,25 +107,39 @@ function mostrarUsuario() {
         
         let userIndex = document.getElementById('userLocal')
         
-        userIndex.innerText= ` Usuario: ${userLs[0].usuario} `
+        userIndex.innerText= ` Hola ${userLs[0].usuario} `
 
         let div = document.createElement("div")
         div.className = "btnCerrar"
         div.innerHTML += `
-                        <button id= "btnCerrar">Cerrar Sesion</button>
+                        <a class="btn btn-primary btn-lg" href="#" role="button" id= "btnCerrar"> Cerrar Sesion </a>
                         `
         userLocal.appendChild(div);
-        const btnCerrar = document.getElementById ('btnCerrar') 
-        btnCerrar.addEventListener('click', ()=>{
+
+        let btnCerrar = document.getElementById ('btnCerrar')
+
+        btnCerrar.addEventListener('click', ()=>{            
+
+            document.getElementById('userLocal').style.display = 'none';
+            document.getElementById('btnCerrar').style.display = 'none';
+            document.getElementById('contenedor-turnos').style.display = 'none';
+            document.getElementById('boton-carrito').style.display = 'none';
+            document.getElementById('sectionTurnos').style.display = 'none';
 
             localStorage.setItem('validar', validarCerrar) 
-            window.location.replace('saludInvitados.html')
-        
+            window.location.replace('salud.html')
+
+            
         })
         
     }else {
-        cerrarSesion.innerText = ``
-        
+
+        document.getElementById('btnIniciar').style.display = 'block';      
+
+        btnIniciar.innerHTML = `
+                        <a class="btn btn-primary btn-lg" href="../index.html" role="button" id= "btnIniciar"> Iniciar Sesion / Registrarse </a>
+                `
+            
     }
 }
 
