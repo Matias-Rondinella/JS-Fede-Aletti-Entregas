@@ -201,17 +201,10 @@ function mostrarReserva(turnoSeleccionado) {
         
     })
 
-    btnConfirmar.addEventListener("click",()=> {    
-
-        let parrafoConfirmado = document.createElement('div')
-
-        div.className = 'parrafoConfirmado'
-        parrafoConfirmado.innerHTML = `
-            <p id="parrafoConfirmado" style='color:green;'>Confirmado</p>
-        `
+    btnConfirmar.addEventListener("click",()=> {   
+        
         document.getElementById(`botonEliminar${id}`).style.display = 'none'
         document.getElementById(`parrafoModal${id}`).style.display = 'none'
-        contenedorCarrito.appendChild(parrafoConfirmado)
 
         let userLs = JSON.parse(localStorage.getItem('usuario'))
         if(localStorage.getItem('validar') == 'true'){
@@ -234,6 +227,14 @@ function mostrarReserva(turnoSeleccionado) {
                 }).showToast();
             
             }
+        let parrafoConfirmado = document.createElement('div')
+
+        div.className = 'parrafoConfirmado'
+        parrafoConfirmado.innerHTML = `
+            <p id="parrafoConfirmado" style='color:green;'>Confirmado</p>
+        `
+        
+        contenedorCarrito.appendChild(parrafoConfirmado)
         
     })
 
