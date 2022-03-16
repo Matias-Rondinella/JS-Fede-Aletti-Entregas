@@ -2,6 +2,8 @@
 
 let carritoTurnos = []
 let validarCerrar = false
+let parrafoConfirmado = true
+
 
 const contenedorTurnos = document.getElementById('contenedor-turnos');
 const contenedorCarrito = document.getElementById('carrito-contenedor');
@@ -12,6 +14,7 @@ const sectionTurnos = document.getElementById('sectionTurnos')
 
 const buscador = document.getElementById("buscador")
 const btnConfirmar = document.getElementById("btnConfirmar")
+const btnCancelar = document.getElementById('btnCancelar')
 
 const cerrarSesion = document.getElementById('cerrarSesion')
 
@@ -77,7 +80,8 @@ function mostrarTurnos(turnoStock){
                 }
                 
             let botonAgregar = document.getElementById(`botonAgregar${id}`)
-            botonAgregar.addEventListener("click",()=> {
+            botonAgregar.addEventListener("click",()=> {        
+
                 agregarTurno(id, area)
                 
                 validar(turno, 'block', 'none')
@@ -88,7 +92,6 @@ function mostrarTurnos(turnoStock){
                     duration: 3000
                     
                     }).showToast();
-                
                 
             })
         }
@@ -145,6 +148,9 @@ function mostrarUsuario() {
 
 //Seleccionar un turno por ID y alojarlo en nuestro carrito: "carritoTurnos[]" Linea 1
 function agregarTurno(id) {
+
+    parrafoConfirmado = true
+    localStorage.setItem('mostrarConfirmado', parrafoConfirmado)
     let turnoSeleccionado = turnoStock.find(el => el.id == id)
     carritoTurnos.push(turnoSeleccionado)
     actualizarTurnos()
@@ -169,6 +175,7 @@ function mostrarReserva(turnoSeleccionado) {
                         <img src="../assets/imgs/eliminarTurnos.svg" alt="eliminar">
                     </button>
                     <p id="parrafoModal${id}" style='color:red;'>SIN CONFIRMACION</p>
+                    <p id="mostrarConfirmado${id}" style="display: none; color: green;">Confirmado</p>
                     `
     
     contenedorCarrito.appendChild(div);
@@ -195,50 +202,58 @@ function mostrarReserva(turnoSeleccionado) {
             carritoTurnos = carritoTurnos.filter(el => el.id != id)
             actualizarTurnos()
             localStorage.setItem('carrito', JSON.stringify(carritoTurnos))
+            localStorage.removeItem('pedido')
             validar(turnoSeleccionado, 'none', 'block')
         }
         })
         
     })
 
-    btnConfirmar.addEventListener("click",()=> {   
+
+    if (localStorage.getItem('mostrarConfirmado') == 'true' ) {
+        btnConfirmar.addEventListener("click",()=> { 
+
+            document.getElementById(`parrafoModal${id}`).style.display = 'none'
+            document.getElementById(`botonEliminar${id}`).style.display = 'none'
         
-        document.getElementById(`botonEliminar${id}`).style.display = 'none'
+            parrafoConfirmado = false
+            localStorage.setItem('mostrarConfirmado', parrafoConfirmado)
+            
+                let userLs = JSON.parse(localStorage.getItem('usuario'))
+                let pedido = JSON.parse(localStorage.getItem("carrito"))
+                let pedidoOK = userLs.concat(pedido)
+                if(localStorage.getItem('validar') == 'true'){
+    
+                    userLs?.forEach(elemento=>{
+                        elemento.turno = carritoTurnos                
+                    })
+    
+                    localStorage.setItem("pedido", JSON.stringify(pedidoOK))                   
+                    
+                    Toastify({
+    
+                        text: "Reserva Confirmada",
+                        
+                        duration: 3000
+                        
+                        }).showToast();
+                    
+                    }        
+        })
+        
+    }else{
         document.getElementById(`parrafoModal${id}`).style.display = 'none'
+        document.getElementById(`botonEliminar${id}`).style.display = 'none'
+        document.getElementById(`mostrarConfirmado${id}`).style.display = 'block'           
+    }
 
-        let userLs = JSON.parse(localStorage.getItem('usuario'))
-        if(localStorage.getItem('validar') == 'true'){
-
-            userLs?.forEach(elemento=>{
-                elemento.turno = carritoTurnos                
-            })
-
-            localStorage.setItem("pedido", JSON.stringify(userLs))
-            let pedido = JSON.parse(localStorage.getItem("carrito"))
-            let user = JSON.parse(localStorage.getItem('usuario'))
-            user.concat(pedido)
-            
-            Toastify({
-
-                text: "Reserva Confirmada",
-                
-                duration: 3000
-                
-                }).showToast();
-            
-            }
-        let parrafoConfirmado = document.createElement('div')
-
-        div.className = 'parrafoConfirmado'
-        parrafoConfirmado.innerHTML = `
-            <p id="parrafoConfirmado" style='color:green;'>Confirmado</p>
-        `
-        
-        contenedorCarrito.appendChild(parrafoConfirmado)
-        
+    btnCancelar.addEventListener('click', ()=>{
+        localStorage.setItem('mostrarConfirmado', true)
+        document.getElementById(`botonEliminar${id}`).style.display = 'block'
+        document.getElementById(`mostrarConfirmado${id}`).style.display = 'none'
     })
-
 }
+
 
 // FUNCIONES SECUNDARIAS
 
