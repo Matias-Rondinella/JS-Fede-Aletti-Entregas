@@ -203,6 +203,8 @@ function mostrarReserva(turnoSeleccionado) {
             botonEliminar.parentElement.remove() 
             carritoTurnos = carritoTurnos.filter(el => el.id != id)
             actualizarTurnos()
+            parrafoConfirmado = true
+            localStorage.setItem('mostrarConfirmado', parrafoConfirmado)
             localStorage.setItem('carrito', JSON.stringify(carritoTurnos))
             localStorage.removeItem('pedido', [id])
             validar(turnoSeleccionado, 'none', 'block')
@@ -217,6 +219,7 @@ function mostrarReserva(turnoSeleccionado) {
 
             document.getElementById(`parrafoModal${id}`).style.display = 'none'
             document.getElementById(`botonEliminar${id}`).style.display = 'none'
+            document.getElementById(`mostrarConfirmado${id}`).style.display = 'block'
         
             parrafoConfirmado = false
             localStorage.setItem('mostrarConfirmado', parrafoConfirmado)
@@ -246,11 +249,11 @@ function mostrarReserva(turnoSeleccionado) {
     }else{
         document.getElementById(`parrafoModal${id}`).style.display = 'none'
         document.getElementById(`botonEliminar${id}`).style.display = 'none'
-        document.getElementById(`mostrarConfirmado${id}`).style.display = 'block'           
+                   
     }
 
     btnCancelar.addEventListener('click', ()=>{
-        localStorage.setItem('mostrarConfirmado', true)
+        localStorage.setItem('mostrarConfirmado', false)
         document.getElementById(`botonEliminar${id}`).style.display = 'block'
         document.getElementById(`mostrarConfirmado${id}`).style.display = 'none'
     })
