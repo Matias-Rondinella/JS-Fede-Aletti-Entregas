@@ -7341,10 +7341,6 @@ a.text-dark:hover, a.text-dark:focus {
   border-top-right-radius: 0; }
 
 .sectionTurnos {
-  background-image: url(../imgs/saludSectionTurnos.jpg);
-  background-attachment: fixed;
-  background-size: cover;
-  background-repeat: no-repeat;
   display: flex;
   height: auto;
   background-position-x: center;

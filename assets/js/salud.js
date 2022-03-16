@@ -26,14 +26,13 @@ buscador.addEventListener("input", ()=>{
     buscador.value == "" ? mostrarTurnos(turnoStock) : mostrarTurnos(arrayFiltrado) // ===>> TERNARIO
     })
 
+
 //FILTRO SELECT * value.dia
 selecTurnos.addEventListener('change',()=>{
-
-
     selecTurnos.value == "Todos" ? mostrarTurnos(turnoStock) : mostrarTurnos(turnoStock.filter(el => el.dia == selecTurnos.value)) // ===>> TERNARIO
-        
     }
 )
+
 
 //LOGICA
 
@@ -50,10 +49,11 @@ function validar(turno,si , no){
     
 }
 
-function mostrarTurnos(turnoStock){
+function mostrarTurnos(array){
+    contenedorTurnos.innerHTML = ''
     if (localStorage.getItem('validar')== 'true') {       
         
-        for (const turno of turnoStock) {
+        for (const turno of array) {
             
             const {id, area, dia, horario} = turno //=====>> Desestructuracion de Objeto
 
@@ -258,7 +258,6 @@ function mostrarReserva(turnoSeleccionado) {
         document.getElementById(`mostrarConfirmado${id}`).style.display = 'none'
     })
 }
-
 
 // FUNCIONES SECUNDARIAS
 
