@@ -28,6 +28,8 @@ buscador.addEventListener("input", ()=>{
 
 //FILTRO SELECT * value.dia
 selecTurnos.addEventListener('change',()=>{
+
+
     selecTurnos.value == "Todos" ? mostrarTurnos(turnoStock) : mostrarTurnos(turnoStock.filter(el => el.dia == selecTurnos.value)) // ===>> TERNARIO
         
     }
@@ -202,7 +204,7 @@ function mostrarReserva(turnoSeleccionado) {
             carritoTurnos = carritoTurnos.filter(el => el.id != id)
             actualizarTurnos()
             localStorage.setItem('carrito', JSON.stringify(carritoTurnos))
-            localStorage.removeItem('pedido')
+            localStorage.removeItem('pedido', [id])
             validar(turnoSeleccionado, 'none', 'block')
         }
         })
