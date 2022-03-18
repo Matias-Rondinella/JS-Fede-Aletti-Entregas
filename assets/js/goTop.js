@@ -1,10 +1,10 @@
 window.onscroll = function () {
     if (document.documentElement.scrollTop > 300) {
         document.querySelector('.goTop')
-        .classList.add('show')
+        .classList.add('showA')
     }else{
         document.querySelector('.goTop')
-        .classList.remove('show')
+        .classList.remove('showA')
     }
 }
 

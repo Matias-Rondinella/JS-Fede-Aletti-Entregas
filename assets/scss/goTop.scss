@@ -27,18 +27,18 @@
   transition: 0.2s;
 }
 
-.show {
+.showA {
   z-index: 10;
 }
 
-.show .goTop-button {
+.showA .goTop-button {
   animation: popup 0.3s ease-in-out;
   width: 6.6rem;
   height: 6.6rem;
   z-index: 11;
 }
 
-.show img {
+.showA img {
   transform: (-50%, -50%) scale(1);
 }
 

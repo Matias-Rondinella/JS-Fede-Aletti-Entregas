@@ -7349,7 +7349,7 @@ a.text-dark:hover, a.text-dark:focus {
   flex-direction: column;
   justify-content: flex-start;
   align-content: space-around;
-  padding-top: 50px; }
+  padding-top: 10px; }
   .sectionTurnos .contenedorTurnos {
     display: flex;
     justify-content: space-evenly;
@@ -7365,7 +7365,8 @@ a.text-dark:hover, a.text-dark:focus {
     display: flex;
     align-items: center;
     width: 100%;
-    flex-direction: column; }
+    flex-direction: column;
+    padding-top: 10px; }
     .sectionTurnos .buscadorContenedor .input {
       background: #dee2e6;
       font-size: 20px;
@@ -7613,16 +7614,16 @@ a {
   transform: translate(-50%, -50%) scale(0);
   transition: 0.2s; }
 
-.show {
+.showA {
   z-index: 10; }
 
-.show .goTop-button {
+.showA .goTop-button {
   animation: popup 0.3s ease-in-out;
   width: 6.6rem;
   height: 6.6rem;
   z-index: 11; }
 
-.show img {
+.showA img {
   transform: -50%, -50% scale(1); }
 
 @keyframes popup {
@@ -7635,6 +7636,14 @@ a {
   100% {
     width: 6.6rem;
     height: 6.6rem; } }
+
+.instrucciones {
+  font-size: 14px;
+  background: #3589d3;
+  padding: 40px;
+  color: white; }
+  .instrucciones h5 {
+    font-size: 25px; }
 
 * {
   margin: 0px;

@@ -95,7 +95,7 @@
                     <div class="container">
                     <h3 class="display-3" id="userLocal"></h3>
                     <h3 id="btnIniciar"></h3>
-                    <p>Ahora podes reservar tus turnos de forma Online desde la comodidad de tu hogar.</p>
+                    <p>Sacá turno online para todas las especialidades clínicas del Hospital Juan Klipsons y accedé a tus servicios de salud de una forma rápida, fácil y eficiente.</p>
                     <!-- INICIO contador de turnos -->
                     <!-- Button trigger modal -->                                                    
                     <a class="btn btn-primary btn-lg" id="boton-carrito" type="button" data-toggle="modal" data-target="#exampleModal" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
@@ -112,7 +112,19 @@
         </main>
         <!-- CIERRE JUMBOTRON -->
         <!-- INICIO BUSCADOR Y CONTADOR CARRITO -->
-        <section class="row sectionTurnos" id="sectionTurnos">            
+
+        <section class="row sectionTurnos" id="sectionTurnos">
+            <hr>
+            <div class="instrucciones">
+                <h5>¿Cómo funciona el sistema de turnos online?</h5>
+                <br>
+                <p>-Elige la especialidad, día y horario de tu turno.</p>
+                <p>-Presiona el botón verde para seleccionar tu turno.</p>
+                <p>-IMPORTANTE: 
+                    Para que todos puedan hacer buen uso del sistema de turnos sólo podrás reservar un turno por especialidad cada semana.</p>
+                <p>-Revisá y confirmá tu selección apretando el botón "Mis Turnos".</p>
+            </div>
+            <hr>            
             <div>
                 <div class="buscadorContenedor">
                     <input id="buscador" type="search" class="input"  placeholder="Buscar turnos"> <!-- buscador --> 
@@ -149,7 +161,7 @@
             <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Mis Turnos</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
