@@ -3385,7 +3385,8 @@ input[type="button"].btn-block {
     color: white; }
     .contenedorNav .titleNav .h1MobTitle {
       font-size: 23px;
-      margin-left: 5px; }
+      margin-left: 5px;
+      font-family: "Lobster", cursive; }
 
 .card {
   position: relative;
@@ -3562,7 +3563,8 @@ input[type="button"].btn-block {
       margin-bottom: -1px; }
 
 .cardTurno {
-  height: 160px; }
+  height: 160px;
+  background: #dee2e6; }
 
 .card-image {
   font-size: 25px;
@@ -7362,16 +7364,20 @@ a.text-dark:hover, a.text-dark:focus {
   .sectionTurnos .buscadorContenedor {
     display: flex;
     align-items: center;
-    width: 100%; }
+    width: 100%;
+    flex-direction: column; }
     .sectionTurnos .buscadorContenedor .input {
       background: #dee2e6;
       font-size: 20px;
       color: -internal-light-dark(black, white);
       border: 0;
-      border-bottom: 1px solid; }
+      border-bottom: 1px solid;
+      width: 80%; }
     .sectionTurnos .buscadorContenedor .filtroDia {
       display: flex;
-      align-items: center; }
+      width: 100%;
+      justify-content: center;
+      padding-top: 15px; }
 
 .btnCarrito a {
   position: fixed;
@@ -7546,26 +7552,89 @@ a {
   background-size: cover; }
 
 .footerCont {
-  width: 100%;
-  height: 400px;
-  background-color: #17b37f; }
+  width: 100%; }
   .footerCont .footerCont-logo {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    padding-right: 35px;
-    padding-top: 35px; }
-    .footerCont .footerCont-logo h5 {
-      font-size: 25px;
-      color: white; }
-    .footerCont .footerCont-logo h6 {
-      font-size: 20px;
-      color: white; }
-  .footerCont .footerCont-datos {
-    font-size: 18px;
-    color: white;
-    padding-left: 35px;
-    padding-top: 50px; }
+    display: flex; }
+    .footerCont .footerCont-logo .footerCont-cont {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-left: 35px;
+      background: #17b37f; }
+      .footerCont .footerCont-logo .footerCont-cont .footerCont-muni {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 60px; }
+        .footerCont .footerCont-logo .footerCont-cont .footerCont-muni h5 {
+          font-size: 40px;
+          color: white;
+          font-family: "Lobster", cursive; }
+        .footerCont .footerCont-logo .footerCont-cont .footerCont-muni h6 {
+          font-size: 15px;
+          color: white; }
+      .footerCont .footerCont-logo .footerCont-cont .footerCont-datos {
+        font-size: 18px;
+        color: white;
+        padding-top: 175px; }
+
+.footerMapDis {
+  display: flex;
+  width: 100%;
+  align-items: flex-end;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding-bottom: 40px; }
+
+.goTop {
+  position: fixed;
+  bottom: 20rem;
+  right: 5.5rem;
+  width: 0rem;
+  height: 0rem;
+  z-index: -1; }
+
+.goTop-button {
+  background-image: url("../imgs/upArrow.png");
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.2s;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1; }
+
+.goTop-button img {
+  position: absolute;
+  font-size: 1.7rem;
+  top: 48%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: 0.2s; }
+
+.show {
+  z-index: 10; }
+
+.show .goTop-button {
+  animation: popup 0.3s ease-in-out;
+  width: 6.6rem;
+  height: 6.6rem;
+  z-index: 11; }
+
+.show img {
+  transform: -50%, -50% scale(1); }
+
+@keyframes popup {
+  0% {
+    width: 0rem;
+    height: 0rem; }
+  50% {
+    width: 7rem;
+    height: 7rem; }
+  100% {
+    width: 6.6rem;
+    height: 6.6rem; } }
 
 * {
   margin: 0px;

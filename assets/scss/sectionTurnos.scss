@@ -23,16 +23,20 @@
     display: flex;
     align-items: center;
     width: 100%;
+    flex-direction: column;
     .input {
       background: #dee2e6;
       font-size: 20px;
       color: -internal-light-dark(black, white);
       border: 0;
       border-bottom: 1px solid;
+      width: 80%;
     }
     .filtroDia {
       display: flex;
-      align-items: center;
+      width: 100%;
+      justify-content: center;
+      padding-top: 15px;
     }
   }
 }
