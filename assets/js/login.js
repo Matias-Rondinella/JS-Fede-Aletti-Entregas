@@ -12,8 +12,8 @@ function randomNumber(min, max) {
 
 btnRegistro.addEventListener('click', ()=>{
     const usuarioRegistrado =document.getElementById('userRegis').value.toLowerCase()
-    const contraseñaRegistrada = document.getElementById('passRegis').value
-    const reContraseña =document.getElementById('rePassRegis').value
+    const contraseñaRegistrada = document.getElementById('passRegis').value.toLowerCase()
+    const reContraseña =document.getElementById('rePassRegis').value.toLowerCase()
     const email = document.getElementById('email').value.toLowerCase()
     
     validar(usuarioRegistrado, contraseñaRegistrada,reContraseña,email)
@@ -86,8 +86,8 @@ function validar(usuarioRegistrado, contraseñaRegistrada,reContraseña,email){
 btnIngreso.addEventListener('click',ingresar)
 
 function ingresar(){
-    const usuario =document.getElementById('user').value
-    const contraseña = document.getElementById('pass').value
+    const usuario =document.getElementById('user').value.toLowerCase()
+    const contraseña = document.getElementById('pass').value.toLowerCase()
 
     let validacion = validarIngreso(usuario,contraseña)
     let recuperoLocalS= JSON.parse(localStorage.getItem('usuario'))
