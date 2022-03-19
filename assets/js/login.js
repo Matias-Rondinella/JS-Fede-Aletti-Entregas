@@ -73,10 +73,10 @@ function validar(usuarioRegistrado, contraseñaRegistrada,reContraseña,email){
 
         localStorage.setItem('usuario', JSON.stringify(datos))
         
-        document.getElementById('userRegis').value = ""
-        document.getElementById('passRegis').value= ""
-        document.getElementById('rePassRegis').value= ""
-        document.getElementById('email').value = ""
+        document.getElementById('userRegis').value.toLowerCase() = ""
+        document.getElementById('passRegis').value.toLowerCase()= ""
+        document.getElementById('rePassRegis').value.toLowerCase()= ""
+        document.getElementById('email').value.toLowerCase() = ""
 
         document.getElementById('tab-2').checked = false
         document.getElementById('tab-1').checked = true
@@ -94,8 +94,8 @@ function ingresar(){
 
     if(validacion){
         if((recuperoLocalS[0].usuario == usuario) && (recuperoLocalS[0].pass == contraseña)){
-            document.getElementById('user').value = "";
-            document.getElementById('pass').value= "";
+            document.getElementById('user').value.toLowerCase() = "";
+            document.getElementById('pass').value.toLowerCase()= "";
             Swal.fire({
                 position: 'top-end',
                 icon: 'success',
