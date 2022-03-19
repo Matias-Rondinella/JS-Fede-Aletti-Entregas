@@ -94,8 +94,8 @@ function ingresar(){
 
     if(validacion){
         if((recuperoLocalS[0].usuario == usuario) && (recuperoLocalS[0].pass == contraseña)){
-            document.getElementById('user').value.toLowerCase() = "";
-            document.getElementById('pass').value.toLowerCase()= "";
+            document.getElementById('user').value = "";
+            document.getElementById('pass').value= "";
             Swal.fire({
                 position: 'top-end',
                 icon: 'success',
