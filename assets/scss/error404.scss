@@ -1,0 +1,14 @@
+.divError {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 160px;
+  .divError__h1 {
+    color: black;
+  }
+  a {
+    .divError__btn {
+      font-size: 20px;
+    }
+  }
+}

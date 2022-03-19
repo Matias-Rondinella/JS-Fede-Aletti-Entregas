@@ -7645,6 +7645,16 @@ a {
   .instrucciones h5 {
     font-size: 25px; }
 
+.divError {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 160px; }
+  .divError .divError__h1 {
+    color: black; }
+  .divError a .divError__btn {
+    font-size: 20px; }
+
 * {
   margin: 0px;
   padding: 0px; }
